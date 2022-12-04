@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* --white: rgb(249, 249, 249); */
+
+  --gray-100: #f9f9f9;
+  --gray-200: #e2e2e2;
+  --gray-800: #222222;
+  
+  --blackShadowBox: rgba(0, 0, 0, 0.25);
+
+  
+  --yellow: #f3bf22;
+  --yellow-200: #f5de00;
+  
+}
+
+/*! Ficar alerta para o código abaixo. É padrão para responsividade */
+
+body {
+  -webkit-font-smoothing: antialiased;
+ 
+}
+
+body,
+textarea,
+input,
+button,
+select {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 1300px) {
+  html {
+    font-size: 87.5%;
+  }
+}
