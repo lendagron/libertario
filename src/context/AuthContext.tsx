@@ -42,7 +42,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     if (token) {
       api
-        .get("/me")
+        .get("/api/me")
         .then((response) => {
           const { login, permissions, roles } = response.data;
           setUser({ login, permissions, roles });

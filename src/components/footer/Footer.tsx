@@ -24,7 +24,6 @@ export function Footer() {
           <span> |</span>
           <a>(Não) Política de Direitos Autorais</a>
         </div>
-
         <div className={styles.iconsContainer}>
           <a
             href='https://www.instagram.com/libertariauniversidade/'

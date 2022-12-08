@@ -12,7 +12,7 @@ export function Header() {
           <Image src={Logo} alt='Logo' width={160} height={43} />
         </a>
         {/* <img src={"/public/Logo.png"} alt='' /> */}
-        <nav>
+        {/* <nav>
           <ul>
             <li>
               <a>Artigos</a>
@@ -28,7 +28,7 @@ export function Header() {
         <div>
           <button>CLUBE DA LIBERDADE</button>
           <button>LOGIN</button>
-        </div>
+        </div> */}
       </div>
     </header>
   );

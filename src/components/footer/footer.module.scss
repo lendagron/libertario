@@ -51,5 +51,18 @@
 @media screen and (max-width: 1300px) {
   .footerContainer  {
     max-width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .linksContainer{
+      display: flex;
+      flex-direction: column;
+      
+    
+      span {
+        display: none;
+      }
+      
+    }
   }
 }

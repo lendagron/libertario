@@ -5,17 +5,17 @@
 
 .headerContainer {
   display: flex;
-  max-width: 75%;
-  margin-inline: auto;
+  /* max-width: 75%;
+  margin-inline: auto; */
   padding: 13.5px 2rem;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 2rem;
+  /* gap: 2rem; */
 
   img {
     max-width: 13rem;
   }
-
+/* 
   ul {
     display: flex;
     list-style: none;
@@ -58,7 +58,7 @@
       
     }
   }
-
+ */
 }
 
 @media screen and (max-width: 1300px) {

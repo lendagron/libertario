@@ -9,7 +9,7 @@ export default function PainelContent() {
 
   useEffect(() => {
     api
-      .get("/me")
+      .get("/api/me")
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
   }, []);
