@@ -14,8 +14,18 @@ type SignInCredentials = {
   password: string;
 };
 
+type SignUpCredentials = {
+  name: string;
+  login: string;
+  cpf: string;
+  email: string;
+  phone: string;
+  password: string;
+};
+
 type AuthContextData = {
   sigIn(credentials: SignInCredentials): Promise<void>;
+  signUp(credentials: SignUpCredentials): Promise<void>;
   user: User;
   isAuthenticated: boolean;
 };
@@ -85,8 +95,51 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }
 
+  async function signUp({
+    name,
+    login,
+    cpf,
+    email,
+    phone,
+    password,
+  }: SignUpCredentials) {
+    try {
+      const response = await api.post("/api/signup", {
+        name,
+        login,
+        cpf,
+        email,
+        phone,
+        password,
+      });
+
+      const { token, refreshToken, permissions, roles } = response.data;
+
+      setCookie(undefined, "CL.token", token, {
+        maxAge: 60 * 60 * 24 * 30, // 30 days
+        path: "/",
+      });
+      setCookie(undefined, "CL.refreshToken", refreshToken, {
+        maxAge: 60 * 60 * 24 * 30, // 30 days
+        path: "/",
+      });
+
+      setUser({
+        login,
+        permissions,
+        roles,
+      });
+
+      api.defaults.headers["Authorization"] = `Bearer ${token}`;
+
+      sigIn({ login, password });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
-    <AuthContext.Provider value={{ sigIn, isAuthenticated, user }}>
+    <AuthContext.Provider value={{ sigIn, signUp, isAuthenticated, user }}>
       {children}
     </AuthContext.Provider>
   );
