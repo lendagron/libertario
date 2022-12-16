@@ -12,7 +12,7 @@ interface AxiosErrorResponse {
   }
 
 export const api = axios.create({
-    baseURL: 'http://164.92.80.187:8000/',
+    baseURL: 'https://clubeapi.universidadelibertaria.com.br',
     headers: { 
         Authorization: `Bearer ${cookies['CL.token']}`
     }

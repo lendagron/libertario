@@ -25,8 +25,8 @@ export default function PainelContent() {
 
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          {/*  <h2>{user?.login}</h2> */}
-          <h3>Olá, User</h3>
+          <h2>Olá, {user?.login}</h2>
+          {/* <h3>Olá, User</h3> */}
           <p>O seu plano é: Rothbard</p>
           <div className={styles.buttonsContainer}>
             <Link href={"/upgradePlano"}>
