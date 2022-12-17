@@ -26,6 +26,7 @@ type SignUpCredentials = {
 type AuthContextData = {
   sigIn(credentials: SignInCredentials): Promise<void>;
   signUp(credentials: SignUpCredentials): Promise<void>;
+  signOut(): void;
   user: User;
   isAuthenticated: boolean;
 };
@@ -104,7 +105,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     password,
   }: SignUpCredentials) {
     try {
-      const response = await api.post("/api/signup", {
+      /* const response =  */ await api.post("/api/signup", {
         name,
         login,
         cpf,
@@ -112,7 +113,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         phone,
         password,
       });
-
+      /* 
       const { token, refreshToken, permissions, roles } = response.data;
 
       setCookie(undefined, "CL.token", token, {
@@ -130,7 +131,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         roles,
       });
 
-      api.defaults.headers["Authorization"] = `Bearer ${token}`;
+      api.defaults.headers["Authorization"] = `Bearer ${token}`; */
 
       sigIn({ login, password });
     } catch (err) {
@@ -139,7 +140,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
   return (
-    <AuthContext.Provider value={{ sigIn, signUp, isAuthenticated, user }}>
+    <AuthContext.Provider
+      value={{ sigIn, signUp, signOut, isAuthenticated, user }}
+    >
       {children}
     </AuthContext.Provider>
   );

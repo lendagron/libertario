@@ -6,7 +6,7 @@ import Image from "next/image";
 import { AuthContext } from "../../context/AuthContext";
 
 export function HomepageContent() {
-  const [login, setEmail] = useState("");
+  const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
   const { sigIn } = useContext(AuthContext);
@@ -28,9 +28,9 @@ export function HomepageContent() {
           <Image src={FormLogo} alt='Logo de login' width={75} height={75} />
           <input
             type='text'
-            placeholder='Usuário ou e-mail'
+            placeholder='Usuário'
             alt='Imagem de login'
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setLogin(e.target.value)}
           />
           <input
             type='password'

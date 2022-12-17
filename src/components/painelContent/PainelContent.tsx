@@ -10,7 +10,7 @@ import { CursoPainel } from "../cursoPainel/CursoPainel";
 import { Crown } from "phosphor-react";
 
 export default function PainelContent() {
-  const { user } = useContext(AuthContext);
+  const { user, signOut } = useContext(AuthContext);
 
   useEffect(() => {
     api
@@ -18,6 +18,10 @@ export default function PainelContent() {
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
   }, []);
+
+  function handleLogOut() {
+    signOut();
+  }
 
   return (
     <>
@@ -34,6 +38,7 @@ export default function PainelContent() {
               <span>Fazer Upgrade</span>
             </Link>
             <Link href={"/curso"}>Acessar os Cursos</Link>
+            <a onClick={handleLogOut}>Deslogar</a>
           </div>
           <div className={styles.cursosContainer}>
             <CursoPainel
