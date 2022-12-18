@@ -1,68 +1,18 @@
 .headerWrapper {
   background-color: var(--gray-800);
+
 }
 
 
 .headerContainer {
   display: flex;
-  /* max-width: 75%;
-  margin-inline: auto; */
   padding: 13.5px 2rem;
   justify-content: center;
   align-items: center;
-  /* gap: 2rem; */
+
 
   img {
     max-width: 13rem;
   }
-/* 
-  ul {
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    align-items: center;
-    gap: 1.25rem;
-
-  }
-
-  ul li a {
-    color: white;
-    background-color: none;
-    text-decoration: none;
-
-    &:hover{
-      color: var(--yellow-200);
-      
-    }
-  }
-
-  div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.25rem;
-  }
-
-  div button {
-    border-radius: 3px;
-    outline: none;
-    cursor: pointer;
-    border: none;
-    background-color: var(--yellow-200);
-    padding: 0.5rem 2rem;
-    font-weight: bold;
-    transition: filter 0.2s;
-
-    &:hover{
-      filter: brightness(1.1);
-      
-    }
-  }
- */
 }
 
-@media screen and (max-width: 1300px) {
-  .headerContainer {
-    max-width: 100%;
-  }
-}

@@ -1,12 +1,7 @@
 .mainWrapper{
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   max-width: 75%;
   margin-inline: auto;
   padding: 2rem;
-
-
 }
 
 .mainContainer {
@@ -15,7 +10,8 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
- 
+  width: 100%;
+
   h1 {
     margin-bottom: 2rem;
   }
@@ -29,53 +25,49 @@
     padding: 2rem 2rem;
     background-color: var(--gray-100);
     border-radius: 10px;
-    
-  }
 
-  form img {
-    margin-bottom: 3rem;
-  }
 
-  form input {
-    border-radius: 5px;
-    padding: 1rem 0.5rem;
-    width: 100%;
-    border: none;
-    background-color: var(--gray-200);
-    outline: none;
-
-    &::placeholder {
-      padding: 1rem;
+    img {
+      margin-bottom: 3rem;
     }
 
-    a {
-     
-      text-decoration: none;
-      text-align: center;
-      color: var(--black);
-    }
-    
-  }
-
-  button {
-    /* width: 29rem;
-    height: 4rem; */
-    display: flex;
-    padding: 1rem 14rem;
-    margin-top: 2rem;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0px 4px 4px var(--blackShadowBox);
-    background-color: var(--yellow-200);
+    input {
+      /* display: flex; */
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 5px;
+      padding: 1rem 0.5rem;
+      width: 100%;
+      border: none;
+      background-color: var(--gray-200);
+      outline: none;
   
-    font-weight: 600;
-    font-size: 20px;
-    transition: filter 0.2s;
-
-    &:hover {
-      filter: brightness(1.1);
+      &::placeholder {
+        padding: 1rem;
+      }
+      
     }
 
+    button {
+      /* display: flex; */
+      padding: 1rem 14rem;
+      text-align: center;
+      width: 100%;
+      margin-top: 2rem;
+      border-radius: 5px;
+      border: none;
+      box-shadow: 0px 4px 4px var(--blackShadowBox);
+      background-color: var(--yellow-200);
+    
+      font-weight: 600;
+      font-size: 20px;
+      transition: filter 0.2s;
+  
+      &:hover {
+        filter: brightness(1.1);
+      }
+  
+    }
     a {
       display: flex;
       align-items: center;
@@ -83,6 +75,7 @@
       width: inherit;
       height: inherit;
     }
+    
   }
 
   div {
@@ -95,6 +88,7 @@
     a {
       color: white;
       background-color: black;
+      text-align: center;
     
       cursor: pointer;
       border-radius: 5px;
@@ -106,12 +100,23 @@
 
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 480px) {
+  .mainWrapper {
+    max-width: 100%;
+    width: 100%;
+    padding: .5rem;
+  }
+  .mainContainer form  {
+    width: 100%;
+    padding: 1rem;
 
- 
+    button {
+      padding: 1rem 0rem;
+      
+    }
+  }
+  
 }
-
-
 
 
 

@@ -8,9 +8,11 @@ import styles from "../styles/app.module.scss";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
+      <div className={styles.wrapper}>
+        <Header />
+        <Component {...pageProps} />
+        <Footer />
+      </div>
     </AuthProvider>
   );
 }

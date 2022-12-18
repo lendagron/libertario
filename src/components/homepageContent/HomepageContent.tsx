@@ -37,10 +37,7 @@ export function HomepageContent() {
             placeholder='Senha'
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type='submit'>
-            LOGIN
-            {/* <Link href={"/painel"}>LOGIN</Link> */}
-          </button>
+          <button type='submit'>LOGIN</button>
           <a href=''>Esqueceu o usuário ou senha?</a>
         </form>
         <div>
