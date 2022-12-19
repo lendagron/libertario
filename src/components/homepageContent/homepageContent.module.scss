@@ -2,6 +2,7 @@
   max-width: 75%;
   margin-inline: auto;
   padding: 2rem;
+
 }
 
 .mainContainer {
@@ -9,7 +10,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 1rem ;
   width: 100%;
 
   h1 {
@@ -22,7 +23,7 @@
     align-items: center;
     justify-content: center;
     gap: 2.8125rem;
-    padding: 2rem 2rem;
+    padding: 2rem 1rem;
     background-color: var(--gray-100);
     border-radius: 10px;
 
@@ -100,7 +101,7 @@
 
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
   .mainWrapper {
     max-width: 100%;
     width: 100%;
