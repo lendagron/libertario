@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
   padding: 1rem ;
-  width: 100%;
+  
 
   h1 {
     margin-bottom: 2rem;
@@ -26,6 +26,7 @@
     padding: 2rem 1rem;
     background-color: var(--gray-100);
     border-radius: 10px;
+    max-width: 547px;
 
 
     img {
@@ -33,15 +34,11 @@
     }
 
     input {
-      /* display: flex; */
-      align-items: center;
-      justify-content: space-between;
       border-radius: 5px;
       padding: 1rem 0.5rem;
       width: 100%;
       border: none;
       background-color: var(--gray-200);
-      outline: none;
   
       &::placeholder {
         padding: 1rem;
@@ -50,7 +47,6 @@
     }
 
     button {
-      /* display: flex; */
       padding: 1rem 14rem;
       text-align: center;
       width: 100%;

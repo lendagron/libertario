@@ -21,18 +21,21 @@
     gap: 1rem;
     color: gray;
     align-items: center;
+
+    a {
+      color: gray;
+      text-decoration: none;
+      text-align: center;
+  
+      &:hover {
+        color: white;
+      }
+  
+    }
+
+   
   }
   
-  .linksContainer a {
-    color: gray;
-   
-    text-decoration: none;
-
-    &:hover {
-      color: white;
-    }
-  }
-
   .iconsContainer {
     display: flex;
     gap: 1.5rem;
