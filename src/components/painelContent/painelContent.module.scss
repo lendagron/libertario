@@ -1,79 +1,76 @@
 .banner {
-    width: 100%;
-    object-fit: cover;
-
+  width: 100%;
+  object-fit: cover;
 }
 .wrapper {
-    max-width: 85%;
-    margin-inline: auto;
+  max-width: 85%;
+  margin-inline: auto;
 
-    .container {
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem 0;
+    gap: 1rem;
 
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        padding: 2rem 0;
-        gap: 1rem;
-
-        h3 {
-            font-weight: 600;
-            font-size: 32px;
-        }
-
-        p {
-            font-weight: 400;
-            font-size: 1.4375rem;
-        }
-
-        .buttonsContainer{
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            gap: 1rem;
-
-            a {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 0.5rem;
-                color: var(--yellow);
-    
-                span {
-                    color: black;
-                    text-decoration: underline;
-                    font-weight: 600;
-                    font-size: 1.25rem;
-                }  
-            }
-    
-            a + a {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-color: var(--yellow-200);
-                font-size: 1.25rem;
-                padding: 0.25rem 0.75rem;
-                border-radius: 10px;
-                color: black;
-                
-            }
-
-        }
-     
-       
+    h3 {
+      font-weight: 600;
+      font-size: 32px;
     }
 
-    .cursosContainer{
+    p {
+      font-weight: 400;
+      font-size: 1.4375rem;
+    }
+
+    .buttonsContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1rem;
+
+      a {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        width: 100%;
+        justify-content: center;
+        gap: 0.5rem;
+        color: var(--yellow);
+
+        span {
+          color: black;
+          text-decoration: underline;
+          font-weight: 600;
+          font-size: 1.25rem;
+        }
+      }
+
+      a + a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--yellow-200);
+        font-size: 1.25rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 10px;
+        color: black;
+      }
     }
+  }
 
+  .cursosContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+
+    /* width: 100%;
+
+    gap: 1.875rem;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  }
 }
-
-   
-
-   

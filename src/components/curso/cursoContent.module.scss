@@ -1,50 +1,46 @@
 .wrapper {
-    max-width: 75%;
-    margin-inline: auto;
-    height: 100vh;
-    padding: 2rem;
+  max-width: 75%;
+  margin-inline: auto;
+  /* height: 100vh; */
+  padding: 2rem;
 }
 
 .container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 2rem;
+  display: flex;
+  align-items: flex-start;
 
   .cursoContainer {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
 
     & > h2 {
-        width: 1087px;
-        height: 567px;
-        background-color: var(--gray-200);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
+      height: 567px;
+      background-color: var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    nav ul{
-        display: flex;
-        list-style: none;
-        gap: 2rem;
-        justify-content: space-around;
-        align-items: center;
-        padding: 2.375rem;
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      justify-content: space-around;
+      align-items: center;
+      padding: 2.375rem;
 
-        a {
-            font-weight: 400;
-            font-size: 28px;
-            line-height: 33px;
+      a {
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 33px;
 
-            &:hover {
-                border-bottom: 2px solid var(--yellow);
-            }
+        &:hover {
+          border-bottom: 2px solid var(--yellow);
         }
+      }
     }
-
   }
 
   aside {
@@ -56,41 +52,37 @@
     height: 819px;
     overflow-y: auto;
 
-
     h2 {
-        font-weight: 500;
-        font-size: 28px;
+      font-weight: 500;
+      font-size: 28px;
     }
-
 
     nav ul {
-        display: flex;
-        flex-direction: column;
-        list-style: none;
-        gap: 1rem;
-        justify-content: space-around;
-        align-items: center;
-        
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      gap: 1rem;
+      justify-content: space-around;
+      align-items: center;
 
-        a {
-            font-weight: 400;
-            font-size: 1.25rem;
-            &:hover {
-                border-bottom: 2px solid var(--yellow);
-            }
+      a {
+        font-weight: 400;
+        font-size: 1.25rem;
+        &:hover {
+          border-bottom: 2px solid var(--yellow);
         }
+      }
     }
   }
-
 }
 
 @media (max-width: 1300px) {
-    .container {
-        flex-direction: column;
-    }
+  .container {
+    flex-direction: column;
+  }
 
-    .cursoContainer h2 {
-        width: 500px;
-        height: 50%;
-    }
+  .cursoContainer h2 {
+    width: 500px;
+    height: 50%;
+  }
 }

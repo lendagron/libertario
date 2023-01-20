@@ -1,7 +1,10 @@
 import Link from "next/link";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import styles from "./planosContent.module.scss";
 
 export default function PlanosContent() {
+  const { isAuthenticated } = useContext(AuthContext);
   return (
     <div className={styles.planosWrapper}>
       <h2>Compare os Planos</h2>
@@ -81,7 +84,11 @@ export default function PlanosContent() {
             <li>Um Novo Curso Todo Mês</li>
             <li>Acesso Antecipado aos Conteúdos</li>
           </ul>
-          <Link href={"/cadastro_pagamento"}>Assine agora</Link>
+          {isAuthenticated ? (
+            <Link href={"/cadastro_pagamento"}>Assine agora</Link>
+          ) : (
+            <Link href={"/"}>Assine agora</Link>
+          )}
         </div>
       </div>
       <p>

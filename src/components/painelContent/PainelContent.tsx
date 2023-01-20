@@ -12,12 +12,12 @@ import { Crown } from "phosphor-react";
 export default function PainelContent() {
   const { user, signOut } = useContext(AuthContext);
 
-  useEffect(() => {
+  /*  useEffect(() => {
     api
       .get("/api/me")
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
-  }, []);
+  }, []); */
 
   function handleLogOut() {
     signOut();
@@ -31,7 +31,7 @@ export default function PainelContent() {
         <div className={styles.container}>
           <h2>Olá, {user?.login}</h2>
           {/* <h3>Olá, User</h3> */}
-          <p>O seu plano é: Rothbard</p>
+          <p>O seu plano é: Mises</p>
           <div className={styles.buttonsContainer}>
             <Link href={"/upgradePlano"}>
               <Crown size={25} weight='fill' />

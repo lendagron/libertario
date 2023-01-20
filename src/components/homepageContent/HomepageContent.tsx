@@ -15,7 +15,7 @@ export function HomepageContent() {
 
   const [isLogin, setIsLogin] = useState(true);
 
-  const { sigIn, signUp } = useContext(AuthContext);
+  const { sigIn, signUp, isAuthenticated } = useContext(AuthContext);
 
   function handleSetIsLogin() {
     setIsLogin(!isLogin);
@@ -29,6 +29,8 @@ export function HomepageContent() {
     };
     await sigIn(data);
   }
+
+  console.log(isAuthenticated);
 
   async function handleSubmitSignUp(event: FormEvent) {
     event.preventDefault();
@@ -123,10 +125,12 @@ export function HomepageContent() {
         {isLogin ? (
           <div>
             <a onClick={handleSetIsLogin}>Não é um membro ainda? Participe!</a>
+            <Link href={"/planos"}>Conheça os nossos planos</Link>
           </div>
         ) : (
           <div>
             <a onClick={handleSetIsLogin}>Já é um membro? Entre agora!</a>
+            <Link href={"/planos"}>Conheça os nossos planos</Link>
           </div>
         )}
       </div>
