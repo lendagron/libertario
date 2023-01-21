@@ -6,7 +6,7 @@ export default function Cadastro_pagamento() {
   return (
     <>
       <Head>
-        <title>Clube da Liberdade | Cadastro e Pagamento</title>
+        <title>Clube da Liberdade | Cadastro e Pagamento </title>
       </Head>
       <Cadastro_pagamentoContent />
     </>
