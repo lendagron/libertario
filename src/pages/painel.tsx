@@ -4,6 +4,7 @@ import { setupApiClient } from "../services/api";
 import { api } from "../services/apiClient";
 import { withSSRAuth } from "../utils/withSSRAuth";
 import styles from "../styles/painel.module.scss";
+import { Trilha } from "../components/trilha/Trilha";
 
 interface Trail {
   id: number;
@@ -20,14 +21,7 @@ export default function Painel({ trails }: Props) {
         <title>Clube da Liberdade | Painel</title>
       </Head>
       <PainelContent />
-      <div className={styles.trilhaContainer}>
-        {trails.map((trail) => (
-          <div key={trail.id} className={styles.trilha}>
-            <h2>{trail.name}</h2>
-            <p>{trail.description}</p>
-          </div>
-        ))}
-      </div>
+      <Trilha trails={trails} />
     </>
   );
 }
