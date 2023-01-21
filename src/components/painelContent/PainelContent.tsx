@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { api } from "../../services/api";
 import { Trilha } from "../trilha/Trilha";
@@ -9,15 +9,21 @@ import bannerimg from "../../../public/images/bannerPainel.png";
 import { CursoPainel } from "../cursoPainel/CursoPainel";
 import { Crown } from "phosphor-react";
 
-export default function PainelContent() {
-  const { user, signOut } = useContext(AuthContext);
+interface UserMe {
+  name: string;
+  login: string;
+}
 
-  /*  useEffect(() => {
+export default function PainelContent() {
+  const { signOut } = useContext(AuthContext);
+  const [userMe, setUserMe] = useState<UserMe>({ name: "", login: "" });
+
+  useEffect(() => {
     api
       .get("/api/me")
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
-  }, []); */
+      .then((response) => setUserMe(response.data))
+      .catch((err) => console.error(err));
+  }, []);
 
   function handleLogOut() {
     signOut();
@@ -29,8 +35,7 @@ export default function PainelContent() {
 
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          <h2>Olá, {user?.login}</h2>
-          {/* <h3>Olá, User</h3> */}
+          <h2>Olá, {userMe.name}</h2>
           <p>O seu plano é: Mises</p>
           <div className={styles.buttonsContainer}>
             <Link href={"/upgradePlano"}>

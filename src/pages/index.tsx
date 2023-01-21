@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { parseCookies } from "nookies";
 import { HomepageContent } from "../components/homepageContent/HomepageContent";
+import { withSSRGuest } from "../utils/withSSRguest";
 
 export default function Home() {
   return (
@@ -15,17 +16,8 @@ export default function Home() {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const cookies = parseCookies(ctx);
-  if (cookies["CL.token"]) {
-    return {
-      redirect: {
-        destination: "/painel",
-        permanent: false,
-      },
-    };
-  }
+export const getServerSideProps = withSSRGuest(async (ctx) => {
   return {
     props: {},
   };
-};
+});

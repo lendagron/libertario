@@ -1,5 +1,6 @@
 import Head from "next/head";
 import PainelContent from "../components/painelContent/PainelContent";
+import { withSSRAuth } from "../utils/withSSRAuth";
 
 export default function Painel() {
   return (
@@ -12,22 +13,8 @@ export default function Painel() {
   );
 }
 
-/* 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  try {
-    const response = await api.get("/api/learning_trails");
-    console.log(response);
-    return {
-      props: {
-        trails: response.data,
-      },
-    };
-  } catch (err) {
-    console.log("erro");
-    return {
-      props: {
-        trails: [],
-      },
-    };
-  }
-}; */
+export const getServerSideProps = withSSRAuth(async (ctx) => {
+  return {
+    props: {},
+  };
+});
