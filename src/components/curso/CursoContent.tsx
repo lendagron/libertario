@@ -26,6 +26,7 @@ export default function CursoContent() {
   }
 
   return (
+    //TODO: Arrumar aqui a parte da url igual a UL anterior
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.cursoContainer}>
