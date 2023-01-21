@@ -2,7 +2,7 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { parseCookies } from "nookies";
 import { HomepageContent } from "../components/homepageContent/HomepageContent";
-import { withSSRGuest } from "../utils/withSSRguest";
+import { withSSRGuest } from "../utils/withSSRGuest";
 
 export default function Home() {
   return (

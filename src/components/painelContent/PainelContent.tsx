@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { api } from "../../services/api";
+import { api } from "../../services/apiClient";
 import { Trilha } from "../trilha/Trilha";
 import styles from "./painelContent.module.scss";
 import Image from "next/image";
@@ -60,7 +60,7 @@ export default function PainelContent() {
             />
           </div>
 
-          <Trilha />
+          {/* <Trilha /> */}
         </div>
       </div>
     </>

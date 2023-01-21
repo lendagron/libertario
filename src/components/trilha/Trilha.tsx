@@ -1,6 +1,6 @@
 import { Head } from "next/document";
 import { useState, useEffect } from "react";
-import { api } from "../../services/api";
+import { api } from "../../services/apiClient";
 import styles from "./trilha.module.scss";
 
 export function Trilha() {
