@@ -11,20 +11,18 @@
   --gray-200: #e2e2e2;
   --gray-500: #808080;
   --gray-800: #222222;
-  
+
   --blackShadowBox: rgba(0, 0, 0, 0.25);
 
-  
   --yellow: #f3bf22;
   --yellow-200: #f5de00;
-  
 }
 
 /*! Ficar alerta para o código abaixo. É padrão para responsividade */
 
 body {
   -webkit-font-smoothing: antialiased;
- 
+  background-color: var(--gray-100);
 }
 
 body,
