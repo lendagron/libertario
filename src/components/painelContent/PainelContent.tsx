@@ -59,8 +59,6 @@ export default function PainelContent() {
               botao='Continuar Aula'
             />
           </div>
-
-          {/* <Trilha /> */}
         </div>
       </div>
     </>
