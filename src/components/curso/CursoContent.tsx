@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CursoMenuContent from "./cursoMenuContent/CursoMenuContent";
 import styles from "./cursoContent.module.scss";
 
-export default function CursoContent() {
+interface Props {
+  slug: string;
+}
+
+export default function CursoContent({ slug }: Props) {
   const [aulas, setAulas] = useState(false);
   const [visaoGeral, setVisaoGeral] = useState(false);
   const [mais, setMais] = useState(false);
