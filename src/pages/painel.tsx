@@ -1,9 +1,7 @@
 import Head from "next/head";
 import PainelContent from "../components/painelContent/PainelContent";
 import { setupApiClient } from "../services/api";
-import { api } from "../services/apiClient";
 import { withSSRAuth } from "../utils/withSSRAuth";
-import styles from "../styles/painel.module.scss";
 import { Trilha } from "../components/trilha/Trilha";
 
 interface Trail {
