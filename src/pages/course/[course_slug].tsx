@@ -11,7 +11,7 @@ export default function Course() {
       <Head>
         <title>{course_slug} aaa</title>
       </Head>
-      <CursoContent slug={course_slug} />
+      <CursoContent />
     </div>
   );
 }
