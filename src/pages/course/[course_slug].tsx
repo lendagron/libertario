@@ -1,16 +1,15 @@
 import Head from "next/head";
 import React from "react";
 import CursoContent from "../../components/curso/CursoContent";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 export default function Course() {
-  const router = useRouter()
-  const { course_slug } = router.query
+  const router = useRouter();
+  const { course_slug } = router.query;
   return (
     <div>
       <Head>
         <title>{course_slug} aaa</title>
-        {/*  <link rel='icon' href='/favicon.ico' /> */}
       </Head>
       <CursoContent />
     </div>

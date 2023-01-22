@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CursoMenuContent from "./cursoMenuContent/CursoMenuContent";
 import styles from "./cursoContent.module.scss";
 
