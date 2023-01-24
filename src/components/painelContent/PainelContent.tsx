@@ -11,19 +11,25 @@ import { Crown } from "phosphor-react";
 
 interface UserMe {
   name: string;
+  id: number;
   login: string;
+  email: string;
 }
 
-export default function PainelContent() {
-  const { signOut } = useContext(AuthContext);
-  const [userMe, setUserMe] = useState<UserMe>({ name: "", login: "" });
+interface Props {
+  userMe: UserMe;
+}
 
-  useEffect(() => {
+export default function PainelContent({ userMe }: Props) {
+  const { signOut } = useContext(AuthContext);
+  /*  const [userMe, setUserMe] = useState<UserMe>(); */
+
+  /* useEffect(() => {
     api
       .get("/api/me")
       .then((response) => setUserMe(response.data))
       .catch((err) => console.error(err));
-  }, []);
+  }, []); */
 
   function handleLogOut() {
     signOut();
