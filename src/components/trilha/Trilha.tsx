@@ -107,24 +107,6 @@ export function Trilha({ trails, courses }: Props) {
               </div>
             </div>
           ))}
-        {trails &&
-          trails.map((trail) => (
-            <div key={trail.id} className={styles.trilha}>
-              <h2>{trail.name}</h2>
-              <p>{trail.description}</p>
-              <div className={styles.coursesContainer}>
-                {courses &&
-                  courses
-                    .filter((course) => course.learning_trail_id === trail.id)
-                    .map((course) => (
-                      <div key={course.id} className={styles.course}>
-                        <h3>{course.name}</h3>
-                        <p>{course.description}</p>
-                      </div>
-                    ))}
-              </div>
-            </div>
-          ))}
       </div>
     </div>
   );
