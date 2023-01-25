@@ -103,7 +103,7 @@ export default function CursoContent({
           </div>
         </div>
         <aside>
-          <h2>Conteúdo do Curso</h2>
+          <h2>Aulas do Curso</h2>
           <nav>
             <ul>
               {lessons.map((lesson) => (
