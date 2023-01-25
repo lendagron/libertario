@@ -1,20 +1,52 @@
 import { useContext, useState, useEffect } from "react";
 import CursoMenuContent from "./cursoMenuContent/CursoMenuContent";
 import styles from "./cursoContent.module.scss";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
-export default function CursoContent({ course, lessons, selectedLesson }: Props) {
+interface Lesson {
+  id: number;
+  name: string;
+  description: string;
+  order: number | null;
+  vimeo_id: number | null;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string | null;
+}
+interface Course {
+  id: number;
+  name: string;
+  description: string;
+  learning_trail_id: number;
+  order: number | null;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string | null;
+}
+
+interface Props {
+  lessons: Lesson[];
+  course: Course;
+  selectedLesson: string | string[];
+}
+
+export default function CursoContent({
+  course,
+  lessons,
+  selectedLesson,
+}: Props) {
   const [aulas, setAulas] = useState(false);
   const [visaoGeral, setVisaoGeral] = useState(true);
   const [mais, setMais] = useState(false);
-  const [selectedLessonOrder, setSelectedLessonOrder] = useState({selectedLesson});
+  const [selectedLessonOrder, setSelectedLessonOrder] = useState({
+    selectedLesson,
+  });
   const router = useRouter();
 
   useEffect(() => {
-      const route =  `/course/${course.id}/${selectedLessonOrder}`;
-        router.push(route, route, { shallow: true });
-    }, [selectedLessonOrder]);
-
+    const route = `/course/${course.id}/${selectedLessonOrder}`;
+    router.push(route, route, { shallow: true });
+  }, [selectedLessonOrder]);
 
   function handleVisaoGeral() {
     setVisaoGeral(true);
@@ -35,7 +67,7 @@ export default function CursoContent({ course, lessons, selectedLesson }: Props)
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.cursoContainer}>
-          <h2>Video aqui</h2>
+          <h2>Video aqui </h2>
           <nav>
             <ul>
               <li>
@@ -69,7 +101,9 @@ export default function CursoContent({ course, lessons, selectedLesson }: Props)
             <ul>
               {lessons.map((lesson) => (
                 <li key={lesson.id}>
-                  <a onClick={() => handleSelectLesson(lesson.order)}>{lesson.name}</a>
+                  <a onClick={() => handleSelectLesson(lesson.order)}>
+                    {lesson.name}
+                  </a>
                 </li>
               ))}
             </ul>
