@@ -63,7 +63,7 @@ export default function CursoContent({
     setSelectedLessonOrder(order);
   }
 
-  const client = new Vimeo(
+  /* const client = new Vimeo(
     "0c121c20f59283b7a73a88f3a1461a39b209c669",
     "FkGZdjb3dCWUHbg0B1CebrER8oFIFK5TQYecVeERqw2tv5/xQCtmA3rS/aFR63Exq/1RxJ2C7+0q+qrwDtwbJXYUtmYx8+y09IY62SVZrcyQUVnVlNzn3iq97D8A1y3X"
   );
@@ -81,7 +81,7 @@ export default function CursoContent({
       }
     }
   );
-
+ */
   return (
     /* TODO: Arrumar aqui a parte da url igual a UL anterior */
     <div className={styles.wrapper}>
@@ -89,11 +89,11 @@ export default function CursoContent({
         <div className={styles.cursoContainer}>
           <div className={styles.vimeoVideo}>
             Video aqui
-            <iframe
+            {/*  <iframe
               src={`https://player.vimeo.com/video/${342778288}`}
               allow='autoplay; fullscreen'
               allowFullScreen
-            ></iframe>
+            ></iframe> */}
           </div>
           <nav>
             <ul>
