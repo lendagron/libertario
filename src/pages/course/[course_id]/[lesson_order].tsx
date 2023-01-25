@@ -5,7 +5,7 @@ import { setupApiClient } from "../../../services/api";
 import { withSSRAuth } from "../../../utils/withSSRAuth";
 import { useRouter } from "next/router";
 
-interface Lesson{
+interface Lesson {
   id: number;
   name: string;
   description: string;
@@ -27,8 +27,8 @@ interface Course {
 }
 
 interface Props {
-  trails: Lesson[];
-  courses: Course[];
+  lessons: Lesson[];
+  course: Course;
 }
 
 export default function Course({ course, lessons }: Props) {
@@ -39,14 +39,19 @@ export default function Course({ course, lessons }: Props) {
       <Head>
         <title>{course.name}</title>
       </Head>
-      <CursoContent course={course} lessons={lessons} selectedLesson={lesson_order}/>
+      <CursoContent
+        course={course}
+        lessons={lessons}
+        selectedLesson={lesson_order}
+      />
     </div>
   );
 }
 
 export const getServerSideProps = withSSRAuth(async (ctx) => {
   const apiClient = setupApiClient(ctx);
-  let course, lessons = {};
+  let course = {};
+  let lessons = [];
   const { query } = ctx;
   const { course_id } = query;
   try {
