@@ -21,17 +21,25 @@ interface Course {
   deleted_at: string | null;
 }
 
+interface UserMe {
+  name: string;
+  id: number;
+  login: string;
+  email: string;
+}
+
 interface Props {
   trails: Trail[];
   courses: Course[];
+  userMe: UserMe;
 }
-export default function Painel({ trails, courses }: Props) {
+export default function Painel({ trails, courses, userMe }: Props) {
   return (
     <>
       <Head>
         <title>Clube da Liberdade | Painel</title>
       </Head>
-      <PainelContent />
+      <PainelContent userMe={userMe} />
       <Trilha trails={trails} courses={courses} />
     </>
   );
@@ -58,11 +66,14 @@ export const getServerSideProps = withSSRAuth(async (ctx) => {
   const apiClient = setupApiClient(ctx);
   let trails = [];
   let courses = {};
+  let userMe = null;
   try {
-    const response = await apiClient.get("/api/learning_trails");
-    trails = response.data;
-    const response2 = await apiClient.get("/api/courses");
-    courses = response2.data;
+    const responseTrails = await apiClient.get("/api/learning_trails");
+    trails = responseTrails.data;
+    const responseCourses = await apiClient.get("/api/courses");
+    courses = responseCourses.data;
+    const responseUserMe = await apiClient.get("/api/me");
+    userMe = responseUserMe.data;
   } catch (err) {
     console.log(err);
   }
@@ -70,6 +81,7 @@ export const getServerSideProps = withSSRAuth(async (ctx) => {
     props: {
       trails: trails,
       courses: courses,
+      userMe: userMe,
     },
   };
 });
