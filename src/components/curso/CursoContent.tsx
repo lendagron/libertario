@@ -1,11 +1,19 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import CursoMenuContent from "./cursoMenuContent/CursoMenuContent";
 import styles from "./cursoContent.module.scss";
+import { useRouter } from 'next/router';
 
-export default function CursoContent({ course, lessons }: Props) {
+export default function CursoContent({ course, lessons, selectedLesson }: Props) {
   const [aulas, setAulas] = useState(false);
   const [visaoGeral, setVisaoGeral] = useState(true);
   const [mais, setMais] = useState(false);
+  const [selectedLessonOrder, setSelectedLessonOrder] = useState({selectedLesson});
+  const router = useRouter();
+
+  useEffect(() => {
+      const route =  `/course/${course.id}/${selectedLessonOrder}`;
+        router.push(route, route, { shallow: true });
+    }, [selectedLessonOrder]);
 
 
   function handleVisaoGeral() {
@@ -16,6 +24,10 @@ export default function CursoContent({ course, lessons }: Props) {
   function handleMais() {
     setMais(true);
     setVisaoGeral(false);
+  }
+
+  function handleSelectLesson(order) {
+    setSelectedLessonOrder(order);
   }
 
   return (
@@ -57,7 +69,7 @@ export default function CursoContent({ course, lessons }: Props) {
             <ul>
               {lessons.map((lesson) => (
                 <li key={lesson.id}>
-                  <a href=''>{lesson.name}</a>
+                  <a onClick={() => handleSelectLesson(lesson.order)}>{lesson.name}</a>
                 </li>
               ))}
             </ul>
