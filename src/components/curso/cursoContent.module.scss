@@ -17,13 +17,15 @@
 
     .vimeoVideo {
       height: 567px;
-      background-color: var(--gray-200);
+      /* background-color: var(--gray-200); */
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
 
       iframe {
         border: none;
+        width: 100%;
       }
     }
 
