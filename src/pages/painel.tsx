@@ -3,7 +3,7 @@ import PainelContent from "../components/painelContent/PainelContent";
 import { setupApiClient } from "../services/api";
 import { withSSRAuth } from "../utils/withSSRAuth";
 import { Trilha } from "../components/trilha/Trilha";
-import Course from "./course/[course_slug]";
+import Course from "./course/[course_id]";
 
 interface Trail {
   id: number;
