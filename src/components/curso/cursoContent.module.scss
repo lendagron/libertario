@@ -15,12 +15,16 @@
     flex-direction: column;
     width: 100%;
 
-    & > h2 {
+    .vimeoVideo {
       height: 567px;
       background-color: var(--gray-200);
       display: flex;
       align-items: center;
       justify-content: center;
+
+      iframe {
+        border: none;
+      }
     }
 
     nav ul {

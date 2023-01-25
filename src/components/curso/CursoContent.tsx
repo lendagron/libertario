@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import CursoMenuContent from "./cursoMenuContent/CursoMenuContent";
 import styles from "./cursoContent.module.scss";
 import { useRouter } from "next/router";
+import Vimeo from "vimeo";
 
 interface Lesson {
   id: number;
@@ -62,12 +63,38 @@ export default function CursoContent({
     setSelectedLessonOrder(order);
   }
 
+  const client = new Vimeo(
+    "0c121c20f59283b7a73a88f3a1461a39b209c669",
+    "FkGZdjb3dCWUHbg0B1CebrER8oFIFK5TQYecVeERqw2tv5/xQCtmA3rS/aFR63Exq/1RxJ2C7+0q+qrwDtwbJXYUtmYx8+y09IY62SVZrcyQUVnVlNzn3iq97D8A1y3X"
+  );
+
+  client.request(
+    {
+      method: "GET",
+      path: "/videos",
+    },
+    function (error, body, statusCode) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log(body);
+      }
+    }
+  );
+
   return (
     /* TODO: Arrumar aqui a parte da url igual a UL anterior */
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.cursoContainer}>
-          <h2>Video aqui </h2>
+          <div className={styles.vimeoVideo}>
+            Video aqui
+            <iframe
+              src={`https://player.vimeo.com/video/${342778288}`}
+              allow='autoplay; fullscreen'
+              allowFullScreen
+            ></iframe>
+          </div>
           <nav>
             <ul>
               <li>
