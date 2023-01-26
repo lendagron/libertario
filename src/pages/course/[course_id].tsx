@@ -1,15 +1,21 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { HeaderLogged } from "../../components/headerLogged/HeaderLogged";
 
 export default function CourseRoot() {
   const router = useRouter();
   const { course_id } = router.query;
 
   useEffect(() => {
-    if(course_id){
+    if (course_id) {
       router.replace(`/course/${course_id}/1`);
     }
   }, [course_id]);
 
-  return <p>Redirecting...</p>;
+  return (
+    <>
+      <HeaderLogged />
+      <p>Redirecting...</p>
+    </>
+  );
 }

@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { parseCookies } from "nookies";
+import { Header } from "../components/header/Header";
 import { HomepageContent } from "../components/homepageContent/HomepageContent";
 import { withSSRGuest } from "../utils/withSSRGuest";
 
@@ -11,6 +12,7 @@ export default function Home() {
         <title>Clube da Liberdade | Homepage</title>
         {/*  <link rel='icon' href='/favicon.ico' /> */}
       </Head>
+      <Header />
       <HomepageContent />
     </>
   );

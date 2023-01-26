@@ -4,6 +4,7 @@ import { setupApiClient } from "../services/api";
 import { withSSRAuth } from "../utils/withSSRAuth";
 import { Trilha } from "../components/trilha/Trilha";
 import Course from "./course/[course_id]";
+import { HeaderLogged } from "../components/headerLogged/HeaderLogged";
 
 interface Trail {
   id: number;
@@ -39,6 +40,7 @@ export default function Painel({ trails, courses, userMe }: Props) {
       <Head>
         <title>Clube da Liberdade | Painel</title>
       </Head>
+      <HeaderLogged />
       <PainelContent userMe={userMe} />
       <Trilha trails={trails} courses={courses} />
     </>
