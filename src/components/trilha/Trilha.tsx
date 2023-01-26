@@ -30,6 +30,9 @@ export function Trilha({ trails, courses }: Props) {
       <h1>
         Temos {trails.length} {trails.length > 1 ? "trilhas" : "trilha"}
       </h1>
+      {!clickedTrail && (
+        <h2>Selecione uma trilha para ver os cursos disponíveis nela</h2>
+      )}
       <div className={styles.trilhaContainer}>
         {trails &&
           trails.map((trail) => (
@@ -43,9 +46,7 @@ export function Trilha({ trails, courses }: Props) {
             </a>
           ))}
       </div>
-      {!clickedTrail && (
-        <h2>Selecione uma trilha para ver os cursos disponíveis nela</h2>
-      )}
+
       {clickedTrail && (
         <div className={styles.coursesContainer}>
           <h3> Cursos da trilha {clickedTrail.name}</h3>
