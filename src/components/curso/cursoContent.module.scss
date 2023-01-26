@@ -5,6 +5,10 @@
   padding: 2rem;
 }
 
+.active{
+  border-bottom: 2px solid var(--yellow);
+}
+
 .container {
   display: flex;
   align-items: flex-start;
@@ -42,7 +46,7 @@
         font-size: 28px;
         line-height: 33px;
 
-        &:hover {
+        &:hover{
           border-bottom: 2px solid var(--yellow);
         }
       }
@@ -74,7 +78,7 @@
       a {
         font-weight: 400;
         font-size: 1.25rem;
-        &:hover {
+        &:hover  {
           border-bottom: 2px solid var(--yellow);
         }
       }
