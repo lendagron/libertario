@@ -28,7 +28,7 @@ interface Course {
 interface Props {
   lessons: Lesson[];
   course: Course;
-  selectedLesson: string | string[];
+  selectedLesson: Lesson;
 }
 
 export default function CursoContent({
@@ -36,18 +36,19 @@ export default function CursoContent({
   lessons,
   selectedLesson,
 }: Props) {
+  const router = useRouter();
+  const { lesson_order } = router.query;
   const [aulas, setAulas] = useState(false);
   const [visaoGeral, setVisaoGeral] = useState(true);
   const [mais, setMais] = useState(false);
-  const [selectedLessonOrder, setSelectedLessonOrder] = useState({
-    selectedLesson,
-  });
-  const router = useRouter();
+  const [activeLesson, setActiveLesson] = useState(selectedLesson);
 
   useEffect(() => {
-    const route = `/course/${course.id}/${selectedLessonOrder}`;
-    router.push(route, route, { shallow: true });
-  }, [selectedLessonOrder]);
+    if(activeLesson){
+      const route = `/course/${course.id}/${activeLesson.order}`;
+      router.push(route, route, { shallow: true });
+    }
+  }, [activeLesson]);
 
   function handleVisaoGeral() {
     setVisaoGeral(true);
@@ -59,8 +60,8 @@ export default function CursoContent({
     setVisaoGeral(false);
   }
 
-  function handleSelectLesson(order) {
-    setSelectedLessonOrder(order);
+  function handleSelectLesson(lesson) {
+    setActiveLesson(lesson);
   }
 
   return (
@@ -69,11 +70,18 @@ export default function CursoContent({
       <div className={styles.container}>
         <div className={styles.cursoContainer}>
           <div className={styles.vimeoVideo}>
-            <iframe
-              src={`https://player.vimeo.com/video/${342778288}`}
-              allow='autoplay; fullscreen'
-              allowFullScreen
-            ></iframe>
+            {activeLesson !== undefined ?
+              <iframe
+                src={`https://player.vimeo.com/video/${activeLesson.vimeo_id}`}
+                allow='autoplay; fullscreen'
+                allowFullScreen
+              ></iframe>
+              :
+              <p>Vídeo não encontrado...</p>
+            }
+          </div>
+          <div>
+            <p>Você está assistindo: {activeLesson ? activeLesson.name : ''}</p>
           </div>
           <nav>
             <ul>
@@ -108,7 +116,7 @@ export default function CursoContent({
             <ul>
               {lessons.map((lesson) => (
                 <li key={lesson.id}>
-                  <a onClick={() => handleSelectLesson(lesson.order)}>
+                  <a onClick={() => handleSelectLesson(lesson)} className={activeLesson === lesson ? 'active' : ''}>
                     {lesson.name}
                   </a>
                 </li>

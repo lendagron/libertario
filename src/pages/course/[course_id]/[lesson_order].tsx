@@ -29,9 +29,10 @@ interface Course {
 interface Props {
   lessons: Lesson[];
   course: Course;
+  selectedLesson: Lesson;
 }
 
-export default function Course({ course, lessons }: Props) {
+export default function Course({ course, lessons, selectedLesson }: Props) {
   const router = useRouter();
   const { course_id, lesson_order } = router.query;
   return (
@@ -42,25 +43,33 @@ export default function Course({ course, lessons }: Props) {
       <CursoContent
         course={course}
         lessons={lessons}
-        selectedLesson={lesson_order}
+        selectedLesson={selectedLesson}
       />
     </div>
   );
 }
 
+function getSelectedLesson(lessons,order) {
+  const activeLesson = lessons.filter(element => element.order.toString() === order);
+  return activeLesson[0];
+}
+
 export const getServerSideProps = withSSRAuth(async (ctx) => {
   const apiClient = setupApiClient(ctx);
-  let course = {};
+  let course, selectedLesson = {};
   let lessons = [];
   const { query } = ctx;
-  const { course_id } = query;
+  const { course_id, lesson_order } = query;
   try {
-    const response = await apiClient.get(`/api/courses/${course_id}`);
-    course = response.data;
-    const response2 = await apiClient.get(`/api/courses/${course_id}/lessons`);
-    lessons = response2.data;
+    const responseCourse = await apiClient.get(`/api/courses/${course_id}`);
+    course = responseCourse.data;
+    const responseLessons = await apiClient.get(`/api/courses/${course_id}/lessons`);
+    lessons = responseLessons.data;
+    selectedLesson = getSelectedLesson(lessons,lesson_order);
     //console.log(course);
-    //console.log(lessons)
+    //console.log(lessons);
+    //console.log(lesson_order);
+    //console.log(selectedLesson);
   } catch (err) {
     console.log(err);
   }
@@ -68,6 +77,7 @@ export const getServerSideProps = withSSRAuth(async (ctx) => {
     props: {
       course: course,
       lessons: lessons,
+      selectedLesson: selectedLesson,
     },
   };
 });
