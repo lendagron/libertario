@@ -38,12 +38,12 @@
       padding: 2.375rem;
 
       a {
-        font-weight: 400;
-        font-size: 28px;
+        font-weight: bold;
+        font-size: 1.75rem;
         line-height: 33px;
 
         &:hover {
-          border-bottom: 2px solid var(--yellow);
+          border-bottom: 4px solid var(--yellow);
         }
       }
     }
@@ -67,7 +67,9 @@
       font-size: 28px;
       text-align: center;
 
-      border-bottom: 1px solid var(--gray-800);
+      border-bottom: 1px solid var(--yellow);
+      width: 100%;
+      padding: 0 0 0.5rem 0;
     }
 
     nav ul {
