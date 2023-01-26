@@ -44,7 +44,7 @@ export default function CursoContent({
   const [activeLesson, setActiveLesson] = useState(selectedLesson);
 
   useEffect(() => {
-    if(activeLesson){
+    if (activeLesson) {
       const route = `/course/${course.id}/${activeLesson.order}`;
       router.push(route, route, { shallow: true });
     }
@@ -70,18 +70,18 @@ export default function CursoContent({
       <div className={styles.container}>
         <div className={styles.cursoContainer}>
           <div className={styles.vimeoVideo}>
-            {activeLesson !== undefined ?
+            {activeLesson !== undefined ? (
               <iframe
                 src={`https://player.vimeo.com/video/${activeLesson.vimeo_id}`}
                 allow='autoplay; fullscreen'
                 allowFullScreen
               ></iframe>
-              :
+            ) : (
               <p>Vídeo não encontrado...</p>
-            }
+            )}
           </div>
           <div>
-            <p>Você está assistindo: {activeLesson ? activeLesson.name : ''}</p>
+            <p>Você está assistindo: {activeLesson ? activeLesson.name : ""}</p>
           </div>
           <nav>
             <ul>
@@ -116,7 +116,10 @@ export default function CursoContent({
             <ul>
               {lessons.map((lesson) => (
                 <li key={lesson.id}>
-                  <a onClick={() => handleSelectLesson(lesson)} className={activeLesson === lesson ? 'active' : ''}>
+                  <a
+                    onClick={() => handleSelectLesson(lesson)}
+                    className={activeLesson === lesson ? styles.active : ""}
+                  >
                     {lesson.name}
                   </a>
                 </li>

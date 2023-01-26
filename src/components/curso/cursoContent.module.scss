@@ -5,10 +5,6 @@
   padding: 2rem 3rem;
 }
 
-.active{
-  border-bottom: 2px solid var(--yellow);
-}
-
 .container {
   display: flex;
   align-items: flex-start;
@@ -83,6 +79,10 @@
       gap: 1.25rem;
       justify-content: space-around;
       align-items: center;
+
+      .active {
+        border-bottom: 4px solid var(--yellow);
+      }
 
       a {
         font-weight: bold;
