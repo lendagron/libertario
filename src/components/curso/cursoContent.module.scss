@@ -1,8 +1,8 @@
 .wrapper {
-  max-width: 75%;
+  max-width: 80%;
   margin-inline: auto;
   /* height: 100vh; */
-  padding: 2rem;
+  padding: 2rem 3rem;
 }
 
 .active{
@@ -20,16 +20,16 @@
     width: 100%;
 
     .vimeoVideo {
-      height: 567px;
-      /* background-color: var(--gray-200); */
+      height: 750px;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 100%;
+      position: relative;
 
       iframe {
         border: none;
         width: 100%;
+        height: 100%;
       }
     }
 
@@ -42,12 +42,12 @@
       padding: 2.375rem;
 
       a {
-        font-weight: 400;
-        font-size: 28px;
+        font-weight: bold;
+        font-size: 1.75rem;
         line-height: 33px;
 
-        &:hover{
-          border-bottom: 2px solid var(--yellow);
+        &:hover {
+          border-bottom: 4px solid var(--yellow);
         }
       }
     }
@@ -59,27 +59,37 @@
     align-items: center;
     justify-content: flex-start;
     gap: 2rem;
-    height: 819px;
+    height: 750px;
+    width: 20%;
+    padding-top: 0.5rem;
     overflow-y: auto;
+    background-color: var(--gray-800);
+    color: aliceblue;
 
     h2 {
       font-weight: 500;
       font-size: 28px;
+      text-align: center;
+
+      border-bottom: 1px solid var(--yellow);
+      width: 100%;
+      padding: 0 0 0.5rem 0;
     }
 
     nav ul {
       display: flex;
       flex-direction: column;
       list-style: none;
-      gap: 1rem;
+      gap: 1.25rem;
       justify-content: space-around;
       align-items: center;
 
       a {
-        font-weight: 400;
+        font-weight: bold;
         font-size: 1.25rem;
-        &:hover  {
-          border-bottom: 2px solid var(--yellow);
+
+        &:hover {
+          border-bottom: 4px solid var(--yellow);
         }
       }
     }
