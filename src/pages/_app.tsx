@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <div className={styles.wrapper}>
-        <Header />
+        {/* <Header /> */}
         <Component {...pageProps} />
         <Footer />
       </div>

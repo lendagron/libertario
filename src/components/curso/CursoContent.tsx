@@ -80,17 +80,17 @@ export default function CursoContent({
               <p>Vídeo não encontrado...</p>
             )}
           </div>
-          <div>
+          {/*  <div>
             <p>Você está assistindo: {activeLesson ? activeLesson.name : ""}</p>
-          </div>
+          </div> */}
           <nav>
             <ul>
               <li>
                 <a onClick={handleVisaoGeral}>Visão Geral</a>
               </li>
-              <li>
+              {/* <li>
                 <a onClick={handleMais}>Mais</a>
-              </li>
+              </li> */}
             </ul>
           </nav>
           <div>

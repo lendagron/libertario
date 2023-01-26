@@ -4,6 +4,7 @@ import CursoContent from "../../../components/curso/CursoContent";
 import { setupApiClient } from "../../../services/api";
 import { withSSRAuth } from "../../../utils/withSSRAuth";
 import { useRouter } from "next/router";
+import { HeaderLogged } from "../../../components/headerLogged/HeaderLogged";
 
 interface Lesson {
   id: number;
@@ -40,6 +41,7 @@ export default function Course({ course, lessons, selectedLesson }: Props) {
       <Head>
         <title>{course.name}</title>
       </Head>
+      <HeaderLogged />
       <CursoContent
         course={course}
         lessons={lessons}
@@ -49,23 +51,28 @@ export default function Course({ course, lessons, selectedLesson }: Props) {
   );
 }
 
-function getSelectedLesson(lessons,order) {
-  const activeLesson = lessons.filter(element => element.order.toString() === order);
+function getSelectedLesson(lessons, order) {
+  const activeLesson = lessons.filter(
+    (element) => element.order.toString() === order
+  );
   return activeLesson[0];
 }
 
 export const getServerSideProps = withSSRAuth(async (ctx) => {
   const apiClient = setupApiClient(ctx);
-  let course, selectedLesson = {};
+  let course,
+    selectedLesson = {};
   let lessons = [];
   const { query } = ctx;
   const { course_id, lesson_order } = query;
   try {
     const responseCourse = await apiClient.get(`/api/courses/${course_id}`);
     course = responseCourse.data;
-    const responseLessons = await apiClient.get(`/api/courses/${course_id}/lessons`);
+    const responseLessons = await apiClient.get(
+      `/api/courses/${course_id}/lessons`
+    );
     lessons = responseLessons.data;
-    selectedLesson = getSelectedLesson(lessons,lesson_order);
+    selectedLesson = getSelectedLesson(lessons, lesson_order);
     //console.log(course);
     //console.log(lessons);
     //console.log(lesson_order);

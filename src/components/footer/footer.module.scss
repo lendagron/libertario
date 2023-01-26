@@ -1,11 +1,10 @@
 .footerWrapper {
   background-color: var(--gray-800);
- 
 }
 
 .footerContainer {
   display: flex;
-  max-width: 75%;
+  max-width: 79%;
   margin-inline: auto;
   padding: 13.5px 2rem;
   justify-content: space-between;
@@ -19,52 +18,48 @@
   .linksContainer {
     display: flex;
     gap: 1rem;
-    color: gray;
+    color: var(--gray-500);
     align-items: center;
 
     a {
-      color: gray;
+      color: var(--gray-500);
       text-decoration: none;
       text-align: center;
-  
-      &:hover {
-        color: white;
-      }
-  
-    }
 
-   
+      &:hover {
+        color: aliceblue;
+      }
+    }
   }
-  
+
   .iconsContainer {
     display: flex;
     gap: 1.5rem;
     align-items: center;
 
     a {
-      color: gray;
+      color: var(--gray-500);
 
       &:hover {
-        color: white;
+        color: aliceblue;
       }
-    }   
+    }
   }
 }
 
 @media screen and (max-width: 1300px) {
-  .footerContainer  {
+  .footerContainer {
     max-width: 100%;
     display: flex;
     flex-direction: column;
 
-    .linksContainer{
+    .linksContainer {
       display: flex;
       flex-direction: column;
-      
+
       span {
         display: none;
       }
-      
     }
   }
 }

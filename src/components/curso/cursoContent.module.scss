@@ -21,6 +21,7 @@
       align-items: center;
       justify-content: center;
       position: relative;
+      background-color: black;
 
       iframe {
         border: none;
@@ -79,6 +80,7 @@
       gap: 1.25rem;
       justify-content: space-around;
       align-items: center;
+      text-align: center;
 
       .active {
         border-bottom: 4px solid var(--yellow);

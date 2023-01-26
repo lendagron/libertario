@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./trilha.module.scss";
 
 interface Trail {
@@ -37,23 +38,16 @@ export function Trilha({ trails, courses }: Props) {
                     .filter((course) => course.learning_trail_id === trail.id)
                     .map((course) => (
                       <div key={course.id} className={styles.course}>
-                        <h3>{course.name}</h3>
-                        <p>{course.description}</p>
-                      </div>
-                    ))}
-                {courses &&
-                  courses
-                    .filter((course) => course.learning_trail_id === trail.id)
-                    .map((course) => (
-                      <div key={course.id} className={styles.course}>
-                        <h3>{course.name}</h3>
+                        <Link href={`/course/${course.id}/1`}>
+                          {course.name}
+                        </Link>
                         <p>{course.description}</p>
                       </div>
                     ))}
               </div>
             </div>
           ))}
-        {trails &&
+        {/* {trails &&
           trails.map((trail) => (
             <div key={trail.id} className={styles.trilha}>
               <h2>{trail.name}</h2>
@@ -106,7 +100,7 @@ export function Trilha({ trails, courses }: Props) {
                     ))}
               </div>
             </div>
-          ))}
+          ))} */}
       </div>
     </div>
   );
