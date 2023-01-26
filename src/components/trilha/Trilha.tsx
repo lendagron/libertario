@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useState } from "react";
 import styles from "./trilha.module.scss";
 
 interface Trail {
@@ -19,6 +20,11 @@ interface Props {
   courses: Course[];
 }
 export function Trilha({ trails, courses }: Props) {
+  const [clickedTrail, setClickedTrail] = useState<Trail | null>(null);
+
+  function handleClicked(trail: Trail) {
+    setClickedTrail(trail);
+  }
   return (
     <div className={styles.wrapper}>
       <h1>
@@ -27,81 +33,35 @@ export function Trilha({ trails, courses }: Props) {
       <div className={styles.trilhaContainer}>
         {trails &&
           trails.map((trail) => (
-            <div key={trail.id} className={styles.trilha}>
-              <h2>
-                {trail.name} - {trail.id}
-              </h2>
-              <p>{trail.description}</p>
-              <div className={styles.coursesContainer}>
-                {courses &&
-                  courses
-                    .filter((course) => course.learning_trail_id === trail.id)
-                    .map((course) => (
-                      <div key={course.id} className={styles.course}>
-                        <Link href={`/course/${course.id}/1`}>
-                          {course.name}
-                        </Link>
-                        <p>{course.description}</p>
-                      </div>
-                    ))}
-              </div>
-            </div>
-          ))}
-        {/* {trails &&
-          trails.map((trail) => (
-            <div key={trail.id} className={styles.trilha}>
+            <a
+              key={trail.id}
+              className={styles.trilha}
+              onClick={() => handleClicked(trail)}
+            >
               <h2>{trail.name}</h2>
               <p>{trail.description}</p>
-              <div className={styles.coursesContainer}>
-                {courses &&
-                  courses
-                    .filter((course) => course.learning_trail_id === trail.id)
-                    .map((course) => (
-                      <div key={course.id} className={styles.course}>
-                        <h3>{course.name}</h3>
-                        <p>{course.description}</p>
-                      </div>
-                    ))}
-              </div>
-            </div>
+            </a>
           ))}
-        {trails &&
-          trails.map((trail) => (
-            <div key={trail.id} className={styles.trilha}>
-              <h2>{trail.name}</h2>
-              <p>{trail.description}</p>
-              <div className={styles.coursesContainer}>
-                {courses &&
-                  courses
-                    .filter((course) => course.learning_trail_id === trail.id)
-                    .map((course) => (
-                      <div key={course.id} className={styles.course}>
-                        <h3>{course.name}</h3>
-                        <p>{course.description}</p>
-                      </div>
-                    ))}
-              </div>
-            </div>
-          ))}
-        {trails &&
-          trails.map((trail) => (
-            <div key={trail.id} className={styles.trilha}>
-              <h2>{trail.name}</h2>
-              <p>{trail.description}</p>
-              <div className={styles.coursesContainer}>
-                {courses &&
-                  courses
-                    .filter((course) => course.learning_trail_id === trail.id)
-                    .map((course) => (
-                      <div key={course.id} className={styles.course}>
-                        <h3>{course.name}</h3>
-                        <p>{course.description}</p>
-                      </div>
-                    ))}
-              </div>
-            </div>
-          ))} */}
       </div>
+      {!clickedTrail && (
+        <h2>Selecione uma trilha para ver os cursos disponíveis nela</h2>
+      )}
+      {clickedTrail && (
+        <div className={styles.coursesContainer}>
+          <h3> Cursos da trilha {clickedTrail.name}</h3>
+          {clickedTrail &&
+            courses
+              .filter((course) => course.learning_trail_id === clickedTrail.id)
+              .map((course) => (
+                <div key={course.id} className={styles.course}>
+                  <Link href={`/course/${course.id}/1`}>
+                    <strong>{course.name}</strong>
+                    <p>{course.description}</p>
+                  </Link>
+                </div>
+              ))}
+        </div>
+      )}
     </div>
   );
 }
