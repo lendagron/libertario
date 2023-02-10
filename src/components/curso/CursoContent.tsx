@@ -44,6 +44,10 @@ export default function CursoContent({
   const [activeLesson, setActiveLesson] = useState(selectedLesson);
 
   useEffect(() => {
+    setActiveLesson(selectedLesson);
+  }, [selectedLesson]);
+
+  useEffect(() => {
     if (activeLesson) {
       const route = `/course/${course.id}/${activeLesson.order}`;
       router.push(route, route, { shallow: true });
@@ -61,6 +65,7 @@ export default function CursoContent({
   }
 
   function handleSelectLesson(lesson) {
+    setActiveLesson(null);
     setActiveLesson(lesson);
   }
 
@@ -80,17 +85,11 @@ export default function CursoContent({
               <p>Vídeo não encontrado...</p>
             )}
           </div>
-          {/*  <div>
-            <p>Você está assistindo: {activeLesson ? activeLesson.name : ""}</p>
-          </div> */}
           <nav>
             <ul>
               <li>
                 <a onClick={handleVisaoGeral}>Visão Geral</a>
               </li>
-              {/* <li>
-                <a onClick={handleMais}>Mais</a>
-              </li> */}
             </ul>
           </nav>
           <div>

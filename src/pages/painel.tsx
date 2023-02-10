@@ -25,7 +25,6 @@ interface Course {
 interface UserMe {
   name: string;
   id: number;
-  login: string;
   email: string;
 }
 
@@ -47,23 +46,6 @@ export default function Painel({ trails, courses, userMe }: Props) {
   );
 }
 
-/* export const getServerSideProps = withSSRAuth(async (ctx) => {
-  const apiClient = setupApiClient(ctx);
-  let trails = [];
-  try {
-    const response = await apiClient.get("/api/learning_trails");
-    trails = response.data;
-  } catch (err) {
-    console.log(err);
-  }
-  return {
-    props: {
-      trails: trails,
-    },
-  };
-});
- */
-
 export const getServerSideProps = withSSRAuth(async (ctx) => {
   const apiClient = setupApiClient(ctx);
   let trails = [];
@@ -76,6 +58,7 @@ export const getServerSideProps = withSSRAuth(async (ctx) => {
     courses = responseCourses.data;
     const responseUserMe = await apiClient.get("/api/me");
     userMe = responseUserMe.data;
+    console.log(userMe);
   } catch (err) {
     console.log(err);
   }

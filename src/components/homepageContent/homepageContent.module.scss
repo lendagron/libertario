@@ -1,8 +1,7 @@
-.mainWrapper{
+.mainWrapper {
   max-width: 75%;
   margin-inline: auto;
   padding: 2rem;
-
 }
 
 .mainContainer {
@@ -10,8 +9,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem ;
-  
+  padding: 1rem;
 
   h1 {
     margin-bottom: 2rem;
@@ -28,7 +26,6 @@
     border-radius: 10px;
     max-width: 547px;
 
-
     img {
       margin-bottom: 3rem;
     }
@@ -39,11 +36,10 @@
       width: 100%;
       border: none;
       background-color: var(--gray-200);
-  
+
       &::placeholder {
         padding: 1rem;
       }
-      
     }
 
     button {
@@ -55,15 +51,14 @@
       border: none;
       box-shadow: 0px 4px 4px var(--blackShadowBox);
       background-color: var(--yellow-200);
-    
+
       font-weight: 600;
       font-size: 20px;
       transition: filter 0.2s;
-  
+
       &:hover {
         filter: brightness(1.1);
       }
-  
     }
     a {
       display: flex;
@@ -72,7 +67,6 @@
       width: inherit;
       height: inherit;
     }
-    
   }
 
   div {
@@ -88,42 +82,27 @@
       color: white;
       background-color: black;
       text-align: center;
-    
+
       cursor: pointer;
       border-radius: 5px;
       font-weight: 600;
       padding: 0.5rem 2rem;
     }
-    
   }
-
 }
 
 @media screen and (max-width: 500px) {
   .mainWrapper {
     max-width: 100%;
     width: 100%;
-    padding: .5rem;
+    padding: 0.5rem;
   }
-  .mainContainer form  {
+  .mainContainer form {
     width: 100%;
     padding: 1rem;
 
     button {
       padding: 1rem 0rem;
-      
     }
   }
-  
 }
-
-
-
-
-
-
-
-
-
-
-

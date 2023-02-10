@@ -1,8 +1,4 @@
 import Link from "next/link";
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
-import { api } from "../../services/apiClient";
-import { Trilha } from "../trilha/Trilha";
 import styles from "./painelContent.module.scss";
 import Image from "next/image";
 import bannerimg from "../../../public/images/bannerPainel.png";
@@ -12,7 +8,6 @@ import { Crown } from "phosphor-react";
 interface UserMe {
   name: string;
   id: number;
-  login: string;
   email: string;
 }
 
@@ -21,20 +16,6 @@ interface Props {
 }
 
 export default function PainelContent({ userMe }: Props) {
-  const { signOut } = useContext(AuthContext);
-  /*  const [userMe, setUserMe] = useState<UserMe>(); */
-
-  /* useEffect(() => {
-    api
-      .get("/api/me")
-      .then((response) => setUserMe(response.data))
-      .catch((err) => console.error(err));
-  }, []); */
-
-  function handleLogOut() {
-    signOut();
-  }
-
   return (
     <>
       <Image src={bannerimg} alt='Logo' className={styles.banner} />
@@ -48,8 +29,6 @@ export default function PainelContent({ userMe }: Props) {
               <Crown size={25} weight='fill' />
               <span>Fazer Upgrade</span>
             </Link>
-            {/* <Link href={"/course"}>Acessar os Cursos</Link> */}
-            {/*  <a onClick={handleLogOut}>Deslogar</a> */}
           </div>
           <div className={styles.cursosContainer}>
             <CursoPainel
