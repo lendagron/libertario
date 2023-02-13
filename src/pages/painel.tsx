@@ -15,11 +15,11 @@ interface Course {
   id: number;
   name: string;
   description: string;
-  learning_trail_id: number;
-  order: number | null;
+  learning_trails: number[];
   created_at: string;
   updated_at: string;
   deleted_at: string | null;
+  teacher: string;
 }
 
 interface UserMe {
@@ -58,7 +58,6 @@ export const getServerSideProps = withSSRAuth(async (ctx) => {
     courses = responseCourses.data;
     const responseUserMe = await apiClient.get("/api/me");
     userMe = responseUserMe.data;
-    console.log(userMe);
   } catch (err) {
     console.log(err);
   }

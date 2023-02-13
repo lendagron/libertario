@@ -2,7 +2,6 @@ import { useContext, useState, useEffect } from "react";
 import CursoMenuContent from "./cursoMenuContent/CursoMenuContent";
 import styles from "./cursoContent.module.scss";
 import { useRouter } from "next/router";
-import Vimeo from "vimeo";
 
 interface Lesson {
   id: number;
@@ -18,11 +17,11 @@ interface Course {
   id: number;
   name: string;
   description: string;
-  learning_trail_id: number;
-  order: number | null;
+  learning_trails: number[];
   created_at: string;
   updated_at: string;
   deleted_at: string | null;
+  teacher: string;
 }
 
 interface Props {
