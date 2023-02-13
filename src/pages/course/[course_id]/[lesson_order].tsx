@@ -20,11 +20,11 @@ interface Course {
   id: number;
   name: string;
   description: string;
-  learning_trail_id: number;
-  order: number | null;
+  learning_trails: number[];
   created_at: string;
   updated_at: string;
   deleted_at: string | null;
+  teacher: string;
 }
 
 interface Props {
