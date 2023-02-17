@@ -34,6 +34,7 @@ interface Props {
 }
 
 export default function Course({ course, lessons, selectedLesson }: Props) {
+  const isPainel = false;
   const router = useRouter();
   const { course_id, lesson_order } = router.query;
   return (
@@ -41,7 +42,7 @@ export default function Course({ course, lessons, selectedLesson }: Props) {
       <Head>
         <title>{course.name}</title>
       </Head>
-      <HeaderLogged />
+      <HeaderLogged isPainel={isPainel} />
       <CursoContent
         course={course}
         lessons={lessons}

@@ -65,7 +65,7 @@
     color: aliceblue;
 
     h2 {
-      font-weight: 500;
+      font-weight: 600;
       font-size: 28px;
       text-align: center;
 
@@ -86,6 +86,10 @@
 
       .active {
         border-bottom: 4px solid var(--yellow);
+      }
+
+      .noBorder {
+        border-bottom: none;
       }
 
       a {

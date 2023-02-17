@@ -42,9 +42,9 @@ export default function CursoContent({
   const [mais, setMais] = useState(false);
   const [activeLesson, setActiveLesson] = useState(selectedLesson);
 
-  useEffect(() => {
+  /*  useEffect(() => {
     setActiveLesson(selectedLesson);
-  }, [selectedLesson]);
+  }, [selectedLesson]); */
 
   useEffect(() => {
     if (activeLesson) {
@@ -64,7 +64,7 @@ export default function CursoContent({
   }
 
   function handleSelectLesson(lesson) {
-    setActiveLesson(null);
+    /* setActiveLesson(null); */
     setActiveLesson(lesson);
   }
 
@@ -116,7 +116,9 @@ export default function CursoContent({
                 <li key={lesson.id}>
                   <a
                     onClick={() => handleSelectLesson(lesson)}
-                    className={activeLesson === lesson ? styles.active : ""}
+                    className={
+                      activeLesson === lesson ? styles.active : styles.noBorder
+                    }
                   >
                     {lesson.name}
                   </a>

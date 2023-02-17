@@ -1,8 +1,12 @@
 .wrapper {
   text-align: center;
+  /*  max-width: 85%;
+  margin-inline: auto; */
 
   h1 {
     margin-bottom: 2rem;
+    max-width: 85%;
+    margin-inline: auto;
   }
   .trilhaContainer {
     max-width: 76%;
@@ -37,6 +41,8 @@
 
   h2 {
     margin-bottom: 2rem;
+    max-width: 85%;
+    margin-inline: auto;
   }
 
   .coursesContainer {

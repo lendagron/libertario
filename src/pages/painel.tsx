@@ -10,6 +10,7 @@ interface Trail {
   id: number;
   name: string;
   description: string;
+  image: string;
 }
 interface Course {
   id: number;
@@ -34,12 +35,13 @@ interface Props {
   userMe: UserMe;
 }
 export default function Painel({ trails, courses, userMe }: Props) {
+  const isPainel = true;
   return (
     <>
       <Head>
         <title>Clube da Liberdade | Painel</title>
       </Head>
-      <HeaderLogged />
+      <HeaderLogged isPainel={isPainel} />
       <PainelContent userMe={userMe} />
       <Trilha trails={trails} courses={courses} />
     </>

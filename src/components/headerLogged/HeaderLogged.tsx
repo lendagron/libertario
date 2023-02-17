@@ -6,7 +6,11 @@ import Link from "next/link";
 import { ArrowLeft, UserCircle, Door } from "phosphor-react";
 import { AuthContext } from "../../context/AuthContext";
 
-export function HeaderLogged() {
+interface headerLoggedProps {
+  isPainel: boolean;
+}
+
+export function HeaderLogged({ isPainel }: headerLoggedProps) {
   const { signOut } = useContext(AuthContext);
 
   function handleLogOut() {
@@ -17,7 +21,10 @@ export function HeaderLogged() {
     <header className={styles.headerWrapper}>
       <div className={styles.headerContainer}>
         <div className={styles.backContainer}>
-          <Link href={"/painel"}>
+          <Link
+            href={"/painel"}
+            style={{ display: isPainel ? "none" : "flex" }}
+          >
             <ArrowLeft size={32} />
             <p>Painel</p>
           </Link>
