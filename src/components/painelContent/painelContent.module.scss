@@ -64,13 +64,7 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
-
-      /* width: 100%;
-  
-      gap: 1.875rem;
-      justify-content: center;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+      margin-top: 4rem;
     }
   }
 }
@@ -87,8 +81,6 @@
       flex-direction: column;
       gap: 1rem;
       width: 100%;
-
-      background-color: aqua;
     }
   }
 }
