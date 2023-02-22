@@ -1,13 +1,11 @@
 .wrapper {
   max-width: 80%;
   margin-inline: auto;
-  /* height: 100vh; */
   padding: 2rem 3rem;
 }
 
 .container {
   display: flex;
-  align-items: flex-start;
 
   .cursoContainer {
     display: flex;
@@ -20,8 +18,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      background-color: black;
 
       iframe {
         border: none;
@@ -106,11 +102,62 @@
 
 @media (max-width: 1300px) {
   .container {
-    flex-direction: column;
-  }
+    flex-direction: column-reverse;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0rem;
+    padding: 0rem;
 
-  .cursoContainer h2 {
-    width: 500px;
-    height: 50%;
+    aside {
+      width: 100%;
+      height: 100%;
+      gap: 1rem;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+      overflow-x: auto;
+
+      nav ul {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        gap: 1.25rem;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+        padding: 0 0 1rem 0;
+
+        .active {
+          border-bottom: 3px solid var(--yellow);
+        }
+
+        a {
+          font-weight: bold;
+          font-size: 1.25rem;
+
+          &:hover {
+            border-bottom: 3px solid var(--yellow);
+          }
+        }
+      }
+    }
+
+    .cursoContainer {
+      h2 {
+        width: 500px;
+        height: 50%;
+      }
+
+      .vimeoVideo {
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        /* position: relative; */
+
+        iframe {
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
   }
 }
