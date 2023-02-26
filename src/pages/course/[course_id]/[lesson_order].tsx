@@ -20,11 +20,11 @@ interface Course {
   id: number;
   name: string;
   description: string;
-  learning_trail_id: number;
-  order: number | null;
+  learning_trails: number[];
   created_at: string;
   updated_at: string;
   deleted_at: string | null;
+  teacher: string;
 }
 
 interface Props {
@@ -34,6 +34,7 @@ interface Props {
 }
 
 export default function Course({ course, lessons, selectedLesson }: Props) {
+  const isPainel = false;
   const router = useRouter();
   const { course_id, lesson_order } = router.query;
   return (
@@ -41,7 +42,7 @@ export default function Course({ course, lessons, selectedLesson }: Props) {
       <Head>
         <title>{course.name}</title>
       </Head>
-      <HeaderLogged />
+      <HeaderLogged isPainel={isPainel} />
       <CursoContent
         course={course}
         lessons={lessons}

@@ -1,5 +1,4 @@
 import axios, { AxiosError } from "axios";
-import Router from "next/router";
 import { parseCookies, setCookie } from "nookies";
 import { signOut } from "../context/AuthContext";
 
@@ -17,8 +16,6 @@ export function setupApiClient(ctx = undefined) {
     headers: {
       Authorization: `Bearer ${cookies["CL.token"]}`,
     },
-    /* http://164.92.80.187:8000/*/
-    /* http://localhost:3333*/
   });
 
   api.interceptors.response.use(

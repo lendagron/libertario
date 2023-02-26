@@ -25,35 +25,19 @@ export function Footer() {
           <a>(Não) Política de Direitos Autorais</a>
         </div>
         <div className={styles.iconsContainer}>
-          <a
-            href='https://www.instagram.com/libertariauniversidade/'
-            /* target='_blank' */
-            /* rel='noreferrer' */
-          >
+          <a href='https://www.instagram.com/libertariauniversidade/'>
             <InstagramLogo size={32} />
           </a>
-          <a
-            href='https://www.facebook.com/universidadelibertariaoficial/'
-            /* target='_blank' */
-            /* rel='noreferrer' */
-          >
+          <a href='https://www.facebook.com/universidadelibertariaoficial/'>
             <FacebookLogo size={32} />
           </a>
-          <a
-            href='https://www.youtube.com/c/UniversidadeLibert%C3%A1ria'
-            /* target='_blank' */
-            /* rel='noreferrer' */
-          >
+          <a href='https://www.youtube.com/c/UniversidadeLibert%C3%A1ria'>
             <YoutubeLogo size={32} />
           </a>
-          <a href='https://t.me/unilibe' /* target='_blank' */ rel='noreferrer'>
+          <a href='https://t.me/unilibe' rel='noreferrer'>
             <TelegramLogo size={32} />
           </a>
-          <a
-            href='https://twitter.com/UniversidadeLi3'
-            /* target='_blank' */
-            /* rel='noreferrer' */
-          >
+          <a href='https://twitter.com/UniversidadeLi3'>
             <TwitterLogo size={32} />
           </a>
         </div>

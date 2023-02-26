@@ -10,22 +10,22 @@ interface Trail {
   id: number;
   name: string;
   description: string;
+  image: string;
 }
 interface Course {
   id: number;
   name: string;
   description: string;
-  learning_trail_id: number;
-  order: number | null;
+  learning_trails: number[];
   created_at: string;
   updated_at: string;
   deleted_at: string | null;
+  teacher: string;
 }
 
 interface UserMe {
   name: string;
   id: number;
-  login: string;
   email: string;
 }
 
@@ -35,34 +35,18 @@ interface Props {
   userMe: UserMe;
 }
 export default function Painel({ trails, courses, userMe }: Props) {
+  const isPainel = true;
   return (
     <>
       <Head>
         <title>Clube da Liberdade | Painel</title>
       </Head>
-      <HeaderLogged />
+      <HeaderLogged isPainel={isPainel} />
       <PainelContent userMe={userMe} />
       <Trilha trails={trails} courses={courses} />
     </>
   );
 }
-
-/* export const getServerSideProps = withSSRAuth(async (ctx) => {
-  const apiClient = setupApiClient(ctx);
-  let trails = [];
-  try {
-    const response = await apiClient.get("/api/learning_trails");
-    trails = response.data;
-  } catch (err) {
-    console.log(err);
-  }
-  return {
-    props: {
-      trails: trails,
-    },
-  };
-});
- */
 
 export const getServerSideProps = withSSRAuth(async (ctx) => {
   const apiClient = setupApiClient(ctx);

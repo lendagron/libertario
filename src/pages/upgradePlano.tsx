@@ -4,12 +4,13 @@ import { HeaderLogged } from "../components/headerLogged/HeaderLogged";
 import UpgradePlanoContent from "../components/upgradePlanoContent/UpgradePlanoContent";
 
 export default function UpgradePlano() {
+  const isPainel = false;
   return (
     <>
       <Head>
         <title>Clube da Liberdade | Upgrade de Plano</title>
       </Head>
-      <HeaderLogged />
+      <HeaderLogged isPainel={isPainel} />
       <UpgradePlanoContent />
     </>
   );

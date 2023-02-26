@@ -1,8 +1,11 @@
 .wrapper {
   text-align: center;
+  margin-top: 4rem;
 
   h1 {
     margin-bottom: 2rem;
+    max-width: 85%;
+    margin-inline: auto;
   }
   .trilhaContainer {
     max-width: 76%;
@@ -21,15 +24,24 @@
       align-items: center;
       justify-content: center;
       padding: 1rem;
-      background-color: var(--gray-800);
+      /* background-color: var(--gray-800); */
       border-radius: 20px;
-      color: whitesmoke;
-      text-align: center;
+      color: black;
+      text-align: justify;
+      font-size: 1.4375rem;
+
+      img {
+        width: 20%;
+        height: 20%;
+        padding: 1rem;
+      }
     }
   }
 
   h2 {
     margin-bottom: 2rem;
+    max-width: 85%;
+    margin-inline: auto;
   }
 
   .coursesContainer {
@@ -57,12 +69,27 @@
       justify-content: center;
       gap: 0.5rem;
       padding: 0.5rem 4rem;
+      text-align: justify;
 
       &:hover {
         background-color: var(--yellow);
         border-radius: 10px;
         color: black;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .wrapper {
+    max-width: 100%;
+
+    .trilhaContainer {
+      max-width: 85%;
+    }
+
+    .coursesContainer {
+      max-width: 85%;
     }
   }
 }

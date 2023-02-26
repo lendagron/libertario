@@ -6,16 +6,14 @@ import Image from "next/image";
 import { AuthContext } from "../../context/AuthContext";
 
 export function HomepageContent() {
-  const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [cpf, setCpf] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
   const [isLogin, setIsLogin] = useState(true);
 
-  const { sigIn, signUp, isAuthenticated } = useContext(AuthContext);
+  const { sigIn, signUp } = useContext(AuthContext);
 
   function handleSetIsLogin() {
     setIsLogin(!isLogin);
@@ -24,20 +22,16 @@ export function HomepageContent() {
   async function handleSubmitSignIn(event: FormEvent) {
     event.preventDefault();
     const data = {
-      login,
+      email,
       password,
     };
     await sigIn(data);
   }
 
-  console.log(isAuthenticated);
-
   async function handleSubmitSignUp(event: FormEvent) {
     event.preventDefault();
     const data = {
       name,
-      login,
-      cpf,
       email,
       phone,
       password,
@@ -60,13 +54,14 @@ export function HomepageContent() {
               />
               <input
                 type='text'
-                placeholder='Usuário'
-                alt='Imagem de login'
-                onChange={(e) => setLogin(e.target.value)}
+                placeholder='Email'
+                alt='Campo de email'
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type='password'
                 placeholder='Senha'
+                alt='Campo de senha'
                 onChange={(e) => setPassword(e.target.value)}
               />
               <button type='submit'>ENTRAR</button>
@@ -86,36 +81,25 @@ export function HomepageContent() {
               <input
                 type='text'
                 placeholder='Nome'
-                alt='Imagem de login'
+                alt='Campo de nome'
                 onChange={(e) => setName(e.target.value)}
               />
               <input
                 type='text'
-                placeholder='Usuário'
-                alt='Imagem de login'
-                onChange={(e) => setLogin(e.target.value)}
-              />
-              <input
-                type='text'
-                placeholder='Cpf'
-                alt='Imagem de login'
-                onChange={(e) => setCpf(e.target.value)}
-              />
-              <input
-                type='text'
                 placeholder='E-mail'
-                alt='Imagem de login'
+                alt='Campo de email'
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type='text'
                 placeholder='Telefone'
-                alt='Imagem de login'
+                alt='Campo de telefone'
                 onChange={(e) => setPhone(e.target.value)}
               />
               <input
                 type='password'
                 placeholder='Senha'
+                alt='Campo de senha'
                 onChange={(e) => setPassword(e.target.value)}
               />
               <button type='submit'>CADASTRAR</button>

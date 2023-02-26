@@ -58,19 +58,29 @@
         color: black;
       }
     }
+
+    .cursosContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-top: 4rem;
+    }
   }
+}
 
-  .cursosContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+@media screen and (max-width: 1300px) {
+  .wrapper {
+    max-width: 85%;
 
-    /* width: 100%;
+    .container {
+      gap: 1rem;
+    }
 
-    gap: 1.875rem;
-    justify-content: center;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+    .cursosContainer {
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+    }
   }
 }

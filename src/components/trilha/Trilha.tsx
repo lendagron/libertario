@@ -1,19 +1,23 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import styles from "./trilha.module.scss";
+import logoLibertarianismo from "../../../public/images/logoLibertarianismo.svg";
+import { motion } from "framer-motion";
 
 interface Trail {
   id: number;
   name: string;
   description: string;
+  image: string;
 }
 
 interface Course {
   id: number;
   name: string;
   description: string;
-  learning_trail_id: number;
-  order: number | null;
+  learning_trails: number[];
+  teacher: string;
 }
 interface Props {
   trails: Trail[];
@@ -30,9 +34,7 @@ export function Trilha({ trails, courses }: Props) {
       <h1>
         Temos {trails.length} {trails.length > 1 ? "trilhas" : "trilha"}
       </h1>
-      {!clickedTrail && (
-        <h2>Selecione uma trilha para ver os cursos disponíveis nela</h2>
-      )}
+      <h2>Selecione uma trilha para ver os cursos disponíveis nela</h2>
       <div className={styles.trilhaContainer}>
         {trails &&
           trails.map((trail) => (
@@ -41,6 +43,7 @@ export function Trilha({ trails, courses }: Props) {
               className={styles.trilha}
               onClick={() => handleClicked(trail)}
             >
+              <Image src={logoLibertarianismo} alt='logo libertarianismo' />
               <h2>{trail.name}</h2>
               <p>{trail.description}</p>
             </a>
@@ -52,14 +55,22 @@ export function Trilha({ trails, courses }: Props) {
           <h3> Cursos da trilha {clickedTrail.name}</h3>
           {clickedTrail &&
             courses
-              .filter((course) => course.learning_trail_id === clickedTrail.id)
+              .filter((course) =>
+                course.learning_trails.includes(clickedTrail.id)
+              )
               .map((course) => (
-                <div key={course.id} className={styles.course}>
+                <motion.div
+                  key={course.id}
+                  className={styles.course}
+                  initial={{ x: -500, opacity: 0, scale: 0.5 }}
+                  animate={{ x: 0, opacity: 1, scale: 1 }}
+                  transition={{ duration: 1.5 }}
+                >
                   <Link href={`/course/${course.id}/1`}>
                     <strong>{course.name}</strong>
                     <p>{course.description}</p>
                   </Link>
-                </div>
+                </motion.div>
               ))}
         </div>
       )}

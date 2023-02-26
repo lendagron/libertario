@@ -2,7 +2,6 @@ import { useContext, useState, useEffect } from "react";
 import CursoMenuContent from "./cursoMenuContent/CursoMenuContent";
 import styles from "./cursoContent.module.scss";
 import { useRouter } from "next/router";
-import Vimeo from "vimeo";
 
 interface Lesson {
   id: number;
@@ -18,11 +17,11 @@ interface Course {
   id: number;
   name: string;
   description: string;
-  learning_trail_id: number;
-  order: number | null;
+  learning_trails: number[];
   created_at: string;
   updated_at: string;
   deleted_at: string | null;
+  teacher: string;
 }
 
 interface Props {
@@ -43,6 +42,10 @@ export default function CursoContent({
   const [mais, setMais] = useState(false);
   const [activeLesson, setActiveLesson] = useState(selectedLesson);
 
+  /*  useEffect(() => {
+    setActiveLesson(selectedLesson);
+  }, [selectedLesson]); */
+
   useEffect(() => {
     if (activeLesson) {
       const route = `/course/${course.id}/${activeLesson.order}`;
@@ -61,6 +64,7 @@ export default function CursoContent({
   }
 
   function handleSelectLesson(lesson) {
+    /* setActiveLesson(null); */
     setActiveLesson(lesson);
   }
 
@@ -80,17 +84,11 @@ export default function CursoContent({
               <p>Vídeo não encontrado...</p>
             )}
           </div>
-          {/*  <div>
-            <p>Você está assistindo: {activeLesson ? activeLesson.name : ""}</p>
-          </div> */}
           <nav>
             <ul>
               <li>
                 <a onClick={handleVisaoGeral}>Visão Geral</a>
               </li>
-              {/* <li>
-                <a onClick={handleMais}>Mais</a>
-              </li> */}
             </ul>
           </nav>
           <div>
@@ -118,7 +116,9 @@ export default function CursoContent({
                 <li key={lesson.id}>
                   <a
                     onClick={() => handleSelectLesson(lesson)}
-                    className={activeLesson === lesson ? styles.active : ""}
+                    className={
+                      activeLesson === lesson ? styles.active : styles.noBorder
+                    }
                   >
                     {lesson.name}
                   </a>

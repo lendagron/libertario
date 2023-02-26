@@ -4,20 +4,17 @@ import Router from "next/router";
 import { setCookie, parseCookies, destroyCookie } from "nookies";
 
 type User = {
-  login: string;
   permissions: string[];
   roles: string[];
 };
 
 type SignInCredentials = {
-  login: string;
+  email: string;
   password: string;
 };
 
 type SignUpCredentials = {
   name: string;
-  login: string;
-  cpf: string;
   email: string;
   phone: string;
   password: string;
@@ -55,8 +52,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
       api
         .get("/api/me")
         .then((response) => {
-          const { login, permissions, roles } = response.data;
-          setUser({ login, permissions, roles });
+          const { permissions, roles } = response.data;
+          setUser({ permissions, roles });
         })
         .catch(() => {
           signOut();
@@ -64,10 +61,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }, []);
 
-  async function sigIn({ login, password }: SignInCredentials) {
+  async function sigIn({ email, password }: SignInCredentials) {
     try {
       const response = await api.post("/api/login", {
-        login,
+        email,
         password,
       });
 
@@ -83,7 +80,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
       });
 
       setUser({
-        login,
         permissions,
         roles,
       });
@@ -96,44 +92,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }
 
-  async function signUp({
-    name,
-    login,
-    cpf,
-    email,
-    phone,
-    password,
-  }: SignUpCredentials) {
+  async function signUp({ name, email, phone, password }: SignUpCredentials) {
     try {
-      /* const response =  */ await api.post("/api/signup", {
+      await api.post("/api/signup", {
         name,
-        login,
-        cpf,
         email,
         phone,
         password,
       });
-      /* 
-      const { token, refreshToken, permissions, roles } = response.data;
-
-      setCookie(undefined, "CL.token", token, {
-        maxAge: 60 * 60 * 24 * 30, // 30 days
-        path: "/",
-      });
-      setCookie(undefined, "CL.refreshToken", refreshToken, {
-        maxAge: 60 * 60 * 24 * 30, // 30 days
-        path: "/",
-      });
-
-      setUser({
-        login,
-        permissions,
-        roles,
-      });
-
-      api.defaults.headers["Authorization"] = `Bearer ${token}`; */
-
-      sigIn({ login, password });
+      sigIn({ email, password });
     } catch (err) {
       console.log(err);
     }
