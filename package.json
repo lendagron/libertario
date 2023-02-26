@@ -15,7 +15,7 @@
     "axios": "^1.2.0",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
-    "framer-motion": "^9.0.2",
+    "framer-motion": "^9.1.7",
     "miragejs": "^0.1.46",
     "next": "13.0.5",
     "next-session": "^4.0.5",
