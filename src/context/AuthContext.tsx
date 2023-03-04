@@ -20,10 +20,25 @@ type SignUpCredentials = {
   password: string;
 };
 
+type paymentCredentials = {
+  name: string;
+  endereco: string;
+  cpf: string;
+  email: string;
+  phone: string;
+  password: string;
+};
+
+type paymentKonkinCredentials = {
+  name: string;
+};
+
 type AuthContextData = {
   sigIn(credentials: SignInCredentials): Promise<void>;
   signUp(credentials: SignUpCredentials): Promise<void>;
   signOut(): void;
+  payment(credentials: paymentCredentials): Promise<void>;
+  paymentKonkin(credentials: paymentKonkinCredentials): Promise<void>;
   user: User;
   isAuthenticated: boolean;
 };
@@ -106,9 +121,42 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }
 
+  async function payment({
+    name,
+    endereco,
+    cpf,
+    email,
+    phone,
+    password,
+  }: paymentCredentials) {
+    try {
+      await api.post("/api/payment", {
+        name,
+        endereco,
+        cpf,
+        email,
+        phone,
+        password,
+      });
+      sigIn({ email, password });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function paymentKonkin({ name }: paymentKonkinCredentials) {}
+
   return (
     <AuthContext.Provider
-      value={{ sigIn, signUp, signOut, isAuthenticated, user }}
+      value={{
+        sigIn,
+        signUp,
+        signOut,
+        payment,
+        paymentKonkin,
+        isAuthenticated,
+        user,
+      }}
     >
       {children}
     </AuthContext.Provider>

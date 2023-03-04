@@ -1,14 +1,12 @@
 import Link from "next/link";
 import FormLogo from "../../../public/images/formlogo.png";
 import Image from "next/image";
-import styles from "./cadastro_pagamentoContent.module.scss";
+import styles from "./cadastro.module.scss";
 import { FormEvent, useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
-export default function Cadastro_pagamentoContent() {
+export default function Cadastro() {
   const [name, setName] = useState("");
-  const [login, setLogin] = useState("");
-  const [cpf, setCpf] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -19,8 +17,6 @@ export default function Cadastro_pagamentoContent() {
     event.preventDefault();
     const data = {
       name,
-      login,
-      cpf,
       email,
       phone,
       password,
@@ -38,18 +34,6 @@ export default function Cadastro_pagamentoContent() {
             placeholder='Nome'
             alt='Imagem de login'
             onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Login'
-            alt='Imagem de login'
-            onChange={(e) => setLogin(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Cpf'
-            alt='Imagem de login'
-            onChange={(e) => setCpf(e.target.value)}
           />
           <input
             type='text'
@@ -71,17 +55,9 @@ export default function Cadastro_pagamentoContent() {
           <button type='submit'>CADASTRAR</button>
         </form>
         <div>
-          <Link href={"/"}>Voltar</Link>
+          <Link href={"javascript:history.back()"}>Voltar</Link>
         </div>
       </div>
     </main>
   );
 }
-/* {
-  "name": "Cecilia Abshire",
-  "login": "example.abshire",
-  "cpf": "86254199505",
-  "email": "example@example.net",
-  "phone": "71988800033",
-  "password": "12345678@"
-} */

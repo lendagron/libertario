@@ -52,8 +52,16 @@
     }
   }
 
-  img {
-    max-width: 13rem;
+  .logoContainer {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+
+    /* background-color: aqua; */
+    /* argin-right: auto; */
+    img {
+      max-width: 13rem;
+    }
   }
 }
 
@@ -68,6 +76,10 @@
 
     .logoContainer {
       order: 1;
+
+      img {
+        margin-right: 200px;
+      }
     }
 
     .backContainer {

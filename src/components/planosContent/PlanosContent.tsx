@@ -36,7 +36,7 @@ export default function PlanosContent() {
               <s>Acesso Antecipado aos Conteúdos</s>
             </li>
           </ul>
-          <Link href={"/cadastro_pagamento"}>Assine agora</Link>
+          <Link href={"/cadastro"}>Assine agora</Link>
         </div>
         <div className={styles.authorContainer}>
           <p>Rothbard</p>
@@ -64,7 +64,7 @@ export default function PlanosContent() {
               <s>Acesso Antecipado aos Conteúdos</s>
             </li>
           </ul>
-          <Link href={"/cadastro_pagamento"}>Assine agora</Link>
+          <Link href={"/cadastroPagamento"}>Assine agora</Link>
         </div>
         <div className={styles.authorContainer}>
           <p>Hoppe</p>
@@ -84,11 +84,7 @@ export default function PlanosContent() {
             <li>Um Novo Curso Todo Mês</li>
             <li>Acesso Antecipado aos Conteúdos</li>
           </ul>
-          {isAuthenticated ? (
-            <Link href={"/cadastro_pagamento"}>Assine agora</Link>
-          ) : (
-            <Link href={"/"}>Assine agora</Link>
-          )}
+          <Link href={"/cadastroPagamento"}>Assine agora</Link>
         </div>
       </div>
       <p>

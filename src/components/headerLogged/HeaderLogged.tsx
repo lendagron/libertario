@@ -31,7 +31,13 @@ export function HeaderLogged({ isPainel }: headerLoggedProps) {
         </div>
         <div className={styles.logoContainer}>
           <Link href={""}>
-            <Image src={Logo} alt='Logo' width={160} height={43} />
+            <Image
+              src={Logo}
+              alt='Logo'
+              width={160}
+              height={43}
+              style={{ marginLeft: isPainel ? "200px" : "none" }}
+            />
           </Link>
         </div>
         <div className={styles.userContainer}>
