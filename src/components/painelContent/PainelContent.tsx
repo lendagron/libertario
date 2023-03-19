@@ -5,17 +5,29 @@ import bannerimg from "../../../public/images/bannerPainel.png";
 import { CursoPainel } from "../cursoPainel/CursoPainel";
 import { Crown } from "phosphor-react";
 
-interface UserMe {
+type Plan = {
+  id: number;
+  name: string;
+};
+type Subscriptions = {
+  id: number;
+  user_id: number;
+  plan_id: number;
+  plan: Plan;
+};
+type UserMe = {
   name: string;
   id: number;
   email: string;
-}
-
+  subscriptions: Subscriptions[];
+};
 interface Props {
   userMe: UserMe;
 }
 
 export default function PainelContent({ userMe }: Props) {
+  const lastId = userMe.subscriptions.length - 1;
+
   return (
     <>
       <Image src={bannerimg} alt='Logo' className={styles.banner} />
@@ -23,7 +35,7 @@ export default function PainelContent({ userMe }: Props) {
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <h2>Olá, {userMe.name}</h2>
-          <p>O seu plano é: Mises</p>
+          <p>O seu plano é: {userMe.subscriptions[lastId].plan.name}</p>
           <div className={styles.buttonsContainer}>
             <Link href={"/upgradePlano"}>
               <Crown size={25} weight='fill' />

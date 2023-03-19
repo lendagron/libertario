@@ -23,10 +23,21 @@ interface Course {
   teacher: string;
 }
 
+type Plan = {
+  id: number;
+  name: string;
+};
+type Subscriptions = {
+  id: number;
+  user_id: number;
+  plan_id: number;
+  plan: Plan;
+};
 interface UserMe {
   name: string;
   id: number;
   email: string;
+  subscriptions: Subscriptions[];
 }
 
 interface Props {
@@ -54,12 +65,13 @@ export const getServerSideProps = withSSRAuth(async (ctx) => {
   let courses = {};
   let userMe = null;
   try {
-    const responseTrails = await apiClient.get("/api/learning_trails");
+    const responseTrails = await apiClient.get("/learning_trails");
     trails = responseTrails.data;
-    const responseCourses = await apiClient.get("/api/courses");
+    const responseCourses = await apiClient.get("/courses");
     courses = responseCourses.data;
-    const responseUserMe = await apiClient.get("/api/me");
+    const responseUserMe = await apiClient.get("/me");
     userMe = responseUserMe.data;
+    console.log(userMe);
   } catch (err) {
     console.log(err);
   }

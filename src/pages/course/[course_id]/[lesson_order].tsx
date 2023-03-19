@@ -67,10 +67,10 @@ export const getServerSideProps = withSSRAuth(async (ctx) => {
   const { query } = ctx;
   const { course_id, lesson_order } = query;
   try {
-    const responseCourse = await apiClient.get(`/api/courses/${course_id}`);
+    const responseCourse = await apiClient.get(`/courses/${course_id}`);
     course = responseCourse.data;
     const responseLessons = await apiClient.get(
-      `/api/courses/${course_id}/lessons`
+      `/courses/${course_id}/lessons`
     );
     lessons = responseLessons.data;
     selectedLesson = getSelectedLesson(lessons, lesson_order);
