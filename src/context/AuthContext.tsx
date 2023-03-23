@@ -20,13 +20,50 @@ type SignUpCredentials = {
   password: string;
 };
 
+type customer_data = {
+  cpf: string;
+  address: address;
+  phone: phone;
+};
+
+type phone = {
+  ddi: string;
+  ddd: string;
+  number: string;
+};
+
+type address = {
+  country: string;
+  state: string;
+  city: string;
+  neighborhood: string;
+  street: string;
+  street_number: string;
+  complement?: string;
+  zipcode: string;
+};
+
+type card_data = {
+  label: string;
+  holder_name: string;
+  number: string;
+  expiration_month: string;
+  expiration_year: string;
+  cvv: string;
+};
+
+type plan_data = {
+  id: string;
+  frequency: string;
+};
+
 type paymentCredentials = {
   name: string;
-  endereco: string;
-  cpf: string;
   email: string;
-  phone: string;
   password: string;
+  customer_data: customer_data;
+  plan_data: plan_data;
+  card_data: card_data;
 };
 
 type paymentKonkinCredentials = {
@@ -65,7 +102,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     if (token) {
       api
-        .get("/api/me")
+        .get("/me")
         .then((response) => {
           const { permissions, roles } = response.data;
           setUser({ permissions, roles });
@@ -78,7 +115,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   async function sigIn({ email, password }: SignInCredentials) {
     try {
-      const response = await api.post("/api/login", {
+      const response = await api.post("/login", {
         email,
         password,
       });
@@ -109,7 +146,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   async function signUp({ name, email, phone, password }: SignUpCredentials) {
     try {
-      await api.post("/api/signup", {
+      await api.post("/signup", {
         name,
         email,
         phone,
@@ -123,20 +160,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   async function payment({
     name,
-    endereco,
-    cpf,
     email,
-    phone,
     password,
+    customer_data,
+    card_data,
+    plan_data,
   }: paymentCredentials) {
     try {
-      await api.post("/api/payment", {
+      await api.post("/signup", {
         name,
-        endereco,
-        cpf,
         email,
-        phone,
         password,
+        customer_data,
+        card_data,
+        plan_data,
       });
       sigIn({ email, password });
     } catch (err) {

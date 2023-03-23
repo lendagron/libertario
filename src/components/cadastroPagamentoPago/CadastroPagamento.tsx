@@ -7,11 +7,28 @@ import { AuthContext } from "../../context/AuthContext";
 
 export default function CadastroPagamento() {
   const [name, setName] = useState("");
-  const [endereco, setEndereco] = useState("");
+  const [país, setPaís] = useState("");
+  const [estado, setEstado] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [rua, setRua] = useState("");
+  const [número, setNúmero] = useState("");
+  const [complemento, setComplemento] = useState("");
+  const [cep, setCep] = useState("");
   const [cpf, setCpf] = useState("");
   const [email, setEmail] = useState("");
+  const [ddi, setDdi] = useState("");
+  const [ddd, setDdd] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [planId, setPlanId] = useState("");
+  const [frequency, setFrequency] = useState("");
+  const [label, setLabel] = useState("");
+  const [holder_name, setHolder_name] = useState("");
+  const [card_number, setCard_number] = useState("");
+  const [expiration_month, setExpiration_month] = useState("");
+  const [expiration_year, setExpiration_year] = useState("");
+  const [cvv, setCvv] = useState("");
 
   const { payment } = useContext(AuthContext);
 
@@ -19,11 +36,38 @@ export default function CadastroPagamento() {
     event.preventDefault();
     const data = {
       name,
-      endereco,
-      cpf,
       email,
-      phone,
       password,
+      customer_data: {
+        cpf,
+        address: {
+          country: país,
+          state: estado,
+          city: cidade,
+          neighborhood: bairro,
+          street: rua,
+          street_number: número,
+          complement: complemento,
+          zipcode: cep,
+        },
+        phone: {
+          ddi: ddi,
+          ddd: ddd,
+          number: phone,
+        },
+      },
+      plan_data: {
+        id: planId,
+        frequency: frequency,
+      },
+      card_data: {
+        label: label,
+        holder_name: holder_name,
+        number: card_number,
+        expiration_month: expiration_month,
+        expiration_year: expiration_year,
+        cvv: cvv,
+      },
     };
     await payment(data);
   }
@@ -36,26 +80,86 @@ export default function CadastroPagamento() {
           <input
             type='text'
             placeholder='Nome'
-            alt='Imagem de login'
+            alt='Campo nome'
             onChange={(e) => setName(e.target.value)}
           />
           <input
             type='text'
-            placeholder='Endereço'
-            alt='Imagem de endereço'
-            onChange={(e) => setEndereco(e.target.value)}
+            placeholder='E-mail'
+            alt='Campo e-mail'
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type='password'
+            placeholder='Senha'
+            alt='Campo senha'
+            onChange={(e) => setPassword(e.target.value)}
           />
           <input
             type='text'
             placeholder='Cpf'
-            alt='Imagem de login'
+            alt='Campo cpf'
             onChange={(e) => setCpf(e.target.value)}
           />
           <input
             type='text'
-            placeholder='E-mail'
+            placeholder='País'
+            alt='Imagem de endereço'
+            onChange={(e) => setPaís(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Estado'
+            alt='Imagem de endereço'
+            onChange={(e) => setEstado(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Cidade'
+            alt='Imagem de endereço'
+            onChange={(e) => setCidade(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Bairro'
+            alt='Imagem de endereço'
+            onChange={(e) => setBairro(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Rua'
+            alt='Imagem de endereço'
+            onChange={(e) => setRua(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Número'
+            alt='Imagem de endereço'
+            onChange={(e) => setNúmero(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Complemento'
+            alt='Imagem de endereço'
+            onChange={(e) => setComplemento(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Cep'
+            alt='Imagem de endereço'
+            onChange={(e) => setCep(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='DDI'
             alt='Imagem de login'
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setDdi(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='DDD'
+            alt='Imagem de login'
+            onChange={(e) => setDdd(e.target.value)}
           />
           <input
             type='text'
@@ -64,9 +168,52 @@ export default function CadastroPagamento() {
             onChange={(e) => setPhone(e.target.value)}
           />
           <input
-            type='password'
-            placeholder='Senha'
-            onChange={(e) => setPassword(e.target.value)}
+            type='text'
+            placeholder='Id do plano'
+            alt='Imagem de login'
+            onChange={(e) => setPlanId(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Frequência do plano'
+            alt='Imagem de login'
+            onChange={(e) => setFrequency(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Label do cartão'
+            alt='Imagem de login'
+            onChange={(e) => setLabel(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Nome do titular do cartão'
+            alt='Imagem de login'
+            onChange={(e) => setHolder_name(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Número do cartão'
+            alt='Imagem de login'
+            onChange={(e) => setCard_number(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Mês de expiração do cartão'
+            alt='Imagem de login'
+            onChange={(e) => setExpiration_month(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Ano de expiração do cartão'
+            alt='Imagem de login'
+            onChange={(e) => setExpiration_year(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Cvv do cartão'
+            alt='Imagem de login'
+            onChange={(e) => setCvv(e.target.value)}
           />
           <button type='submit'>ASSINAR PLANO</button>
         </form>

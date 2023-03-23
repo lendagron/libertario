@@ -2,6 +2,7 @@ import Head from "next/head";
 import React from "react";
 import { HeaderLogged } from "../components/headerLogged/HeaderLogged";
 import UpgradePlanoContent from "../components/upgradePlanoContent/UpgradePlanoContent";
+import { withSSRAuth } from "../utils/withSSRAuth";
 
 export default function UpgradePlano() {
   const isPainel = false;
@@ -15,3 +16,9 @@ export default function UpgradePlano() {
     </>
   );
 }
+
+export const getServerSideProps = withSSRAuth(async (ctx) => {
+  return {
+    props: {},
+  };
+});
