@@ -14,9 +14,9 @@ export function Header({ hasBack }: headerProps) {
     <header className={styles.headerWrapper}>
       <div className={styles.headerContainer}>
         <div className={styles.backContainer}>
-          <Link href={"/painel"} style={{ display: hasBack ? "flex" : "none" }}>
+          <Link href={"/"} style={{ display: hasBack ? "flex" : "none" }}>
             <ArrowLeft size={32} />
-            <p>Painel</p>
+            <p>Voltar</p>
           </Link>
         </div>
         <div className={styles.logoContainer}>

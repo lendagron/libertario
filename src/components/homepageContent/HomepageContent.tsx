@@ -72,7 +72,7 @@ export function HomepageContent() {
           )}
           {signInError && <p>{signInError}</p>}
 
-          <a href=''>Esqueceu o usuário ou senha?</a>
+          <Link href='/recuperar'>Esqueceu o usuário ou senha?</Link>
         </form>
         <div>
           <Link href={"/planos"}>Não é um membro ainda? Participe!</Link>
