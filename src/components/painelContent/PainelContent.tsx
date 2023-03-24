@@ -42,7 +42,7 @@ export default function PainelContent({ userMe }: Props) {
               <span>Fazer Upgrade</span>
             </Link>
           </div>
-          <div className={styles.cursosContainer}>
+          {/* <div className={styles.cursosContainer}>
             <CursoPainel
               titulo='Último Curso Assistido'
               subtitulo='Teoria Legal Libertária'
@@ -55,7 +55,7 @@ export default function PainelContent({ userMe }: Props) {
               imagem='imagem'
               botao='Continuar Aula'
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </>
