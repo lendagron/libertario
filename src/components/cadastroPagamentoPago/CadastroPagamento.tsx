@@ -96,92 +96,97 @@ export default function CadastroPagamento() {
     <main className={styles.wrapper}>
       <div className={styles.container}>
         <h1>Faça o seu cadastro e preencha os dados para pagamento</h1>
-        {isLoading && (
-          <ClipLoader
-            color={"#f3bf22"}
-            loading={isLoading}
-            size={50}
-            className={styles.spinner}
-          />
-        )}
-        {signInError && <p>{signInError}</p>}
+
         <form onSubmit={handleSubmit}>
           <Image src={FormLogo} alt='Logo de login' width={75} height={75} />
           <input
             type='text'
             placeholder='Nome'
             alt='Campo nome'
+            required
             onChange={(e) => setName(e.target.value)}
           />
           <input
             type='text'
             placeholder='E-mail'
             alt='Campo e-mail'
+            required
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type='password'
             placeholder='Senha'
             alt='Campo senha'
+            required
             onChange={(e) => setPassword(e.target.value)}
           />
           <input
             type='text'
             placeholder='Cpf'
             alt='Campo cpf'
+            required
             onChange={(e) => setCpf(e.target.value)}
           />
           <input
             type='text'
             placeholder='País'
             alt='Imagem de endereço'
+            required
             onChange={(e) => setPaís(e.target.value)}
           />
           <input
             type='text'
             placeholder='Estado'
             alt='Imagem de endereço'
+            required
             onChange={(e) => setEstado(e.target.value)}
           />
           <input
             type='text'
             placeholder='Cidade'
             alt='Imagem de endereço'
+            required
             onChange={(e) => setCidade(e.target.value)}
           />
           <input
             type='text'
             placeholder='Bairro'
             alt='Imagem de endereço'
+            required
             onChange={(e) => setBairro(e.target.value)}
           />
           <input
             type='text'
             placeholder='Rua'
             alt='Imagem de endereço'
+            required
             onChange={(e) => setRua(e.target.value)}
           />
           <input
             type='text'
             placeholder='Número'
             alt='Imagem de endereço'
+            required
             onChange={(e) => setNúmero(e.target.value)}
           />
           <input
             type='text'
             placeholder='Complemento'
             alt='Imagem de endereço'
+            required
             onChange={(e) => setComplemento(e.target.value)}
           />
           <input
             type='text'
             placeholder='Cep'
             alt='Imagem de endereço'
+            required
             onChange={(e) => setCep(e.target.value)}
           />
           <input
             type='text'
             placeholder='DDI'
+            required
             alt='Imagem de login'
             onChange={(e) => setDdi(e.target.value)}
           />
@@ -189,63 +194,82 @@ export default function CadastroPagamento() {
             type='text'
             placeholder='DDD'
             alt='Imagem de login'
+            required
             onChange={(e) => setDdd(e.target.value)}
           />
           <input
             type='text'
             placeholder='Telefone'
             alt='Imagem de login'
+            required
             onChange={(e) => setPhone(e.target.value)}
           />
           <input
             type='text'
             placeholder='Id do plano'
             alt='Imagem de login'
+            required
             onChange={(e) => setPlanId(e.target.value)}
           />
           <input
             type='text'
             placeholder='Frequência do plano'
             alt='Imagem de login'
+            required
             onChange={(e) => setFrequency(e.target.value)}
           />
           <input
             type='text'
             placeholder='Label do cartão'
             alt='Imagem de login'
+            required
             onChange={(e) => setLabel(e.target.value)}
           />
           <input
             type='text'
             placeholder='Nome do titular do cartão'
             alt='Imagem de login'
+            required
             onChange={(e) => setHolder_name(e.target.value)}
           />
           <input
             type='text'
             placeholder='Número do cartão'
             alt='Imagem de login'
+            required
             onChange={(e) => setCard_number(e.target.value)}
           />
           <input
             type='text'
             placeholder='Mês de expiração do cartão'
             alt='Imagem de login'
+            required
             onChange={(e) => setExpiration_month(e.target.value)}
           />
           <input
             type='text'
             placeholder='Ano de expiração do cartão'
             alt='Imagem de login'
+            required
             onChange={(e) => setExpiration_year(e.target.value)}
           />
           <input
             type='text'
             placeholder='Cvv do cartão'
             alt='Imagem de login'
+            required
             onChange={(e) => setCvv(e.target.value)}
           />
           <button type='submit'>ASSINAR</button>
+          {isLoading && (
+            <ClipLoader
+              color={"#f3bf22"}
+              loading={isLoading}
+              size={50}
+              className={styles.spinner}
+            />
+          )}
+          {signInError && <p>{signInError}</p>}
         </form>
         <div>
           <Link href={"javascript:history.back()"}>Voltar</Link>

@@ -65,7 +65,7 @@
   }
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1120px) {
   .headerContainer {
     max-width: 100%;
     display: flex;
@@ -76,10 +76,6 @@
 
     .logoContainer {
       order: 1;
-
-      img {
-        margin-right: 200px;
-      }
     }
 
     .backContainer {

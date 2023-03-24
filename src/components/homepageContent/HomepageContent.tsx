@@ -45,30 +45,32 @@ export function HomepageContent() {
     <main className={styles.mainWrapper}>
       <div className={styles.mainContainer}>
         <h1>Acesse Agora</h1>
-        {isLoading && (
-          <ClipLoader
-            color={"#f3bf22"}
-            loading={isLoading}
-            size={50}
-            className={styles.spinner}
-          />
-        )}
-        {signInError && <p>{signInError}</p>}
         <form onSubmit={handleSubmitSignIn}>
           <Image src={FormLogo} alt='Logo de login' width={75} height={75} />
           <input
             type='text'
             placeholder='Email'
             alt='Campo de email'
+            required
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type='password'
             placeholder='Senha'
             alt='Campo de senha'
+            required
             onChange={(e) => setPassword(e.target.value)}
           />
           <button type='submit'>ENTRAR</button>
+          {isLoading && (
+            <ClipLoader
+              color={"#f3bf22"}
+              loading={isLoading}
+              size={50}
+              className={styles.spinner}
+            />
+          )}
+          {signInError && <p>{signInError}</p>}
 
           <a href=''>Esqueceu o usuário ou senha?</a>
         </form>

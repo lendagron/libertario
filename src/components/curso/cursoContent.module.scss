@@ -47,6 +47,9 @@
       }
     }
   }
+  .menuMobile {
+    display: none;
+  }
 
   aside {
     display: flex;
@@ -62,14 +65,21 @@
     background-color: var(--gray-800);
     color: aliceblue;
 
-    h2 {
-      font-weight: 600;
-      font-size: 28px;
-      text-align: center;
-
+    .mobileAside {
       border-bottom: 1px solid var(--yellow);
-      width: 100%;
-      padding: 0 0 0.5rem 0;
+
+      h3 {
+        font-weight: 600;
+        font-size: 1.5rem;
+        text-align: center;
+
+        width: 100%;
+        padding: 0 0 0.5rem 0;
+      }
+
+      .arrowDown {
+        display: none;
+      }
     }
 
     nav ul {
@@ -83,7 +93,7 @@
       padding: 0 0 1rem 0;
 
       .active {
-        border-bottom: 4px solid var(--yellow);
+        border-bottom: 3px solid var(--yellow);
       }
 
       .noBorder {
@@ -95,14 +105,17 @@
         font-size: 1.25rem;
 
         &:hover {
-          border-bottom: 4px solid var(--yellow);
+          border-bottom: 3px solid var(--yellow);
         }
       }
     }
   }
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1120px) {
+  .wrapper {
+    max-width: 100%;
+  }
   .container {
     flex-direction: column-reverse;
     justify-content: space-around;
@@ -116,6 +129,20 @@
       gap: 1rem;
       padding: 0.5rem 1rem 0.5rem 1rem;
       overflow-x: auto;
+      display: flex;
+
+      .mobileAside {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border: none;
+
+        .arrowDown {
+          display: block;
+        }
+      }
 
       nav ul {
         display: flex;
@@ -149,12 +176,12 @@
       }
 
       .vimeoVideo {
-        /* min-height: 100%; */
-        height: auto;
+        height: 200px;
+
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        /* position: relative; */
+
         background-color: white;
 
         iframe {

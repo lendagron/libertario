@@ -48,41 +48,46 @@ export default function Cadastro() {
     <main className={styles.wrapper}>
       <div className={styles.container}>
         <h1>Faça o seu cadastro</h1>
-        {isLoading && (
-          <ClipLoader
-            color={"#f3bf22"}
-            loading={isLoading}
-            size={50}
-            className={styles.spinner}
-          />
-        )}
-        {signInError && <p>{signInError}</p>}
+
         <form onSubmit={handleSubmit}>
           <Image src={FormLogo} alt='Logo de login' width={75} height={75} />
           <input
             type='text'
             placeholder='Nome'
             alt='Imagem de login'
+            required
             onChange={(e) => setName(e.target.value)}
           />
           <input
             type='text'
             placeholder='E-mail'
             alt='Imagem de login'
+            required
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type='text'
             placeholder='Telefone'
             alt='Imagem de login'
+            required
             onChange={(e) => setPhone(e.target.value)}
           />
           <input
             type='password'
             placeholder='Senha'
+            required
             onChange={(e) => setPassword(e.target.value)}
           />
           <button type='submit'>CADASTRAR</button>
+          {isLoading && (
+            <ClipLoader
+              color={"#f3bf22"}
+              loading={isLoading}
+              size={50}
+              className={styles.spinner}
+            />
+          )}
+          {signInError && <p>{signInError}</p>}
         </form>
         <div>
           <Link href={"javascript:history.back()"}>Voltar</Link>
