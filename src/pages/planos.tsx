@@ -8,7 +8,7 @@ export default function Planos() {
       <Head>
         <title>Clube da Liberdade | Planos</title>
       </Head>
-      <Header />
+      <Header hasBack={true} />
       <PlanosContent />
     </>
   );

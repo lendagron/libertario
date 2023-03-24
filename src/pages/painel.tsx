@@ -46,13 +46,12 @@ interface Props {
   userMe: UserMe;
 }
 export default function Painel({ trails, courses, userMe }: Props) {
-  const isPainel = true;
   return (
     <>
       <Head>
         <title>Clube da Liberdade | Painel</title>
       </Head>
-      <HeaderLogged isPainel={isPainel} />
+      <HeaderLogged isPainel={true} />
       <PainelContent userMe={userMe} />
       <Trilha trails={trails} courses={courses} />
     </>
@@ -67,11 +66,11 @@ export const getServerSideProps = withSSRAuth(async (ctx) => {
   try {
     const responseTrails = await apiClient.get("/learning_trails");
     trails = responseTrails.data;
+    console.log(trails);
     const responseCourses = await apiClient.get("/courses");
     courses = responseCourses.data;
     const responseUserMe = await apiClient.get("/me");
     userMe = responseUserMe.data;
-    console.log(userMe);
   } catch (err) {
     console.log(err);
   }
