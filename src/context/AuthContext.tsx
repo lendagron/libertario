@@ -78,6 +78,7 @@ type AuthContextData = {
   paymentKonkin(credentials: paymentKonkinCredentials): Promise<void>;
   user: User;
   isAuthenticated: boolean;
+  recover(credentials: recoverCredentials);
 };
 
 export const AuthContext = createContext({} as AuthContextData);
@@ -85,6 +86,11 @@ export const AuthContext = createContext({} as AuthContextData);
 type AuthProviderProps = {
   children: ReactNode;
 };
+
+type recoverCredentials = {
+  email: string;  
+};
+
 
 export function signOut() {
   destroyCookie(undefined, "CL.token");
@@ -181,6 +187,19 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }
 
+ async function recover({
+  email,
+ }): recoverCredentials {
+    try {
+      await api.post("/solicitations/forgot-password", {
+          email,
+      });
+    } catch (error) {
+      console.error(error); 
+    }
+ }
+
+
   async function paymentKonkin({ name }: paymentKonkinCredentials) {}
 
   return (
@@ -193,6 +212,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         paymentKonkin,
         isAuthenticated,
         user,
+        recover,
       }}
     >
       {children}
