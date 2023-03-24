@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import CursoMenuContent from "./cursoMenuContent/CursoMenuContent";
 import styles from "./cursoContent.module.scss";
 import { useRouter } from "next/router";
+import { ArrowDown, ArrowUp } from "phosphor-react";
 
 interface Lesson {
   id: number;
@@ -41,10 +42,7 @@ export default function CursoContent({
   const [visaoGeral, setVisaoGeral] = useState(true);
   const [mais, setMais] = useState(false);
   const [activeLesson, setActiveLesson] = useState(selectedLesson);
-
-  /*  useEffect(() => {
-    setActiveLesson(selectedLesson);
-  }, [selectedLesson]); */
+  const [showMenu, setShowMenu] = useState(true);
 
   useEffect(() => {
     if (activeLesson) {
@@ -64,8 +62,11 @@ export default function CursoContent({
   }
 
   function handleSelectLesson(lesson) {
-    /* setActiveLesson(null); */
     setActiveLesson(lesson);
+  }
+
+  function handleShowMenu() {
+    setShowMenu(!showMenu);
   }
 
   return (
@@ -109,8 +110,13 @@ export default function CursoContent({
           </div>
         </div>
         <aside>
-          <h2>Aulas do Curso</h2>
-          <nav>
+          <div className={styles.mobileAside}>
+            <h3>Aulas do Curso {course.name}</h3>
+            <a className={styles.arrowDown} onClick={handleShowMenu}>
+              {showMenu ? <ArrowUp size={32} /> : <ArrowDown size={32} />}
+            </a>
+          </div>
+          <nav style={{ display: showMenu ? "flex" : "none" }}>
             <ul>
               {lessons.map((lesson) => (
                 <li key={lesson.id}>

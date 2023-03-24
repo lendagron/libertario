@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { HeaderLogged } from "../../components/headerLogged/HeaderLogged";
 
 export default function CourseRoot() {
-  const isPainel = false;
   const router = useRouter();
   const { course_id } = router.query;
 
@@ -15,7 +14,7 @@ export default function CourseRoot() {
 
   return (
     <>
-      <HeaderLogged isPainel={isPainel} />
+      <HeaderLogged isPainel={false} />
       <p>Redirecting...</p>
     </>
   );
