@@ -9,7 +9,7 @@ export default function Pagamento() {
       <Head>
         <title>Clube da Liberdade | Cadastro Plano Mises</title>
       </Head>
-      <Header />
+      <Header hasBack={true} />
       <Cadastro />
     </>
   );

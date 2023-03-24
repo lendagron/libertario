@@ -11,7 +11,7 @@ export default function Home() {
       <Head>
         <title>Clube da Liberdade | Homepage</title>
       </Head>
-      <Header />
+      <Header hasBack={false} />
       <HomepageContent />
     </>
   );
