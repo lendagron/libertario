@@ -38,7 +38,7 @@ export default function PlanosContent() {
           </ul>
           <Link href={"/cadastro"}>Assine agora</Link>
         </div>
-        <div className={styles.authorContainer}>
+        {/*    <div className={styles.authorContainer}>
           <p>Rothbard</p>
           <div>
             <span>R$ 49,90</span>
@@ -65,7 +65,7 @@ export default function PlanosContent() {
             </li>
           </ul>
           <Link href={"/cadastroPagamento"}>Assine agora</Link>
-        </div>
+        </div> */}
         <div className={styles.authorContainer}>
           <p>Hoppe</p>
           <div>
