@@ -28,25 +28,32 @@ export function Footer() {
           <a
             href='https://www.instagram.com/libertariauniversidade/'
             target='_blank'
+            rel='noreferrer'
           >
             <InstagramLogo size={32} />
           </a>
           <a
             href='https://www.facebook.com/universidadelibertariaoficial/'
             target='_blank'
+            rel='noreferrer'
           >
             <FacebookLogo size={32} />
           </a>
           <a
             href='https://www.youtube.com/c/UniversidadeLibert%C3%A1ria'
             target='_blank'
+            rel='noreferrer'
           >
             <YoutubeLogo size={32} />
           </a>
-          <a href='https://t.me/uniliber' target='_blank'>
+          <a href='https://t.me/uniliber' target='_blank' rel='noreferrer'>
             <TelegramLogo size={32} />
           </a>
-          <a href='https://twitter.com/UniversidadeLi3' target='_blank'>
+          <a
+            href='https://twitter.com/UniversidadeLi3'
+            target='_blank'
+            rel='noreferrer'
+          >
             <TwitterLogo size={32} />
           </a>
         </div>

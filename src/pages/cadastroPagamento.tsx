@@ -9,7 +9,7 @@ export default function PagamentoKonkin() {
       <Head>
         <title>Clube da Liberdade | Cadastro e Pagamento</title>
       </Head>
-      <Header />
+      <Header hasBack={true} />
       <CadastroPagamento />
     </>
   );
