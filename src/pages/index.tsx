@@ -10,7 +10,6 @@ export default function Home() {
     <>
       <Head>
         <title>Clube da Liberdade | Homepage</title>
-        {/*  <link rel='icon' href='/favicon.ico' /> */}
       </Head>
       <Header />
       <HomepageContent />

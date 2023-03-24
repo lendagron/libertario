@@ -114,7 +114,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }, []);
 
   async function sigIn({ email, password }: SignInCredentials) {
-    /*  try { */
     const response = await api.post("/login", {
       email,
       password,
@@ -139,25 +138,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
     api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
     Router.push("/painel");
-    /*   } catch (err) {
-      if (err.response && err.response.data) {
-        const { details } = err.response.data;
-      }
-    } */
   }
 
   async function signUp({ name, email, phone, password }: SignUpCredentials) {
-    try {
-      await api.post("/signup", {
-        name,
-        email,
-        phone,
-        password,
-      });
-      sigIn({ email, password });
-    } catch (err) {
-      console.log(err);
-    }
+    await api.post("/signup", {
+      name,
+      email,
+      phone,
+      password,
+    });
+    sigIn({ email, password });
   }
 
   async function payment({
@@ -168,19 +158,15 @@ export function AuthProvider({ children }: AuthProviderProps) {
     card_data,
     plan_data,
   }: paymentCredentials) {
-    try {
-      await api.post("/signup", {
-        name,
-        email,
-        password,
-        customer_data,
-        card_data,
-        plan_data,
-      });
-      sigIn({ email, password });
-    } catch (err) {
-      console.log(err);
-    }
+    await api.post("/signup", {
+      name,
+      email,
+      password,
+      customer_data,
+      card_data,
+      plan_data,
+    });
+    sigIn({ email, password });
   }
 
   async function paymentKonkin({ name }: paymentKonkinCredentials) {}

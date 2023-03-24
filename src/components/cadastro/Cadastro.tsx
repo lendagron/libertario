@@ -4,12 +4,15 @@ import Image from "next/image";
 import styles from "./cadastro.module.scss";
 import { FormEvent, useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { ClipLoader } from "react-spinners";
 
 export default function Cadastro() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [signInError, setSignInError] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { signUp } = useContext(AuthContext);
 
@@ -21,12 +24,39 @@ export default function Cadastro() {
       phone,
       password,
     };
-    await signUp(data);
+    try {
+      setIsLoading(true);
+      await signUp(data);
+    } catch (error) {
+      if (error.response && error.response.data) {
+        const { details } = error.response.data;
+        const errorMessages = Object.entries(details)
+          .map(
+            ([key, value]) =>
+              `${key}: ${Array.isArray(value) ? value.join("; ") : value}`
+          )
+          .join("; ");
+        setSignInError(`Erro no envio de dados;  ${errorMessages}`);
+      } else {
+        setSignInError("Ocorreu um erro ao processar a solicitação.");
+      }
+    } finally {
+      setIsLoading(false);
+    }
   }
   return (
     <main className={styles.wrapper}>
       <div className={styles.container}>
         <h1>Faça o seu cadastro</h1>
+        {isLoading && (
+          <ClipLoader
+            color={"#f3bf22"}
+            loading={isLoading}
+            size={50}
+            className={styles.spinner}
+          />
+        )}
+        {signInError && <p>{signInError}</p>}
         <form onSubmit={handleSubmit}>
           <Image src={FormLogo} alt='Logo de login' width={75} height={75} />
           <input
