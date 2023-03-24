@@ -17,27 +17,36 @@ export function Footer() {
         <a href={"/"}>
           <Image src={Logo} alt='Logo' width={160} height={43} />
         </a>
-        <div className={styles.linksContainer}>
+        {/*  <div className={styles.linksContainer}>
           <a>contato@universidadelibertaria.com</a>
           <span> |</span>
           <a>Relatórios de Impacto</a>
           <span> |</span>
           <a>(Não) Política de Direitos Autorais</a>
-        </div>
+        </div> */}
         <div className={styles.iconsContainer}>
-          <a href='https://www.instagram.com/libertariauniversidade/'>
+          <a
+            href='https://www.instagram.com/libertariauniversidade/'
+            target='_blank'
+          >
             <InstagramLogo size={32} />
           </a>
-          <a href='https://www.facebook.com/universidadelibertariaoficial/'>
+          <a
+            href='https://www.facebook.com/universidadelibertariaoficial/'
+            target='_blank'
+          >
             <FacebookLogo size={32} />
           </a>
-          <a href='https://www.youtube.com/c/UniversidadeLibert%C3%A1ria'>
+          <a
+            href='https://www.youtube.com/c/UniversidadeLibert%C3%A1ria'
+            target='_blank'
+          >
             <YoutubeLogo size={32} />
           </a>
-          <a href='https://t.me/unilibe' rel='noreferrer'>
+          <a href='https://t.me/uniliber' target='_blank'>
             <TelegramLogo size={32} />
           </a>
-          <a href='https://twitter.com/UniversidadeLi3'>
+          <a href='https://twitter.com/UniversidadeLi3' target='_blank'>
             <TwitterLogo size={32} />
           </a>
         </div>

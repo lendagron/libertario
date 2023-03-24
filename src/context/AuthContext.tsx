@@ -114,34 +114,36 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }, []);
 
   async function sigIn({ email, password }: SignInCredentials) {
-    try {
-      const response = await api.post("/login", {
-        email,
-        password,
-      });
+    /*  try { */
+    const response = await api.post("/login", {
+      email,
+      password,
+    });
 
-      const { token, refreshToken, permissions, roles } = response.data;
+    const { token, refreshToken, permissions, roles } = response.data;
 
-      setCookie(undefined, "CL.token", token, {
-        maxAge: 60 * 60 * 24 * 30, // 30 days
-        path: "/",
-      });
-      setCookie(undefined, "CL.refreshToken", refreshToken, {
-        maxAge: 60 * 60 * 24 * 30, // 30 days
-        path: "/",
-      });
+    setCookie(undefined, "CL.token", token, {
+      maxAge: 60 * 60 * 24 * 30, // 30 days
+      path: "/",
+    });
+    setCookie(undefined, "CL.refreshToken", refreshToken, {
+      maxAge: 60 * 60 * 24 * 30, // 30 days
+      path: "/",
+    });
 
-      setUser({
-        permissions,
-        roles,
-      });
+    setUser({
+      permissions,
+      roles,
+    });
 
-      api.defaults.headers["Authorization"] = `Bearer ${token}`;
+    api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
-      Router.push("/painel");
-    } catch (err) {
-      console.log(err);
-    }
+    Router.push("/painel");
+    /*   } catch (err) {
+      if (err.response && err.response.data) {
+        const { details } = err.response.data;
+      }
+    } */
   }
 
   async function signUp({ name, email, phone, password }: SignUpCredentials) {
