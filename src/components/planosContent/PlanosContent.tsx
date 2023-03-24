@@ -69,7 +69,7 @@ export default function PlanosContent() {
         <div className={styles.authorContainer}>
           <p>Hoppe</p>
           <div>
-            <span>R$ 69,90</span>
+            <span>R$ 49,90</span>
             <span>/mês</span>
           </div>
           <ul>
