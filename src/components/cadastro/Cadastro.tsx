@@ -36,7 +36,7 @@ export default function Cadastro() {
               `${key}: ${Array.isArray(value) ? value.join("; ") : value}`
           )
           .join("; ");
-        setSignInError(`Erro no envio de dados;  ${errorMessages}`);
+        setSignInError(`Erro no envio de dadossss;  ${errorMessages}`);
       } else {
         setSignInError("Ocorreu um erro ao processar a solicitação.");
       }
