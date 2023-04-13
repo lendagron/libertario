@@ -75,6 +75,9 @@
       line-height: 30px;
       text-align: left;
 
+      text-indent: -1.5em; /* ou o tamanho desejado */
+      padding-left: 1em; /* ou o tamanho desejado */
+
       &::before {
         content: "✔";
         color: var(--yellow-200);

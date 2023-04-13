@@ -13,7 +13,7 @@ export default function PlanosContent() {
           <p>Mises</p>
           <span>GRÁTIS</span>
           <ul>
-            <li>Cursos iniciais</li>
+            <li>Cursos introdutórios</li>
             {/* <li>Desconto com Parceiros</li>
             <li>Acesso a alguns Cursos</li>
             <li>Contêm anúncios</li>
