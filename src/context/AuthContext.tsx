@@ -74,6 +74,13 @@ type recoverCredentials = {
   email: string;
 };
 
+type changeCredentials = {
+  password: string;
+}
+
+
+
+
 type AuthContextData = {
   sigIn(credentials: SignInCredentials): Promise<void>;
   signUp(credentials: SignUpCredentials): Promise<void>;
@@ -83,6 +90,7 @@ type AuthContextData = {
   user: User;
   isAuthenticated: boolean;
   recover(credentials: recoverCredentials): Promise<void>;
+  change(credentials: changeCredentials): Promise<void>;
 };
 
 export const AuthContext = createContext({} as AuthContextData);
@@ -180,6 +188,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
     });
   }
 
+async function change({ password }: changeCredentials) {
+    await api.post("put /me", {
+       password,
+     });
+}
+
+
   async function paymentKonkin({ name }: paymentKonkinCredentials) {}
 
   return (
@@ -191,6 +206,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         payment,
         paymentKonkin,
         recover,
+        change,
         isAuthenticated,
         user,
       }}

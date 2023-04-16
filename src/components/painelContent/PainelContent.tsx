@@ -41,6 +41,7 @@ export default function PainelContent({ userMe }: Props) {
               <Crown size={25} weight='fill' />
               <span>Fazer Upgrade</span>
             </Link>
+            <Link href={"/trocar"}>Mudar Senha</Link>
           </div>
           {/* <div className={styles.cursosContainer}>
             <CursoPainel
