@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -13,8 +14,8 @@ export default function PlanosContent() {
           <p>Mises</p>
           <span>GRÁTIS</span>
           <ul>
-            <li>Aulões e Tira Dúvidas</li>
-            <li>Desconto com Parceiros</li>
+            <li>Cursos iniciais</li>
+            {/* <li>Desconto com Parceiros</li>
             <li>Acesso a alguns Cursos</li>
             <li>Contêm anúncios</li>
             <li>
@@ -34,63 +35,66 @@ export default function PlanosContent() {
             </li>
             <li>
               <s>Acesso Antecipado aos Conteúdos</s>
-            </li>
+            </li> */}
           </ul>
           <Link href={"/cadastro"}>Assine agora</Link>
         </div>
         <div className={styles.authorContainer}>
-          <p>Rothbard</p>
+          <p>Hoppe</p>
           <div>
             <span>R$ 49,90</span>
             <span>/mês</span>
           </div>
           <ul>
-            <li>Aulões e Tira Dúvidas</li>
-            <li>Desconto com Parceiros</li>
-            <li>Acesso a alguns Cursos</li>
-            <li>Sem anúncios</li>
+            <li>Todos os cursos</li>
             <li>
-              <s>Grupos Exclusivos</s>
+              Conteúdos introdutórios referente ao livro exclusivo lançado no
+              Plano Konkin
             </li>
-            <li>Aplicativo Exclusivo</li>
-            <li>Aulas Presenciais</li>
-            <li>
-              <s>Eventos Gratuitos</s>
-            </li>
-            <li>
-              <s>Um Novo Curso Todo Mês</s>
-            </li>
-            <li>
-              <s>Acesso Antecipado aos Conteúdos</s>
-            </li>
-          </ul>
-          <Link href={"/cadastroPagamento"}>Assine agora</Link>
-        </div>
-        <div className={styles.authorContainer}>
-          <p>Hoppe</p>
-          <div>
-            <span>R$ 69,90</span>
-            <span>/mês</span>
-          </div>
-          <ul>
-            <li>Aulões e Tira Dúvidas</li>
-            <li>Desconto com Parceiros</li>
-            <li>Acesso a alguns Cursos</li>
+            {/* <li>Acesso a alguns Cursos</li>
             <li>Sem anúncios</li>
             <li>Grupos Exclusivos</li>
             <li>Aplicativo Exclusivo</li>
             <li>Aulas Presenciais</li>
             <li>Eventos Gratuitos</li>
             <li>Um Novo Curso Todo Mês</li>
-            <li>Acesso Antecipado aos Conteúdos</li>
+            <li>Acesso Antecipado aos Conteúdos</li> */}
           </ul>
-          <Link href={"/cadastroPagamento"}>Assine agora</Link>
+          <Link href={"/planos"}>Lançamento dia 5 de Maio</Link>
+        </div>
+        <div className={styles.authorContainer}>
+          <p>Konkin</p>
+          <div>
+            <span>R$ 89,90</span>
+            <span>/mês</span>
+          </div>
+          <ul>
+            <li>Um livro capa dura e exclusivo por mês</li>
+            <li>
+              Desconto exclusivo de <b>25%</b> em qualquer livro e de <b>30%</b>{" "}
+              nos combos
+            </li>
+            <li>Conteúdos referente ao livro exclusivo lançado</li>
+            <li>
+              Conteúdo sobre design da obra, falando sobre os motivos das
+              escolhas
+            </li>
+            <li>
+              <b>10%</b> de cashback em LUT para os primeiros <b>100</b> membros
+            </li>
+            <li>Todos os cursos</li>
+            <li>Brindes</li>
+            <li>Eventos Gratuitos</li>
+            <li>Marca página do tema do livro</li>
+          </ul>
+          <Link href={"/planos"}>Lançamento dia 5 de Maio</Link>
         </div>
       </div>
       <p>
-        Também na opção de pagamento anual. Aceitamos cartões, boleto e
-        criptomoedas.
+        Também na opção de pagamento anual. Iremos adicionar pagamento com
+        boleto e criptomoedas também.
       </p>
     </div>
   );
 }
+

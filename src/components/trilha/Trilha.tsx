@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -43,7 +44,13 @@ export function Trilha({ trails, courses }: Props) {
               className={styles.trilha}
               onClick={() => handleClicked(trail)}
             >
-              <Image src={logoLibertarianismo} alt='logo libertarianismo' />
+              <Image
+                src={logoLibertarianismo}
+                alt='Descrição da imagem'
+                width={500}
+                height={500}
+              />
+
               <h2>{trail.name}</h2>
               <p>{trail.description}</p>
             </a>
@@ -77,3 +84,4 @@ export function Trilha({ trails, courses }: Props) {
     </div>
   );
 }
+
