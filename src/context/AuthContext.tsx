@@ -189,7 +189,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }
 
 async function change({ password }: changeCredentials) {
-    await api.post("put /me", {
+    await api.put("/me", {
        password,
      });
 }

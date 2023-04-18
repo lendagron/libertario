@@ -5,10 +5,13 @@ import Image from "next/image";
 import { FormEvent, useContext , useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import Link from "next/link";
+import { ClipLoader  } from "react-spinners";
 
 export default function Forgot(){
 const [email , setEmail] = useState("");
 const { recover } = useContext(AuthContext);
+const [isLoading, setIsLoading] = useState<boolean>(false);
+const [signInError, setSignInError] = useState<string>("");
 
 
 async function handleSubmit(event: FormEvent) {
@@ -30,6 +33,15 @@ try {
                   <label>Digite seu email para a recuperação:</label>
                   <input  type='text' placeholder='E-mail' alt='Imagem de login' onChange={(e) => setEmail(e.target.value)} />
                   <button type='submit'>Enviar Email de Recuperação</button>
+                  {isLoading && (
+                  <ClipLoader
+                   color={"#f3bf22"}
+                   loading={isLoading}
+                   size={50}
+                   className={styles.spinner}
+                 />
+                 )}
+                    {signInError && <p>{signInError}</p>}
                 </form>
                 <div>
                     <Link href={"javascript:history.back()"}>Voltar</Link>
