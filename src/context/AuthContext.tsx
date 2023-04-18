@@ -76,10 +76,7 @@ type recoverCredentials = {
 
 type changeCredentials = {
   password: string;
-}
-
-
-
+};
 
 type AuthContextData = {
   sigIn(credentials: SignInCredentials): Promise<void>;
@@ -188,12 +185,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
     });
   }
 
-async function change({ password }: changeCredentials) {
-    await api.post("put /me", {
-       password,
-     });
-}
-
+  async function change({ password }: changeCredentials) {
+    await api.put("/me", {
+      password,
+    });
+  }
 
   async function paymentKonkin({ name }: paymentKonkinCredentials) {}
 

@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -15,27 +14,6 @@ export default function PlanosContent() {
           <span>GRÁTIS</span>
           <ul>
             <li>Cursos introdutórios</li>
-            {/* <li>Desconto com Parceiros</li>
-            <li>Acesso a alguns Cursos</li>
-            <li>Contêm anúncios</li>
-            <li>
-              <s>Grupos Exclusivos</s>
-            </li>
-            <li>
-              <s>Aplicativo Exclusivo</s>
-            </li>
-            <li>
-              <s>Aulas Presenciais</s>
-            </li>
-            <li>
-              <s>Eventos Gratuitos</s>
-            </li>
-            <li>
-              <s>Um Novo Curso Todo Mês</s>
-            </li>
-            <li>
-              <s>Acesso Antecipado aos Conteúdos</s>
-            </li> */}
           </ul>
           <Link href={"/cadastro"}>Assine agora</Link>
         </div>
@@ -51,16 +29,8 @@ export default function PlanosContent() {
               Conteúdos introdutórios referente ao livro exclusivo lançado no
               Plano Konkin
             </li>
-            {/* <li>Acesso a alguns Cursos</li>
-            <li>Sem anúncios</li>
-            <li>Grupos Exclusivos</li>
-            <li>Aplicativo Exclusivo</li>
-            <li>Aulas Presenciais</li>
-            <li>Eventos Gratuitos</li>
-            <li>Um Novo Curso Todo Mês</li>
-            <li>Acesso Antecipado aos Conteúdos</li> */}
           </ul>
-          <Link href={"/planos"}>Lançamento dia 5 de Maio</Link>
+          <Link href={"/cadastroPagamento"}>Lançamento dia 5 de Maio</Link>
         </div>
         <div className={styles.authorContainer}>
           <p>Konkin</p>
@@ -87,7 +57,7 @@ export default function PlanosContent() {
             <li>Eventos Gratuitos</li>
             <li>Marca página do tema do livro</li>
           </ul>
-          <Link href={"/planos"}>Lançamento dia 5 de Maio</Link>
+          <Link href={"/cadastroPagamento"}>Lançamento dia 5 de Maio</Link>
         </div>
       </div>
       <p>
@@ -97,4 +67,3 @@ export default function PlanosContent() {
     </div>
   );
 }
-
