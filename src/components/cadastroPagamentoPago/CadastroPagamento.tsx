@@ -6,6 +6,7 @@ import { FormEvent, useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { ClipLoader } from "react-spinners";
 
+//TODO: Botar um select para escolher país, estado e cidade.
 export default function CadastroPagamento() {
   const [name, setName] = useState("");
   const [país, setPaís] = useState("");

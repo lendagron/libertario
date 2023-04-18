@@ -17,13 +17,6 @@ export function Footer() {
         <a href={"/"}>
           <Image src={Logo} alt='Logo' width={160} height={43} />
         </a>
-        {/*  <div className={styles.linksContainer}>
-          <a>contato@universidadelibertaria.com</a>
-          <span> |</span>
-          <a>Relatórios de Impacto</a>
-          <span> |</span>
-          <a>(Não) Política de Direitos Autorais</a>
-        </div> */}
         <div className={styles.iconsContainer}>
           <a
             href='https://www.instagram.com/libertariauniversidade/'
