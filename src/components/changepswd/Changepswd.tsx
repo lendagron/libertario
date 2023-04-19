@@ -7,6 +7,10 @@ import { AuthContext } from '../../context/AuthContext';
 import { ClipLoader } from "react-spinners";
 
 
+
+//TODO: arrumar o handleSubmit. Add a função do context
+//fixed 
+//add: cliploader
 export default function Changepswd(){
   const [password , setPassword] = useState("");
   const { change } = useContext(AuthContext);
@@ -52,4 +56,4 @@ export default function Changepswd(){
           </div>
        </main>
     );
-}
+} 

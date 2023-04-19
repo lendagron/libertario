@@ -1,8 +1,8 @@
 import React from "react";
-import styles from './forgot.module.scss';
-import FormLogo from "../../../public/images/formlogo.png"
+import styles from "./forgot.module.scss";
+import FormLogo from "../../../public/images/formlogo.png";
 import Image from "next/image";
-import { FormEvent, useContext , useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import Link from "next/link";
 import { ClipLoader  } from "react-spinners";
@@ -13,16 +13,14 @@ const { recover } = useContext(AuthContext);
 const [isLoading, setIsLoading] = useState<boolean>(false);
 const [signInError, setSignInError] = useState<string>("");
 
-
-async function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
-
-try {
+    try {
       await recover({ email: email });
     } catch (error) {
-        console.error("Falha ao enviar solicitação",error);
+      console.error("Falha ao enviar solicitação", error);
     }
-}
+  }
 
     return(
         <main>
@@ -50,5 +48,4 @@ try {
         </main>
     );
 }
-
 

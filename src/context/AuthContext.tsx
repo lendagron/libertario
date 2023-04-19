@@ -76,10 +76,7 @@ type recoverCredentials = {
 
 type changeCredentials = {
   password: string;
-}
-
-
-
+};
 
 type AuthContextData = {
   sigIn(credentials: SignInCredentials): Promise<void>;
@@ -194,8 +191,7 @@ async function change({ password }: changeCredentials) {
      });
 }
 
-
-  async function paymentKonkin({ name }: paymentKonkinCredentials) {}
+async function paymentKonkin({ name }: paymentKonkinCredentials) {}
 
   return (
     <AuthContext.Provider

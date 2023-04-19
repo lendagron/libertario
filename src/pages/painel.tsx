@@ -66,7 +66,6 @@ export const getServerSideProps = withSSRAuth(async (ctx) => {
   try {
     const responseTrails = await apiClient.get("/learning_trails");
     trails = responseTrails.data;
-    console.log(trails);
     const responseCourses = await apiClient.get("/courses");
     courses = responseCourses.data;
     const responseUserMe = await apiClient.get("/me");
