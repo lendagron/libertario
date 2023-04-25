@@ -3,13 +3,15 @@
 
   .headerContainer {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     padding: 13.5px 2rem;
+    max-width: 80%;
+    margin-inline: auto;
 
     .backContainer {
-      width: 45%;
       display: flex;
+      margin-right: auto;
 
       a {
         display: flex;
@@ -17,8 +19,7 @@
         justify-content: center;
         gap: 1rem;
         color: aliceblue;
-        padding: 0.5rem;
-        margin-left: 12rem;
+        padding: 0.25rem 0.5rem;
 
         font-size: 1.5rem;
         border-bottom: 2px solid var(--gray-800);
@@ -31,37 +32,23 @@
       }
     }
     .logoContainer {
-      width: 55%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+
       img {
         max-width: 13rem;
       }
     }
   }
 }
-
 @media screen and (max-width: 1120px) {
   .headerContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: center;
-    gap: 1rem;
-
-    .backContainer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      order: 2;
-
-      a {
-        margin-right: 12rem;
-      }
-    }
-    .logoContainer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      order: 1;
-    }
+    padding: 0 2rem;
+    max-width: 100% !important;
   }
 }
