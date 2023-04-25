@@ -5,6 +5,7 @@ import styles from "./cadastroPagamento.module.scss";
 import { FormEvent, useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { ClipLoader } from "react-spinners";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 //TODO: Botar um select para escolher país, estado e cidade.
 export default function CadastroPagamento() {
@@ -38,6 +39,7 @@ export default function CadastroPagamento() {
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
+
     const data = {
       name,
       email,
@@ -93,6 +95,8 @@ export default function CadastroPagamento() {
       setIsLoading(false);
     }
   }
+  console.log("país:", país);
+  console.log("estado:", estado);
   return (
     <main className={styles.wrapper}>
       <div className={styles.container}>
@@ -100,167 +104,199 @@ export default function CadastroPagamento() {
 
         <form onSubmit={handleSubmit}>
           <Image src={FormLogo} alt='Logo de login' width={75} height={75} />
-          <input
-            type='text'
-            placeholder='Nome'
-            alt='Campo nome'
-            required
-            onChange={(e) => setName(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='E-mail'
-            alt='Campo e-mail'
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type='password'
-            placeholder='Senha'
-            alt='Campo senha'
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Cpf'
-            alt='Campo cpf'
-            required
-            onChange={(e) => setCpf(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='País'
-            alt='Imagem de endereço'
-            required
-            onChange={(e) => setPaís(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Estado'
-            alt='Imagem de endereço'
-            required
-            onChange={(e) => setEstado(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Cidade'
-            alt='Imagem de endereço'
-            required
-            onChange={(e) => setCidade(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Bairro'
-            alt='Imagem de endereço'
-            required
-            onChange={(e) => setBairro(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Rua'
-            alt='Imagem de endereço'
-            required
-            onChange={(e) => setRua(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Número'
-            alt='Imagem de endereço'
-            required
-            onChange={(e) => setNúmero(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Complemento'
-            alt='Imagem de endereço'
-            required
-            onChange={(e) => setComplemento(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Cep'
-            alt='Imagem de endereço'
-            required
-            onChange={(e) => setCep(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='DDI'
-            required
-            alt='Imagem de login'
-            onChange={(e) => setDdi(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='DDD'
-            alt='Imagem de login'
-            required
-            onChange={(e) => setDdd(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Telefone'
-            alt='Imagem de login'
-            required
-            onChange={(e) => setPhone(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Id do plano'
-            alt='Imagem de login'
-            required
-            onChange={(e) => setPlanId(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Frequência do plano'
-            alt='Imagem de login'
-            required
-            onChange={(e) => setFrequency(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Label do cartão'
-            alt='Imagem de login'
-            required
-            onChange={(e) => setLabel(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Nome do titular do cartão'
-            alt='Imagem de login'
-            required
-            onChange={(e) => setHolder_name(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Número do cartão'
-            alt='Imagem de login'
-            required
-            onChange={(e) => setCard_number(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Mês de expiração do cartão'
-            alt='Imagem de login'
-            required
-            onChange={(e) => setExpiration_month(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Ano de expiração do cartão'
-            alt='Imagem de login'
-            required
-            onChange={(e) => setExpiration_year(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Cvv do cartão'
-            alt='Imagem de login'
-            required
-            onChange={(e) => setCvv(e.target.value)}
-          />
+          <div className={styles.userContainer}>
+            <input
+              type='text'
+              placeholder='Nome'
+              alt='Campo nome'
+              required
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='E-mail'
+              alt='Campo e-mail'
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <div className={styles.passwordContainer}>
+              <label htmlFor='password'>
+                A senha deve conter pelo menos 8 dígitos
+              </label>
+              <input
+                type='password'
+                name='password'
+                placeholder='Senha'
+                alt='Campo senha'
+                required
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            <input
+              type='text'
+              placeholder='Cpf'
+              alt='Campo cpf'
+              required
+              onChange={(e) => setCpf(e.target.value)}
+            />
+          </div>
+
+          <div className={styles.selectContainer}>
+            <div className={styles.countryContainer}>
+              <label htmlFor=''>País para o envio</label>
+              <CountryDropdown
+                value={país}
+                onChange={(val) => setPaís(val)}
+                classes='form-control'
+                defaultOptionLabel='Selecione o país'
+                whitelist={["BR"]}
+                valueType='short'
+              />
+            </div>
+            <div className={styles.regionContainer}>
+              <label htmlFor=''>Selecione o estado</label>
+              <RegionDropdown
+                country={país}
+                value={estado}
+                onChange={(val) => setEstado(val)}
+                classes='form-control'
+                defaultOptionLabel='Selecione o estado'
+                valueType='short'
+                countryValueType='short'
+              />
+            </div>
+          </div>
+          <div className={styles.addressContainer}>
+            <input
+              type='text'
+              placeholder='Cep'
+              alt='Imagem de endereço'
+              required
+              onChange={(e) => setCep(e.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Cidade'
+              alt='Imagem de endereço'
+              required
+              onChange={(e) => setCidade(e.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Bairro'
+              alt='Imagem de endereço'
+              required
+              onChange={(e) => setBairro(e.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Rua'
+              alt='Imagem de endereço'
+              required
+              onChange={(e) => setRua(e.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Número'
+              alt='Imagem de endereço'
+              required
+              onChange={(e) => setNúmero(e.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Complemento'
+              alt='Imagem de endereço'
+              required
+              onChange={(e) => setComplemento(e.target.value)}
+            />
+          </div>
+          <div className={styles.phoneContainer}>
+            <input
+              type='text'
+              placeholder='DDI'
+              required
+              alt='Imagem de login'
+              onChange={(e) => setDdi(e.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='DDD'
+              alt='Imagem de login'
+              required
+              onChange={(e) => setDdd(e.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Telefone'
+              alt='Imagem de login'
+              required
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
+          <div className={styles.planContainer}>
+            <input
+              type='text'
+              placeholder='Id do plano'
+              alt='Imagem de login'
+              required
+              onChange={(e) => setPlanId(e.target.value)}
+            />
+            <select
+              name='frequency'
+              placeholder='Frequência do plano'
+              required
+              onChange={(e) => setFrequency(e.target.value)}
+            >
+              <option value=''>Selecione a frequência</option>
+              <option value='monthly'>Mensal</option>
+              <option value='yearly'>Anual</option>
+            </select>
+          </div>
+          <div className={styles.cardContainer}>
+            <input
+              type='text'
+              placeholder='Label do cartão'
+              alt='Imagem de login'
+              required
+              onChange={(e) => setLabel(e.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Nome do titular do cartão'
+              alt='Imagem de login'
+              required
+              onChange={(e) => setHolder_name(e.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Número do cartão'
+              alt='Imagem de login'
+              required
+              onChange={(e) => setCard_number(e.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Mês de expiração do cartão'
+              alt='Imagem de login'
+              required
+              onChange={(e) => setExpiration_month(e.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Ano de expiração do cartão'
+              alt='Imagem de login'
+              required
+              onChange={(e) => setExpiration_year(e.target.value)}
+            />
+            <input
+              type='text'
+              placeholder='Cvv do cartão'
+              alt='Imagem de login'
+              required
+              onChange={(e) => setCvv(e.target.value)}
+            />
+          </div>
           <button type='submit'>ASSINAR</button>
           {isLoading && (
             <ClipLoader

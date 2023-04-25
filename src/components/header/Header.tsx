@@ -13,14 +13,17 @@ export function Header({ hasBack }: headerProps) {
   return (
     <header className={styles.headerWrapper}>
       <div className={styles.headerContainer}>
-        <div className={styles.backContainer}>
-          <Link href={"/"} style={{ display: hasBack ? "flex" : "none" }}>
-            <ArrowLeft size={32} />
-            <p>Voltar</p>
-          </Link>
-        </div>
+        {hasBack && (
+          <div className={styles.backContainer}>
+            <Link href={"/"}>
+              <ArrowLeft size={32} />
+              <p>Voltar</p>
+            </Link>
+          </div>
+        )}
+
         <div className={styles.logoContainer}>
-          <Link href={"/"}>
+          <Link href={"/"} style={{ marginRight: hasBack ? "7.8rem" : "0" }}>
             <Image src={Logo} alt='Logo' width={160} height={43} />
           </Link>
         </div>
@@ -28,5 +31,3 @@ export function Header({ hasBack }: headerProps) {
     </header>
   );
 }
-
-
