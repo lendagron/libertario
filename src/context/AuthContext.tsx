@@ -16,7 +16,6 @@ type SignInCredentials = {
 type SignUpCredentials = {
   name: string;
   email: string;
-  phone: string;
   password: string;
 };
 
@@ -150,11 +149,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
     Router.push("/painel");
   }
 
-  async function signUp({ name, email, phone, password }: SignUpCredentials) {
+  async function signUp({ name, email, password }: SignUpCredentials) {
     await api.post("/signup", {
       name,
       email,
-      phone,
       password,
     });
     sigIn({ email, password });
@@ -187,9 +185,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
 async function change({ password }: changeCredentials) {
     await api.put("/me", {
-       password,
-     });
-}
+
+      password,
+    });
+
+    signOut();
+  }
+
 
 async function paymentKonkin({ name }: paymentKonkinCredentials) {}
 

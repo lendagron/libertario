@@ -15,7 +15,7 @@ export default function PlanosContent() {
           <ul>
             <li>Cursos introdutórios</li>
           </ul>
-          <Link href={"/cadastro"}>Assine agora</Link>
+          <Link href={"/cadastroMises"}>Assine agora</Link>
         </div>
         <div className={styles.authorContainer}>
           <p>Hoppe</p>
@@ -30,7 +30,7 @@ export default function PlanosContent() {
               Plano Konkin
             </li>
           </ul>
-          <Link href={"/cadastroPagamento"}>Lançamento dia 5 de Maio</Link>
+          <Link href={"/cadastroHoppe"}>Lançamento dia 5 de Maio</Link>
         </div>
         <div className={styles.authorContainer}>
           <p>Konkin</p>
@@ -57,7 +57,7 @@ export default function PlanosContent() {
             <li>Eventos Gratuitos</li>
             <li>Marca página do tema do livro</li>
           </ul>
-          <Link href={"/cadastroPagamento"}>Lançamento dia 5 de Maio</Link>
+          <Link href={"/cadastroKonkin"}>Lançamento dia 5 de Maio</Link>
         </div>
       </div>
       <p>
