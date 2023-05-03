@@ -6,8 +6,6 @@ import { AuthProvider } from "../context/AuthContext";
 import styles from "../styles/app.module.scss";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const x = 1;
-  console.log(x);
   return (
     <AuthProvider>
       <div className={styles.wrapper}>

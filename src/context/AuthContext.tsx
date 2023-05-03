@@ -65,16 +65,19 @@ type paymentCredentials = {
   card_data: card_data;
 };
 
-type paymentKonkinCredentials = {
-  name: string;
-};
-
 type recoverCredentials = {
   email: string;
 };
 
-type changeCredentials = {
+type changePasswordCredentials = {
   password: string;
+  password_confirmation: string;
+};
+
+type redefinePasswordCredentials = {
+  password: string;
+  password_confirmation: string;
+  solicitation: string;
 };
 
 type AuthContextData = {
@@ -82,11 +85,11 @@ type AuthContextData = {
   signUp(credentials: SignUpCredentials): Promise<void>;
   signOut(): void;
   payment(credentials: paymentCredentials): Promise<void>;
-  paymentKonkin(credentials: paymentKonkinCredentials): Promise<void>;
   user: User;
   isAuthenticated: boolean;
   recover(credentials: recoverCredentials): Promise<void>;
-  change(credentials: changeCredentials): Promise<void>;
+  changePassword(credentials: changePasswordCredentials): Promise<void>;
+  redefinePassword(credentials: redefinePasswordCredentials): Promise<void>;
 };
 
 export const AuthContext = createContext({} as AuthContextData);
@@ -183,15 +186,31 @@ export function AuthProvider({ children }: AuthProviderProps) {
     });
   }
 
-  async function change({ password }: changeCredentials) {
-    await api.put("/me", {
+  async function redefinePassword({
+    password,
+    password_confirmation,
+    solicitation,
+  }: redefinePasswordCredentials) {
+    await api.patch("/solicitation", {
       password,
+      password_confirmation,
+      solicitation,
     });
 
     signOut();
   }
 
-  async function paymentKonkin({ name }: paymentKonkinCredentials) {}
+  async function changePassword({
+    password,
+    password_confirmation,
+  }: changePasswordCredentials) {
+    await api.put("/me", {
+      password,
+      password_confirmation,
+    });
+
+    signOut();
+  }
 
   return (
     <AuthContext.Provider
@@ -200,9 +219,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
         signUp,
         signOut,
         payment,
-        paymentKonkin,
         recover,
-        change,
+        changePassword,
+        redefinePassword,
         isAuthenticated,
         user,
       }}
