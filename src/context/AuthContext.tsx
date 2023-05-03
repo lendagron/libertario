@@ -183,15 +183,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
     });
   }
 
-  async function change({ password }: changeCredentials) {
+async function change({ password }: changeCredentials) {
     await api.put("/me", {
+
       password,
     });
 
     signOut();
   }
 
-  async function paymentKonkin({ name }: paymentKonkinCredentials) {}
+
+async function paymentKonkin({ name }: paymentKonkinCredentials) {}
 
   return (
     <AuthContext.Provider

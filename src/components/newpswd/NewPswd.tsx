@@ -1,6 +1,6 @@
 import React, { FormEvent } from "react";
 import Image from "next/image";
-// import Link from 'next/link'
+import Link from 'next/link'
 import styles from "./newpswd.module.scss";
 import FormLogo from "../../../public/images/formlogo.png";
 import { useState } from "react";
@@ -11,7 +11,7 @@ export default function NewPswd() {
   //TODO: arrumar o handleSubmit. Add a função do context
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
-  }
+}
 
   return (
     <main>
