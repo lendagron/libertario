@@ -5,12 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { AuthContext } from "../../context/AuthContext";
 import { ClipLoader } from "react-spinners";
+import { CheckCircle } from "phosphor-react";
 
 export function HomepageContent() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [signInError, setSignInError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [confirm, setConfirm] = useState<boolean>(false);
 
   const { sigIn } = useContext(AuthContext);
 
@@ -23,6 +25,7 @@ export function HomepageContent() {
     try {
       setIsLoading(true);
       await sigIn(data);
+      setConfirm(true);
     } catch (error) {
       if (error.response && error.response.data) {
         const { details } = error.response.data;
@@ -70,6 +73,7 @@ export function HomepageContent() {
               className={styles.spinner}
             />
           )}
+          {confirm && <CheckCircle size={35} color='green' />}
           {signInError && <p>{signInError}</p>}
 
           <Link href='/recuperar'>Esqueceu o usuário ou senha?</Link>

@@ -1,12 +1,12 @@
 import React, { FormEvent, useContext, useEffect } from "react";
 import Image from "next/image";
-// import Link from 'next/link'
 import styles from "./newpswd.module.scss";
 import FormLogo from "../../../public/images/formlogo.png";
 import { useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { ClipLoader } from "react-spinners";
 import { useRouter } from "next/router";
+import { CheckCircle } from "phosphor-react";
 
 export default function NewPswd() {
   const [password, setPassword] = useState("");
@@ -14,6 +14,7 @@ export default function NewPswd() {
   const [solicitation, setSolicitation] = useState("t");
   const [signInError, setSignInError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [confirm, setConfirm] = useState<boolean>(false);
 
   const router = useRouter();
 
@@ -52,6 +53,7 @@ export default function NewPswd() {
       }
     } finally {
       setIsLoading(false);
+      setConfirm(true);
     }
   }
 
@@ -84,6 +86,7 @@ export default function NewPswd() {
               className={styles.spinner}
             />
           )}
+          {confirm && <CheckCircle size={35} color='green' />}
           {signInError && <p>{signInError}</p>}
         </form>
       </div>
