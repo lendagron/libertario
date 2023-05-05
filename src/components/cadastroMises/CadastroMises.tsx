@@ -5,6 +5,7 @@ import styles from "./cadastroMises.module.scss";
 import { FormEvent, useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { ClipLoader } from "react-spinners";
+import { CheckCircle } from "phosphor-react";
 
 export default function Cadastro() {
   const [name, setName] = useState("");
@@ -12,6 +13,7 @@ export default function Cadastro() {
   const [password, setPassword] = useState("");
   const [signInError, setSignInError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [confirm, setConfirm] = useState<boolean>(false);
 
   const { signUp } = useContext(AuthContext);
 
@@ -25,16 +27,20 @@ export default function Cadastro() {
     try {
       setIsLoading(true);
       await signUp(data);
+      setConfirm(true);
     } catch (error) {
       if (error.response && error.response.data) {
-        const { details } = error.response.data;
-        const errorMessages = Object.entries(details)
-          .map(
-            ([key, value]) =>
-              `${key}: ${Array.isArray(value) ? value.join("; ") : value}`
-          )
-          .join("; ");
-        setSignInError(`Erro no envio de dados;  ${errorMessages}`);
+        const { message, details } = error.response.data;
+        if (details) {
+          const errorMessages = Object.entries(details)
+            .map(([key, value]) => `${key}: ${value}`)
+            .join("; ");
+          setSignInError(`Erro no envio de dados: ${errorMessages}`);
+        } else if (message) {
+          setSignInError(message);
+        } else {
+          setSignInError("Ocorreu um erro ao processar a solicitação.");
+        }
       } else {
         setSignInError("Ocorreu um erro ao processar a solicitação.");
       }
@@ -78,7 +84,11 @@ export default function Cadastro() {
               className={styles.spinner}
             />
           )}
-          {signInError && <p>{signInError}</p>}
+          {confirm ? (
+            <CheckCircle size={35} color='green' />
+          ) : signInError && !confirm ? (
+            <p>{signInError}</p>
+          ) : null}
         </form>
         <div>
           <Link href={"javascript:history.back()"}>Voltar</Link>

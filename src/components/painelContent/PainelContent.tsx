@@ -26,7 +26,7 @@ interface Props {
 }
 
 export default function PainelContent({ userMe }: Props) {
-  const lastId = userMe.subscriptions.length - 1;
+  const lastId = userMe?.subscriptions?.length - 1 ?? -1;
 
   return (
     <>
@@ -34,8 +34,8 @@ export default function PainelContent({ userMe }: Props) {
 
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          <h2>Olá, {userMe.name}</h2>
-          <p>O seu plano é: {userMe.subscriptions[lastId].plan.name}</p>
+          <h2>Olá, {userMe?.name}</h2>
+          <p>O seu plano é: {userMe?.subscriptions[lastId].plan.name}</p>
           <div className={styles.buttonsContainer}>
             <Link href={"/upgradePlano"}>
               <Crown size={25} weight='fill' />

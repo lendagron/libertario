@@ -28,14 +28,17 @@ export function HomepageContent() {
       setConfirm(true);
     } catch (error) {
       if (error.response && error.response.data) {
-        const { details } = error.response.data;
-        const errorMessages = Object.entries(details)
-          .map(
-            ([key, value]) =>
-              `${key}: ${Array.isArray(value) ? value.join("; ") : value}`
-          )
-          .join("; ");
-        setSignInError(`Erro no envio de dados;  ${errorMessages}`);
+        const { message, details } = error.response.data;
+        if (details) {
+          const errorMessages = Object.entries(details)
+            .map(([key, value]) => `${key}: ${value}`)
+            .join("; ");
+          setSignInError(`Erro no envio de dados: ${errorMessages}`);
+        } else if (message) {
+          setSignInError(message);
+        } else {
+          setSignInError("Ocorreu um erro ao processar a solicitação.");
+        }
       } else {
         setSignInError("Ocorreu um erro ao processar a solicitação.");
       }
@@ -73,8 +76,11 @@ export function HomepageContent() {
               className={styles.spinner}
             />
           )}
-          {confirm && <CheckCircle size={35} color='green' />}
-          {signInError && <p>{signInError}</p>}
+          {confirm ? (
+            <CheckCircle size={35} color='green' />
+          ) : signInError && !confirm ? (
+            <p>{signInError}</p>
+          ) : null}
 
           <Link href='/recuperar'>Esqueceu o usuário ou senha?</Link>
         </form>

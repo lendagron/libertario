@@ -6,6 +6,7 @@ import { FormEvent, useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { ClipLoader } from "react-spinners";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
+import { CheckCircle } from "phosphor-react";
 
 //TODO: Botar um select para escolher país, estado e cidade.
 export default function CadastroPagamento() {
@@ -34,6 +35,7 @@ export default function CadastroPagamento() {
   const [cvv, setCvv] = useState("");
   const [signInError, setSignInError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [confirm, setConfirm] = useState<boolean>(false);
 
   const { payment } = useContext(AuthContext);
 
@@ -78,16 +80,20 @@ export default function CadastroPagamento() {
     try {
       setIsLoading(true);
       await payment(data);
+      setConfirm(true);
     } catch (error) {
       if (error.response && error.response.data) {
-        const { details } = error.response.data;
-        const errorMessages = Object.entries(details)
-          .map(
-            ([key, value]) =>
-              `${key}: ${Array.isArray(value) ? value.join("; ") : value}`
-          )
-          .join("; ");
-        setSignInError(`Erro no envio de dados;  ${errorMessages}`);
+        const { message, details } = error.response.data;
+        if (details) {
+          const errorMessages = Object.entries(details)
+            .map(([key, value]) => `${key}: ${value}`)
+            .join("; ");
+          setSignInError(`Erro no envio de dados: ${errorMessages}`);
+        } else if (message) {
+          setSignInError(message);
+        } else {
+          setSignInError("Ocorreu um erro ao processar a solicitação.");
+        }
       } else {
         setSignInError("Ocorreu um erro ao processar a solicitação.");
       }
@@ -313,7 +319,11 @@ export default function CadastroPagamento() {
               className={styles.spinner}
             />
           )}
-          {signInError && <p>{signInError}</p>}
+          {confirm ? (
+            <CheckCircle size={35} color='green' />
+          ) : signInError && !confirm ? (
+            <p>{signInError}</p>
+          ) : null}
         </form>
         <div>
           <Link href={"javascript:history.back()"}>Voltar</Link>
