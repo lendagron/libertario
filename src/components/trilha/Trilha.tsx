@@ -1,7 +1,6 @@
-
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./trilha.module.scss";
 import logoLibertarianismo from "../../../public/images/logoLibertarianismo.svg";
 import { motion } from "framer-motion";
@@ -20,16 +19,30 @@ interface Course {
   learning_trails: number[];
   teacher: string;
 }
+
 interface Props {
   trails: Trail[];
   courses: Course[];
 }
+
 export function Trilha({ trails, courses }: Props) {
   const [clickedTrail, setClickedTrail] = useState<Trail | null>(null);
 
   function handleClicked(trail: Trail) {
     setClickedTrail(trail);
   }
+
+  useEffect(() => {
+    const coursesSection = document.getElementById("courses-section");
+    if (clickedTrail && coursesSection) {
+      coursesSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    }
+  }, [clickedTrail]);
+
   return (
     <div className={styles.wrapper}>
       <h1>
@@ -58,7 +71,7 @@ export function Trilha({ trails, courses }: Props) {
       </div>
 
       {clickedTrail && (
-        <div className={styles.coursesContainer}>
+        <div id='courses-section' className={styles.coursesContainer}>
           <h3> Cursos da trilha {clickedTrail.name}</h3>
           {clickedTrail &&
             courses
@@ -84,4 +97,3 @@ export function Trilha({ trails, courses }: Props) {
     </div>
   );
 }
-

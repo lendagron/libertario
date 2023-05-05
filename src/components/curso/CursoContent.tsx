@@ -41,7 +41,9 @@ export default function CursoContent({
   const [aulas, setAulas] = useState(false);
   const [visaoGeral, setVisaoGeral] = useState(true);
   const [mais, setMais] = useState(false);
-  const [activeLesson, setActiveLesson] = useState(selectedLesson);
+  const [activeLesson, setActiveLesson] = useState(
+    selectedLesson ? selectedLesson : lessons[0]
+  );
   const [showMenu, setShowMenu] = useState(true);
 
   useEffect(() => {
@@ -56,12 +58,10 @@ export default function CursoContent({
     setMais(false);
   }
 
-  function handleMais() {
-    setMais(true);
-    setVisaoGeral(false);
-  }
-
   function handleSelectLesson(lesson) {
+    document
+      .querySelector(`.${styles.active}`)
+      ?.classList.remove(styles.active);
     setActiveLesson(lesson);
   }
 
@@ -100,13 +100,6 @@ export default function CursoContent({
                 conteudo={course.description}
               />
             )}
-            {mais && (
-              <CursoMenuContent
-                titulo='mais titulo'
-                subtitulo='mais subtitulo'
-                conteudo='mais   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil esse tempore asperiores labore non. Ea eius odit molestias deserunt harum?   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil esse tempore asperiores labore non. Ea eius odit molestias deserunt harum?'
-              />
-            )}
           </div>
         </div>
         <aside>
@@ -123,7 +116,9 @@ export default function CursoContent({
                   <a
                     onClick={() => handleSelectLesson(lesson)}
                     className={
-                      activeLesson === lesson ? styles.active : styles.noBorder
+                      activeLesson === lesson
+                        ? `${styles.active} ${styles.activeLesson}`
+                        : styles.noBorder
                     }
                   >
                     {lesson.name}

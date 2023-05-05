@@ -15,7 +15,7 @@ export default function PlanosContent() {
           <ul>
             <li>Cursos introdutórios</li>
           </ul>
-          <Link href={"/cadastroMises"}>Assine agora</Link>
+          <Link href={"/cadastroMises"}>Assine Agora</Link>
         </div>
         <div className={styles.authorContainer}>
           <p>Hoppe</p>
@@ -30,7 +30,9 @@ export default function PlanosContent() {
               Plano Konkin
             </li>
           </ul>
-          <Link href={"/cadastroHoppe"}>Lançamento dia 5 de Maio</Link>
+          <Link href={"/cadastroHoppe"} className={styles.disabled}>
+            Em Breve
+          </Link>
         </div>
         <div className={styles.authorContainer}>
           <p>Konkin</p>
@@ -57,12 +59,15 @@ export default function PlanosContent() {
             <li>Eventos Gratuitos</li>
             <li>Marca página do tema do livro</li>
           </ul>
-          <Link href={"/cadastroKonkin"}>Lançamento dia 5 de Maio</Link>
+
+          <Link href={"/cadastroKonkin"} className={styles.disabled}>
+            Em Breve
+          </Link>
         </div>
       </div>
       <p>
         Também na opção de pagamento anual. Iremos adicionar pagamento com
-        boleto e criptomoedas também.
+        boleto e criptomoedas em breve.
       </p>
     </div>
   );

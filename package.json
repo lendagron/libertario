@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.1.0",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "@vimeo/player": "^2.19.0",
     "axios": "^1.2.0",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
@@ -26,11 +28,13 @@
     "react": "18.2.0",
     "react-country-region-selector": "^3.6.1",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.9",
     "react-spinners": "^0.13.8",
     "sass": "^1.56.1",
     "scss": "^0.2.4",
     "typescript": "4.9.3",
-    "vimeo": "^2.1.1"
+    "vimeo": "^2.1.1",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/iso-3166-1-alpha-2": "^1.0.0",

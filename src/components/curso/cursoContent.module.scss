@@ -118,7 +118,7 @@
   }
   .container {
     flex-direction: column-reverse;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     gap: 0rem;
     padding: 0rem;
@@ -154,7 +154,7 @@
         text-align: center;
         padding: 0 0 1rem 0;
 
-        .active {
+        .activeLesson {
           border-bottom: 3px solid var(--yellow);
         }
 
@@ -170,23 +170,24 @@
     }
 
     .cursoContainer {
+      width: 100%;
+
       h2 {
         width: 500px;
-        height: 50%;
+        height: 100%;
       }
 
       .vimeoVideo {
-        height: 200px;
-
         display: flex;
         align-items: center;
-        justify-content: flex-start;
-
-        background-color: white;
+        justify-content: center;
+        height: 250px;
 
         iframe {
           padding: 0;
           margin: 0;
+          height: 100%;
+          width: 100%;
         }
       }
     }
