@@ -96,14 +96,10 @@
     a {
       font-weight: 600;
       font-size: 1.875rem;
-      line-height: 43px;
       color: black;
       text-decoration: none;
-
       text-align: center;
-
       background-color: var(--yellow-200);
-
       padding: 0.5625rem 2.875rem;
       border-radius: 5px;
 
@@ -113,6 +109,10 @@
         background-color: black;
         color: var(--yellow-200);
       }
+    }
+
+    .disabled {
+      pointer-events: none;
     }
   }
 }
