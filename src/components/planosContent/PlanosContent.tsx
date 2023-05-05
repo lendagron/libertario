@@ -30,7 +30,9 @@ export default function PlanosContent() {
               Plano Konkin
             </li>
           </ul>
-          <Link href={"/cadastroHoppe"}>Assine Agora</Link>
+          <Link href={"/cadastroHoppe"} className={styles.disabled}>
+            Em Breve
+          </Link>
         </div>
         <div className={styles.authorContainer}>
           <p>Konkin</p>
