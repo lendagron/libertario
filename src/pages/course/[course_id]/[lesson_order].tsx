@@ -56,7 +56,7 @@ function getSelectedLesson(lessons, order) {
   const activeLesson = lessons.filter(
     (element) => element.order.toString() === order
   );
-  return activeLesson[0];
+  return activeLesson[0] || null;
 }
 
 export const getServerSideProps = withSSRAuth(async (ctx) => {
