@@ -1,8 +1,10 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import CursoMenuContent from "./cursoMenuContent/CursoMenuContent";
 import styles from "./cursoContent.module.scss";
 import { useRouter } from "next/router";
 import { ArrowDown, ArrowUp } from "phosphor-react";
+
+import VimeoPlayer from "../vimeoPlayer/VimeoPlayer";
 
 interface Lesson {
   id: number;
@@ -45,6 +47,9 @@ export default function CursoContent({
     selectedLesson ? selectedLesson : lessons[0]
   );
   const [showMenu, setShowMenu] = useState(true);
+  const [lessonWatchedPercentages, setLessonWatchedPercentages] = useState({});
+  const [courseCompletionPercentage, setCourseCompletionPercentage] =
+    useState(0);
 
   useEffect(() => {
     if (activeLesson) {
@@ -52,6 +57,15 @@ export default function CursoContent({
       router.push(route, route, { shallow: true });
     }
   }, [activeLesson]);
+
+  useEffect(() => {
+    const totalWatchedPercentage = Object.values(
+      lessonWatchedPercentages
+    ).reduce((sum: number, curr: number) => sum + Number(curr), 0);
+    const averageWatchedPercentage =
+      (totalWatchedPercentage as number) / lessons.length;
+    setCourseCompletionPercentage(averageWatchedPercentage);
+  }, [lessonWatchedPercentages]);
 
   function handleVisaoGeral() {
     setVisaoGeral(true);
@@ -69,22 +83,44 @@ export default function CursoContent({
     setShowMenu(!showMenu);
   }
 
+  const handleWatchedPercentageChange = (lessonId, percentage) => {
+    setLessonWatchedPercentages((prev) => ({
+      ...prev,
+      [lessonId]: percentage,
+    }));
+  };
+
   return (
     /* TODO: Arrumar aqui a parte da url igual a UL anterior */
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <div className={styles.cursoContainer}>
           <div className={styles.vimeoVideo}>
-            {activeLesson !== undefined ? (
-              <iframe
-                src={`https://player.vimeo.com/video/${activeLesson.vimeo_id}`}
-                allow='autoplay; fullscreen'
-                allowFullScreen
-              ></iframe>
+            {activeLesson !== undefined || activeLesson !== null ? (
+              <>
+                <VimeoPlayer
+                  videoId={activeLesson.vimeo_id}
+                  onWatchedPercentageChange={(percentage) =>
+                    handleWatchedPercentageChange(activeLesson.id, percentage)
+                  }
+                  watchedPercentage={
+                    (lessonWatchedPercentages[activeLesson.id] || 0) / 100
+                  }
+                />
+              </>
             ) : (
               <p>Vídeo não encontrado...</p>
             )}
           </div>
+
+          <div>
+            Conclusão do vídeo: {lessonWatchedPercentages[activeLesson.id] ?? 0}
+            %
+          </div>
+          <div>
+            Conclusão do curso: {courseCompletionPercentage.toFixed(2) ?? 0}%
+          </div>
+
           <nav>
             <ul>
               <li>
@@ -95,7 +131,7 @@ export default function CursoContent({
           <div>
             {visaoGeral && (
               <CursoMenuContent
-                titulo='Sobre este Curso'
+                titulo="Sobre este Curso"
                 subtitulo={course.name}
                 conteudo={course.description}
               />
