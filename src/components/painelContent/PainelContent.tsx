@@ -37,7 +37,7 @@ export default function PainelContent({ userMe }: Props) {
           <h2>Olá, {userMe?.name}</h2>
           <p>O seu plano é: {userMe?.subscriptions[lastId].plan.name}</p>
           <div className={styles.buttonsContainer}>
-            <Link href={"/upgradePlano"}>
+            <Link href={""} className={styles.disabled}>
               <Crown size={25} weight='fill' />
               <span>Fazer Upgrade</span>
             </Link>
