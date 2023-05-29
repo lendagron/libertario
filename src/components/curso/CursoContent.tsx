@@ -43,13 +43,17 @@ export default function CursoContent({
   const [aulas, setAulas] = useState(false);
   const [visaoGeral, setVisaoGeral] = useState(true);
   const [mais, setMais] = useState(false);
-  const [activeLesson, setActiveLesson] = useState(
-    selectedLesson ? selectedLesson : lessons[0]
-  );
+  const [activeLesson, setActiveLesson] = useState(selectedLesson);
   const [showMenu, setShowMenu] = useState(true);
   const [lessonWatchedPercentages, setLessonWatchedPercentages] = useState({});
   const [courseCompletionPercentage, setCourseCompletionPercentage] =
     useState(0);
+
+  useEffect(() => {
+    if (lessons.length > 0 && !activeLesson) {
+      setActiveLesson(lessons[0]);
+    }
+  }, [lessons]);
 
   useEffect(() => {
     if (activeLesson) {
@@ -96,7 +100,7 @@ export default function CursoContent({
       <div className={styles.container}>
         <div className={styles.cursoContainer}>
           <div className={styles.vimeoVideo}>
-            {activeLesson !== undefined || activeLesson !== null ? (
+            {activeLesson !== undefined && activeLesson !== null ? (
               <>
                 <VimeoPlayer
                   videoId={activeLesson.vimeo_id}
@@ -114,11 +118,11 @@ export default function CursoContent({
           </div>
 
           <div>
-            Conclusão do vídeo: {lessonWatchedPercentages[activeLesson.id] ?? 0}
-            %
+            Conclusão do vídeo:{" "}
+            {lessonWatchedPercentages[activeLesson?.id] ?? 0}%
           </div>
           <div>
-            Conclusão do curso: {courseCompletionPercentage.toFixed(2) ?? 0}%
+            Conclusão do curso: {courseCompletionPercentage?.toFixed(2) ?? 0}%
           </div>
 
           <nav>
@@ -152,7 +156,7 @@ export default function CursoContent({
                   <a
                     onClick={() => handleSelectLesson(lesson)}
                     className={
-                      activeLesson === lesson
+                      activeLesson.id === lesson.id
                         ? `${styles.active} ${styles.activeLesson}`
                         : styles.noBorder
                     }
