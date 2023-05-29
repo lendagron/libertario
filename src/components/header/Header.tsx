@@ -2,8 +2,11 @@ import React from "react";
 import styles from "./header.module.scss";
 import Logo from "../../../public/images/Logo.png";
 import Image from "next/image";
-import Link from "next/link";
+//import Link from "next/link";
 import { ArrowLeft } from "phosphor-react";
+import { Navbar, Button, Link, Text } from "@nextui-org/react";
+
+
 
 interface headerProps {
   hasBack: boolean;

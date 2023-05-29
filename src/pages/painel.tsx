@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import PainelContent from "../components/painelContent/PainelContent";
 import { setupApiClient } from "../services/api";
@@ -5,6 +6,8 @@ import { withSSRAuth } from "../utils/withSSRAuth";
 import { Trilha } from "../components/trilha/Trilha";
 import Course from "./course/[course_id]";
 import { HeaderLogged } from "../components/headerLogged/HeaderLogged";
+import Sidebar from "../components/sidebar/Sidebar";
+import { Container, Row, Col, Spacer } from "@nextui-org/react";
 
 interface Trail {
   id: number;
@@ -51,9 +54,18 @@ export default function Painel({ trails, courses, userMe }: Props) {
       <Head>
         <title>Clube da Liberdade | Painel</title>
       </Head>
-      <HeaderLogged isPainel={true} />
-      <PainelContent userMe={userMe} />
-      <Trilha trails={trails} courses={courses} />
+      <Container fluid>
+        <Row gap={0}>
+          <Col span={3}>
+            <Sidebar />
+          </Col>
+          <Col>
+            <HeaderLogged isPainel={true} />
+            <PainelContent userMe={userMe} />
+            <Trilha trails={trails} courses={courses} />
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }
