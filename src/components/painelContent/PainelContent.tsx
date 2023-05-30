@@ -4,6 +4,8 @@ import Image from "next/image";
 import bannerimg from "../../../public/images/bannerPainel.png";
 import { CursoPainel } from "../cursoPainel/CursoPainel";
 import { Crown } from "phosphor-react";
+import { Card, Text } from '@nextui-org/react';
+
 
 type Plan = {
   id: number;
@@ -43,6 +45,11 @@ export default function PainelContent({ userMe }: Props) {
             </Link>
             <Link href={"/trocar"}>Mudar Senha</Link>
           </div>
+          <Card css={{ mw: "400px" }}>
+            <Card.Body>
+              <Text>A basic card</Text>
+            </Card.Body>
+          </Card>
           {/* <div className={styles.cursosContainer}>
             <CursoPainel
               titulo='Último Curso Assistido'
