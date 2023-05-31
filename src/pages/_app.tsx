@@ -7,14 +7,13 @@ import { createTheme, NextUIProvider } from "@nextui-org/react";
 import styles from "../styles/app.module.scss";
 
 const theme = createTheme({
-  type: "dark", // it could be "light" or "dark"
+  type: "light", // it could be "light" or "dark"
   theme: {
     colors: {
-      background: '#222222',
       primary: 'yellow',
       secondary: 'black',
-      link:'yellow'
-    },
+      link:'black'
+    }
   }
 })
 

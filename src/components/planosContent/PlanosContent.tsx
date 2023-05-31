@@ -1,4 +1,8 @@
-import Link from "next/link";
+import { Button, Card, Divider, Grid, Link, Text } from '@nextui-org/react';
+import React from 'react';
+import { Check } from "phosphor-react";
+import { Box } from '../styles/box';
+import { Flex } from '../styles/flex';
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import styles from "./planosContent.module.scss";
@@ -6,69 +10,80 @@ import styles from "./planosContent.module.scss";
 export default function PlanosContent() {
   const { isAuthenticated } = useContext(AuthContext);
   return (
-    <div className={styles.planosWrapper}>
-      <h2>Compare os Planos</h2>
-      <div className={styles.planosContainer}>
-        <div className={styles.authorContainer}>
-          <p>Mises</p>
-          <span>GRÁTIS</span>
-          <ul>
-            <li>Cursos introdutórios</li>
-          </ul>
-          <Link href={"/cadastroMises"}>Assine Agora</Link>
-        </div>
-        <div className={styles.authorContainer}>
-          <p>Hoppe</p>
-          <div>
-            <span>R$ 49,90</span>
-            <span>/mês</span>
-          </div>
-          <ul>
-            <li>Todos os cursos</li>
-            <li>
-              Conteúdos introdutórios referente ao livro exclusivo lançado no
-              Plano Konkin
-            </li>
-          </ul>
-          <Link href={"/cadastroHoppe"} className={styles.disabled}>
-            Em Breve
-          </Link>
-        </div>
-        <div className={styles.authorContainer}>
-          <p>Konkin</p>
-          <div>
-            <span>R$ 89,90</span>
-            <span>/mês</span>
-          </div>
-          <ul>
-            <li>Um livro capa dura e exclusivo por mês</li>
-            <li>
-              Desconto exclusivo de <b>25%</b> em qualquer livro e de <b>30%</b>{" "}
-              nos combos
-            </li>
-            <li>Conteúdos referente ao livro exclusivo lançado</li>
-            <li>
-              Conteúdo sobre design da obra, falando sobre os motivos das
-              escolhas
-            </li>
-            <li>
-              <b>10%</b> de cashback em LUT para os primeiros <b>100</b> membros
-            </li>
-            <li>Todos os cursos</li>
-            <li>Brindes</li>
-            <li>Eventos Gratuitos</li>
-            <li>Marca página do tema do livro</li>
-          </ul>
+    <>
+       <Flex
+          css={{py: '$20', gap: '1rem', px: '$6'}}
+          justify={'center'}
+          wrap={'wrap'}
+          direction={'column'}
+          align={'center'}
+       >
+          <Flex direction={'column'} align={'center'}>
+             <Text span css={{color: '$blue600'}}>
+                Ajude a construir uma sociedade mais livre.
+             </Text>
+             <Text h1>Escolha seu Plano</Text>
+          </Flex>
 
-          <Link href={"/cadastroKonkin"} className={styles.disabled}>
-            Em Breve
-          </Link>
-        </div>
-      </div>
-      <p>
-        Também na opção de pagamento anual. Iremos adicionar pagamento com
-        boleto e criptomoedas em breve.
-      </p>
-    </div>
+          <Flex
+             css={{gap: '2rem', width: '100%'}}
+             wrap={'wrap'}
+             justify={'center'}
+          >
+          <Card css={{ p: '$6', mw: '400px' }}>
+            <Card.Header>
+              <Grid.Container css={{ pl: '$6' }}>
+                <Grid xs={12}>
+                  <Text h4 css={{ lineHeight: '$xs' }}>
+                    Mises
+                  </Text>
+                </Grid>
+                <Grid xs={12}>
+                  <Text css={{ color: '$accents8' }}>
+                    Descrição Teste
+                  </Text>
+                </Grid>
+              </Grid.Container>
+            </Card.Header>
+            <Card.Body css={{ py: '$2' }}>
+              <Text css={{ display: 'contents' }} h2>
+                R$ 10{' '}
+              </Text>
+              <Text css={{ display: 'contents', color: '$accents8' }}>
+                /mês
+              </Text>
+              <Button css={{ mt: '$7', mb: '$12'}} href="/" as="a">Acesse</Button>
+
+              <Divider />
+              <Box as={'ul'}>
+                <Flex
+                  as={'li'}
+                  css={{ py: '$2', gap: '$2' }}
+                  align={'center'}
+                >
+                  <Check />
+                  <Text span css={{ color: '$accents8' }}>
+                    Vantagem 1
+                  </Text>
+                </Flex>
+                <Flex
+                  as={'li'}
+                  css={{ py: '$2', gap: '$2', textDecoration: 'line-through' }}
+                  align={'center'}
+                >
+                  <Check />
+                  <Text span css={{ color: '$accents8' }}>
+                    Vantagem 2
+                  </Text>
+                </Flex>
+              </Box>
+            </Card.Body>
+          </Card>
+          </Flex>
+       </Flex>
+       <Divider
+          css={{position: 'absolute', inset: '0p', left: '0', mt: '$5'}}
+       />
+    </>
   );
 }
