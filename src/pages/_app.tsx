@@ -13,7 +13,7 @@ const theme = createTheme({
       primary: 'yellow',
       secondary: 'black',
       link:'black'
-    },
+    }
   }
 })
 
