@@ -6,6 +6,7 @@ import Image from "next/image";
 import { AuthContext } from "../../context/AuthContext";
 import { ClipLoader } from "react-spinners";
 import { CheckCircle } from "phosphor-react";
+import { useRouter } from 'next/router';
 
 export function HomepageContent() {
   const [password, setPassword] = useState("");
@@ -14,6 +15,10 @@ export function HomepageContent() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [confirm, setConfirm] = useState<boolean>(false);
 
+  const router = useRouter();
+  const { redirect } = router.query;
+  const destination = redirect ? "/" + redirect : "/painel";
+
   const { sigIn } = useContext(AuthContext);
 
   async function handleSubmitSignIn(event: FormEvent) {
@@ -21,6 +26,7 @@ export function HomepageContent() {
     const data = {
       email,
       password,
+      destination,
     };
     try {
       setIsLoading(true);
