@@ -1,10 +1,10 @@
-import { useContext, useState, useEffect, useRef } from "react";
-import CursoMenuContent from "./cursoMenuContent/CursoMenuContent";
-import styles from "./cursoContent.module.scss";
-import { useRouter } from "next/router";
-import { ArrowDown, ArrowUp } from "phosphor-react";
+import { useContext, useState, useEffect, useRef } from 'react';
+import CursoMenuContent from './cursoMenuContent/CursoMenuContent';
+import styles from './cursoContent.module.scss';
+import { useRouter } from 'next/router';
+import { ArrowDown, ArrowUp } from 'phosphor-react';
 
-import VimeoPlayer from "../vimeoPlayer/VimeoPlayer";
+import VimeoPlayer from '../vimeoPlayer/VimeoPlayer';
 
 interface Lesson {
   id: number;
@@ -118,7 +118,7 @@ export default function CursoContent({
           </div>
 
           <div>
-            Conclusão do vídeo:{" "}
+            Conclusão do vídeo:{' '}
             {lessonWatchedPercentages[activeLesson?.id] ?? 0}%
           </div>
           <div>
@@ -149,7 +149,7 @@ export default function CursoContent({
               {showMenu ? <ArrowUp size={32} /> : <ArrowDown size={32} />}
             </a>
           </div>
-          <nav style={{ display: showMenu ? "flex" : "none" }}>
+          <nav style={{ display: showMenu ? 'flex' : 'none' }}>
             <ul>
               {lessons.map((lesson) => (
                 <li key={lesson.id}>
