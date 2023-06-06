@@ -13,7 +13,7 @@ export function withSSRAuth<P>(fn: GetServerSideProps<P>): GetServerSideProps {
     if (!cookies["CL.token"]) {
       return {
         redirect: {
-          destination: "/",
+          destination: "/?redirect=" + ctx.resolvedUrl,
           permanent: false,
         },
       };
