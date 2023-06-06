@@ -1,9 +1,18 @@
+<<<<<<< HEAD
+import { Button, Card, Divider, Grid, Link, Text } from "@nextui-org/react";
+import React from "react";
+import { Check } from "phosphor-react";
+import { Box } from "../styles/box";
+import { Flex } from "../styles/flex";
+import { useContext } from "react";
+=======
 import { Button, Card, Divider, Grid, Link, Text, Spacer } from '@nextui-org/react';
 import React from 'react';
 import { Check } from "phosphor-react";
 import { Box } from '../styles/box';
 import { Flex } from '../styles/flex';
 import { useContext, useState } from "react";
+>>>>>>> 7bcd13ce8be08241a695da81de58d6da5ba17063
 import { AuthContext } from "../../context/AuthContext";
 import styles from "./planosContent.module.scss";
 
@@ -15,6 +24,21 @@ export default function PlanosContent() {
 
   return (
     <>
+<<<<<<< HEAD
+      <Flex
+        css={{ py: "$20", gap: "1rem", px: "$6" }}
+        justify={"center"}
+        wrap={"wrap"}
+        direction={"column"}
+        align={"center"}
+      >
+        <Flex direction={"column"} align={"center"}>
+          <Text span css={{ color: "$blue600" }}>
+            Ajude a construir uma sociedade mais livre.
+          </Text>
+          <Text h1>Escolha seu Plano</Text>
+        </Flex>
+=======
        <Flex
           css={{py: '$20', gap: '1rem', px: '$6'}}
           justify={'center'}
@@ -53,21 +77,31 @@ export default function PlanosContent() {
              </Button.Group>
              <Spacer />
           </Flex>
+>>>>>>> 7bcd13ce8be08241a695da81de58d6da5ba17063
 
-          <Flex
-             css={{gap: '2rem', width: '100%'}}
-             wrap={'wrap'}
-             justify={'center'}
-          >
-          <Card css={{ p: '$6', mw: '400px' }}>
+        <Flex
+          css={{ gap: "2rem", width: "100%" }}
+          wrap={"wrap"}
+          justify={"center"}
+        >
+          <Card css={{ p: "$6", mw: "400px" }}>
             <Card.Header>
-              <Grid.Container css={{ pl: '$6' }}>
+              <Grid.Container css={{ pl: "$6" }}>
                 <Grid xs={12}>
-                  <Text h4 css={{ lineHeight: '$xs' }}>
+                  <Text h4 css={{ lineHeight: "$xs" }}>
                     Mises
                   </Text>
                 </Grid>
                 <Grid xs={12}>
+<<<<<<< HEAD
+                  <Text css={{ color: "$accents8" }}>Descrição Teste</Text>
+                </Grid>
+              </Grid.Container>
+            </Card.Header>
+            <Card.Body css={{ py: "$2" }}>
+              <Text css={{ display: "contents" }} h2>
+                R$ 10{" "}
+=======
                   <Text css={{ color: '$accents8', minHeight: '100px' }}>
                     Conteúdos introdutórios e gratuitos para entender os princípios básicos do libertarianismo e da Escola Austríaca.
                   </Text>
@@ -77,20 +111,27 @@ export default function PlanosContent() {
             <Card.Body>
               <Text css={{ display: 'contents' }} h2>
                 R$ 0{' '}
+>>>>>>> 7bcd13ce8be08241a695da81de58d6da5ba17063
               </Text>
-              <Text css={{ display: 'contents', color: '$accents8' }}>
+              <Text css={{ display: "contents", color: "$accents8" }}>
                 /mês
               </Text>
+<<<<<<< HEAD
+              <Button css={{ mt: "$7", mb: "$12" }} href='/' as='a'>
+                Acesse
+              </Button>
+=======
               <Button css={{ mt: '$7', mb: '$12', color: 'black'}} href="/" as="a">Acesse</Button>
+>>>>>>> 7bcd13ce8be08241a695da81de58d6da5ba17063
 
               <Divider />
-              <Box as={'ul'}>
-                <Flex
-                  as={'li'}
-                  css={{ py: '$2', gap: '$2' }}
-                  align={'center'}
-                >
+              <Box as={"ul"}>
+                <Flex as={"li"} css={{ py: "$2", gap: "$2" }} align={"center"}>
                   <Check />
+<<<<<<< HEAD
+                  <Text span css={{ color: "$accents8" }}>
+                    Vantagem 1
+=======
                   <Text span css={{ color: '$accents8' }}>
                     Cursos introdutórios
                   </Text>
@@ -103,14 +144,19 @@ export default function PlanosContent() {
                   <Check />
                   <Text span css={{ color: '$accents8' }}>
                     Trilhas para direcionar o aprendizado
+>>>>>>> 7bcd13ce8be08241a695da81de58d6da5ba17063
                   </Text>
                 </Flex>
                 <Flex
-                  as={'li'}
-                  css={{ py: '$2', gap: '$2', textDecoration: 'line-through' }}
-                  align={'center'}
+                  as={"li"}
+                  css={{ py: "$2", gap: "$2", textDecoration: "line-through" }}
+                  align={"center"}
                 >
                   <Check />
+<<<<<<< HEAD
+                  <Text span css={{ color: "$accents8" }}>
+                    Vantagem 2
+=======
                   <Text span css={{ color: '$accents8' }}>
                     Conteúdos referentes ao livro do mês
                   </Text>
@@ -351,16 +397,17 @@ export default function PlanosContent() {
                   <Check />
                   <Text span css={{ color: '$accents8' }}>
                     Brindes exclusivos
+>>>>>>> 7bcd13ce8be08241a695da81de58d6da5ba17063
                   </Text>
                 </Flex>
               </Box>
             </Card.Body>
           </Card>
-          </Flex>
-       </Flex>
-       <Divider
-          css={{position: 'absolute', inset: '0p', left: '0', mt: '$5'}}
-       />
+        </Flex>
+      </Flex>
+      <Divider
+        css={{ position: "absolute", inset: "0p", left: "0", mt: "$5" }}
+      />
     </>
   );
 }
