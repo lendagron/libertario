@@ -1,10 +1,10 @@
-import { useContext, useState, useEffect, useRef } from "react";
-import CursoMenuContent from "./cursoMenuContent/CursoMenuContent";
-import styles from "./cursoContent.module.scss";
-import { useRouter } from "next/router";
-import { ArrowDown, ArrowUp } from "phosphor-react";
+import { useContext, useState, useEffect, useRef } from 'react';
+import CursoMenuContent from './cursoMenuContent/CursoMenuContent';
+import styles from './cursoContent.module.scss';
+import { Container, Card, Collapse } from '@nextui-org/react';
+import { useRouter } from 'next/router';
 
-import VimeoPlayer from "../vimeoPlayer/VimeoPlayer";
+import VimeoPlayer from '../vimeoPlayer/VimeoPlayer';
 
 interface Lesson {
   id: number;
@@ -118,7 +118,7 @@ export default function CursoContent({
           </div>
 
           <div>
-            Conclusão do vídeo:{" "}
+            Conclusão do vídeo:{' '}
             {lessonWatchedPercentages[activeLesson?.id] ?? 0}%
           </div>
           <div>
@@ -142,32 +142,47 @@ export default function CursoContent({
             )}
           </div>
         </div>
-        <aside>
-          <div className={styles.mobileAside}>
-            <h3>Aulas do Curso {course.name}</h3>
-            <a className={styles.arrowDown} onClick={handleShowMenu}>
-              {showMenu ? <ArrowUp size={32} /> : <ArrowDown size={32} />}
-            </a>
-          </div>
-          <nav style={{ display: showMenu ? "flex" : "none" }}>
-            <ul>
-              {lessons.map((lesson) => (
-                <li key={lesson.id}>
-                  <a
-                    onClick={() => handleSelectLesson(lesson)}
-                    className={
-                      activeLesson.id === lesson.id
-                        ? `${styles.active} ${styles.activeLesson}`
-                        : styles.noBorder
-                    }
-                  >
-                    {lesson.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </aside>
+        <Container
+          fluid
+          css={{
+            '@sm': {
+              mw: '19.75rem',
+            },
+          }}
+        >
+          <Collapse
+            divider={false}
+            title={<h5>Aulas do Curso {course.name}</h5>}
+          >
+            <Card.Body
+              css={{
+                textAlign: 'center',
+                '@sm': {
+                  height: '40.625rem',
+                },
+              }}
+            >
+              <nav>
+                <ul>
+                  {lessons.map((lesson) => (
+                    <li key={lesson.id}>
+                      <a
+                        onClick={() => handleSelectLesson(lesson)}
+                        className={
+                          activeLesson.id === lesson.id
+                            ? `${styles.active} ${styles.activeLesson}`
+                            : styles.noBorder
+                        }
+                      >
+                        {lesson.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </Card.Body>
+          </Collapse>
+        </Container>
       </div>
     </div>
   );
