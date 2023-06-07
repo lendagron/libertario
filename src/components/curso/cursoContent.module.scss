@@ -49,23 +49,30 @@
     }
   }
 
-  nav ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
+  nav {
+    ul {
+      margin: 0px;
+      display: flex;
+      flex-direction: column;
 
-    .activeLesson {
-      border-bottom: 3px solid var(--yellow);
-    }
+      .activeLesson {
+        background: #fff000;
+      }
+      .active {
+        background: #fff000;
+      }
+      li {
+        border-radius: 4px;
+        &:hover {
+          background: #fff000;
+        }
+      }
 
-    a {
-      font-weight: bold;
-      font-size: 1rem;
-
-      &:hover {
-        border-bottom: 3px solid var(--yellow);
+      a {
+        margin-left: 10px;
+        font-weight: bold;
+        font-size: 1rem;
+        display: block;
       }
     }
   }
