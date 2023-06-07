@@ -152,6 +152,7 @@ export default function CursoContent({
         <Container
           fluid
           css={{
+            padding: '0px',
             display: 'block',
             '@sm': {
               mw: '19.75rem',
@@ -160,11 +161,12 @@ export default function CursoContent({
         >
           <Collapse
             divider={false}
-            title={<h5>Aulas do Curso {course.name}</h5>}
+            title={<h5>⠀⠀Aulas do Curso {course.name}</h5>}
+            css={{ padding: '0px' }}
           >
             <Card.Body
               css={{
-                textAlign: 'center',
+                padding: '0px',
                 '@sm': {
                   height: '40.625rem',
                 },
@@ -173,7 +175,14 @@ export default function CursoContent({
               <nav>
                 <ul>
                   {lessons.map((lesson) => (
-                    <li key={lesson.id}>
+                    <li
+                      key={lesson.id}
+                      className={
+                        activeLesson.id === lesson.id
+                          ? `${styles.active} ${styles.activeLesson}`
+                          : styles.noBorder
+                      }
+                    >
                       <a
                         onClick={() => handleSelectLesson(lesson)}
                         className={
