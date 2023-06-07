@@ -48,6 +48,28 @@
       }
     }
   }
+
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+
+    .activeLesson {
+      border-bottom: 3px solid var(--yellow);
+    }
+
+    a {
+      font-weight: bold;
+      font-size: 1rem;
+
+      &:hover {
+        border-bottom: 3px solid var(--yellow);
+      }
+    }
+  }
+
   .menuMobile {
     display: none;
   }

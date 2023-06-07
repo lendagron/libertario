@@ -1,7 +1,14 @@
 import { useContext, useState, useEffect, useRef } from 'react';
 import CursoMenuContent from './cursoMenuContent/CursoMenuContent';
 import styles from './cursoContent.module.scss';
-import { Container, Card, Collapse } from '@nextui-org/react';
+import {
+  Container,
+  Card,
+  Collapse,
+  Button,
+  Grid,
+  Text,
+} from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
 import VimeoPlayer from '../vimeoPlayer/VimeoPlayer';
@@ -145,6 +152,7 @@ export default function CursoContent({
         <Container
           fluid
           css={{
+            display: 'block',
             '@sm': {
               mw: '19.75rem',
             },
