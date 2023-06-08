@@ -160,6 +160,7 @@ export default function CursoContent({
           }}
         >
           <Collapse
+            expanded
             divider={false}
             title={<h5>⠀⠀Aulas do Curso {course.name}</h5>}
             css={{ padding: '0px' }}
