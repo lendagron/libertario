@@ -160,10 +160,11 @@ export default function CursoContent({
           }}
         >
           <Collapse
+            className={styles.collapse}
             expanded
             divider={false}
-            title={<h5>⠀⠀Aulas do Curso {course.name}</h5>}
-            css={{ padding: '0px' }}
+            title={<h5>Aulas do Curso {course.name}</h5>}
+            css={{ padding: '0px', marginLeft: '10px' }}
           >
             <Card.Body
               css={{
