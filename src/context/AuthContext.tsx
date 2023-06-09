@@ -87,6 +87,7 @@ type AuthContextData = {
   signUp(credentials: SignUpCredentials): Promise<void>;
   signOut(): void;
   payment(credentials: paymentCredentials): Promise<void>;
+  updateAdress(credentials: address): Promise<void>;
   user: User;
   isAuthenticated: boolean;
   recover(credentials: recoverCredentials): Promise<void>;
@@ -182,6 +183,28 @@ export function AuthProvider({ children }: AuthProviderProps) {
     sigIn({ email, password });
   }
 
+  async function updateAdress({
+    country,
+    state,
+    city,
+    neighborhood,
+    street,
+    street_number,
+    complement,
+    zipcode,
+  }: address) {
+    await api.put("/me/customer", {
+      country,
+      state,
+      city,
+      neighborhood,
+      street,
+      street_number,
+      complement,
+      zipcode,
+    });
+  }
+
   async function recover({ email }: recoverCredentials) {
     await api.post("/solicitations/forgot-password", {
       email,
@@ -221,6 +244,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         signUp,
         signOut,
         payment,
+        updateAdress,
         recover,
         changePassword,
         redefinePassword,
