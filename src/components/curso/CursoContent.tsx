@@ -56,6 +56,12 @@ export default function CursoContent({
   const [courseCompletionPercentage, setCourseCompletionPercentage] =
     useState(0);
 
+  const [text, setText] = useState(<h5>Aulas do Curso {course.name}</h5>);
+  function changeText(event) {
+    const text = event.target.innerText;
+    setText(<h5>{text}</h5>);
+  }
+
   useEffect(() => {
     if (lessons.length > 0 && !activeLesson) {
       setActiveLesson(lessons[0]);
@@ -160,10 +166,9 @@ export default function CursoContent({
           }}
         >
           <Collapse
-            className={styles.collapse}
             expanded
             divider={false}
-            title={<h5>Aulas do Curso {course.name}</h5>}
+            title={text}
             css={{ padding: '0px', marginLeft: '10px' }}
           >
             <Card.Body
@@ -186,7 +191,10 @@ export default function CursoContent({
                       }
                     >
                       <a
-                        onClick={() => handleSelectLesson(lesson)}
+                        onClick={(event) => {
+                          handleSelectLesson(lesson);
+                          changeText(event);
+                        }}
                         className={
                           activeLesson.id === lesson.id
                             ? `${styles.active} ${styles.activeLesson}`
