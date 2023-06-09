@@ -59,10 +59,17 @@ export default function PlanosSignUp() {
           align={'center'}
        >
           <Flex
-             css={{gap: '2rem', width: '75%'}}
-             wrap={'wrap'}
-             direction={'column'}
-             justify={'center'}
+            css={{gap: '2rem',
+              '@xs':{
+                width: '75%'
+              },
+              '@md':{
+                width: '40%'
+              }
+            }}
+            wrap={'wrap'}
+            direction={'column'}
+            justify={'center'}
           >
             <Input
               placeholder='Nome Completo'
@@ -108,12 +115,16 @@ export default function PlanosSignUp() {
             ) : signInError && !confirm ? (
               <p>{signInError}</p>
             ) : null}
-            <Text size={20} >
-              Já possui cadastro?
-            <Link href={"/?redirect=" + router.asPath} underline >
-               Faça login aqui.
-            </Link>
-            </Text>
+            <Flex
+               justify={'center'}
+               wrap={'wrap'}
+               direction={'column'}
+               align={'center'}
+            >
+              <Text size={20} weight="bold">
+                Já possui cadastro? <Link href={"/?redirect=" + router.asPath} css={{weight: 'bold', textDecoration: 'underline'}} >Faça login aqui.</Link>
+              </Text>
+            </Flex>
           </Flex>
        </Flex>
        <Divider
