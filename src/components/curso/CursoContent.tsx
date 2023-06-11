@@ -120,21 +120,35 @@ export default function CursoContent({
   return (
     /* TODO: Arrumar aqui a parte da url igual a UL anterior */
     <Container className={styles.wrapper}>
-      <Text
-        css={{
-          display: 'inline-block',
-          fontWeight: '$bold',
-          color: '#191919',
-          background: '#FFF000',
-          padding: '2px 10px',
-          borderRadius: '4px',
-          '@sm': {
-            margin: '5px 0px',
-          },
-        }}
-      >
-        Trilha / {course.name}
-      </Text>
+      <Container css={{ p: '0px' }}>
+        <Text
+          css={{
+            display: 'none',
+            padding: '2px 10px',
+            '@sm': {
+              display: 'block',
+            },
+          }}
+        >
+          {text}
+        </Text>
+        <Text
+          css={{
+            display: 'inline-block',
+            fontWeight: '$bold',
+            color: '#191919',
+            background: '#FFF000',
+            padding: '2px 10px',
+            borderRadius: '4px',
+            '@sm': {
+              margin: '5px 0px',
+            },
+          }}
+        >
+          Trilha / {course.name}
+        </Text>
+      </Container>
+
       <div className={styles.container}>
         <div className={styles.cursoContainer}>
           <div className={styles.vimeoVideo}>
@@ -244,6 +258,7 @@ export default function CursoContent({
           }}
         >
           <Collapse
+            expanded={menuDesktop}
             divider={false}
             title=" "
             css={{ padding: '0px', marginLeft: '10px' }}
