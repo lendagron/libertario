@@ -87,7 +87,21 @@
   }
 
   .menuMobile {
+    @media screen and (min-width: 1120px) {
+      display: none;
+      max-width: 300px;
+    }
+  }
+  .menuDesktop {
     display: none;
+    @media screen and (min-width: 1120px) {
+      display: block;
+      max-width: 20px;
+    }
+  }
+
+  .menuDesktopActive {
+    max-width: 300px;
   }
 
   aside {
@@ -155,6 +169,7 @@
   .wrapper {
     max-width: 100%;
   }
+
   .container {
     flex-direction: column-reverse;
     justify-content: center;
