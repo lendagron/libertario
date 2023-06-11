@@ -10,13 +10,8 @@ import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import { CheckCircle } from "phosphor-react";
 import cepPromise from 'cep-promise';
 
-interface Props {
-  isShippingFilled: boolean,
-  setIsShippingFilled: () => void,
-}
-
 //TODO: Botar um select para escolher país, estado e cidade.
-export default function PlanosShipping({isShippingFilled,setIsShippingFilled}: Props) {
+export default function PlanosPayment() {
   const [name, setName] = useState("");
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
@@ -61,11 +56,7 @@ export default function PlanosShipping({isShippingFilled,setIsShippingFilled}: P
     }
   }
 
-  async function handleSubmit(){
-    setIsShippingFilled(true);
-  }
-
-  async function handleSubmit2(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
 
     const data = {
@@ -235,7 +226,7 @@ export default function PlanosShipping({isShippingFilled,setIsShippingFilled}: P
               size="xl"
               css={{ mt: '$7', mb: '$12', color: 'black' }}
             >
-              Continuar
+              Salvar
             </Button>
             {isLoading && (
               <ClipLoader
