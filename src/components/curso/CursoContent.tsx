@@ -57,6 +57,11 @@ export default function CursoContent({
     useState(0);
 
   const [text, setText] = useState(<h5>Aulas do Curso {course.name}</h5>);
+  const [menuDesktop, setMenuDesktop] = useState(false);
+
+  function activeMenuDesktop() {
+    setMenuDesktop(!menuDesktop);
+  }
 
   function changeText(event) {
     const text = event.target.innerText;
@@ -114,7 +119,36 @@ export default function CursoContent({
 
   return (
     /* TODO: Arrumar aqui a parte da url igual a UL anterior */
-    <div className={styles.wrapper}>
+    <Container className={styles.wrapper}>
+      <Container css={{ p: '0px' }}>
+        <Text
+          css={{
+            display: 'none',
+            padding: '2px 10px',
+            '@sm': {
+              display: 'block',
+            },
+          }}
+        >
+          {text}
+        </Text>
+        <Text
+          css={{
+            display: 'inline-block',
+            fontWeight: '$bold',
+            color: '#191919',
+            background: '#FFF000',
+            padding: '2px 10px',
+            borderRadius: '4px',
+            '@sm': {
+              margin: '5px 0px',
+            },
+          }}
+        >
+          Trilha / {course.name}
+        </Text>
+      </Container>
+
       <div className={styles.container}>
         <div className={styles.cursoContainer}>
           <div className={styles.vimeoVideo}>
@@ -160,14 +194,13 @@ export default function CursoContent({
             )}
           </div>
         </div>
+
         <Container
+          className={styles.menuMobile}
           fluid
           css={{
             padding: '0px',
             display: 'block',
-            '@sm': {
-              mw: '19.75rem',
-            },
           }}
         >
           <Collapse
@@ -180,7 +213,62 @@ export default function CursoContent({
               css={{
                 padding: '0px',
                 '@sm': {
-                  height: '40.625rem',
+                  height: '65vh',
+                },
+              }}
+            >
+              <nav>
+                <ul>
+                  {lessons.map((lesson) => (
+                    <li
+                      key={lesson.id}
+                      className={
+                        activeLesson.id === lesson.id
+                          ? `${styles.active} ${styles.activeLesson}`
+                          : styles.noBorder
+                      }
+                    >
+                      <a
+                        onClick={(event) => {
+                          handleSelectLesson(lesson);
+                          changeText(event);
+                        }}
+                        className={
+                          activeLesson.id === lesson.id
+                            ? `${styles.active} ${styles.activeLesson}`
+                            : styles.noBorder
+                        }
+                      >
+                        {lesson.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </Card.Body>
+          </Collapse>
+        </Container>
+        <Container
+          className={
+            menuDesktop ? `${styles.menuDesktopActive}` : styles.menuDesktop
+          }
+          css={{
+            padding: '0px',
+            display: 'block',
+          }}
+        >
+          <Collapse
+            expanded={menuDesktop}
+            divider={false}
+            title=" "
+            css={{ padding: '0px', marginLeft: '10px' }}
+            onClick={activeMenuDesktop}
+          >
+            <Card.Body
+              css={{
+                padding: '0px',
+                '@sm': {
+                  height: '65vh',
                 },
               }}
             >
@@ -216,6 +304,6 @@ export default function CursoContent({
           </Collapse>
         </Container>
       </div>
-    </div>
+    </Container>
   );
 }
