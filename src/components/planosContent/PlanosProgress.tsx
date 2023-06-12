@@ -3,9 +3,14 @@ import React from 'react';
 import { NumberCircleOne, NumberCircleTwo, NumberCircleThree, NumberCircleFour, CheckCircle } from "phosphor-react";
 import { Box } from '../styles/box';
 import { Flex } from '../styles/flex';
+import PlanosProgressElement from './PlanosProgressElement';
 import { useContext, useState } from "react";
 
-export default function PlanosProgress() {
+interface Props {
+  step: number,
+}
+
+export default function PlanosProgress({step}: Props) {
 
   return (
     <>
@@ -21,68 +26,16 @@ export default function PlanosProgress() {
              wrap={'wrap'}
              justify={'center'}
           >
-            <Progress color="primary" value={34} size="lg" shadow />
+            <Progress color="primary" value={ 1 + 33 * (step - 1) } size="lg" shadow />
             <Flex
                css={{gap: '2rem', width: '100%'}}
                wrap={'nowrap'}
                justify={'between'}
             >
-              <Flex
-                 wrap={'nowrap'}
-                 justify={'start'}
-                 align={'center'}
-              >
-                <NumberCircleOne size={48} />
-                <Text
-                  css={{ml: "16px"}}
-                  size={36}
-                  hideIn="sm"
-                >
-                  Plano
-                </Text>
-              </Flex>
-              <Flex
-                 wrap={'nowrap'}
-                 justify={'start'}
-                 align={'center'}
-              >
-                <NumberCircleTwo size={48} />
-                <Text
-                  css={{ml: "16px"}}
-                  size={36}
-                  hideIn="sm"
-                >
-                  Login
-                </Text>
-              </Flex>
-              <Flex
-                 wrap={'nowrap'}
-                 justify={'start'}
-                 align={'center'}
-              >
-                <NumberCircleThree size={48} />
-                <Text
-                  css={{ml: "16px"}}
-                  size={36}
-                  hideIn="sm"
-                >
-                  Frete
-                </Text>
-              </Flex>
-              <Flex
-                 wrap={'nowrap'}
-                 justify={'start'}
-                 align={'center'}
-              >
-                <NumberCircleFour size={48} />
-                <Text
-                  css={{ml: "16px"}}
-                  size={36}
-                  hideIn="sm"
-                >
-                  Pagamento
-                </Text>
-              </Flex>
+              <PlanosProgressElement text="Plano" elementStep={1} currentStep={step} />
+              <PlanosProgressElement text="Login" elementStep={2} currentStep={step} />
+              <PlanosProgressElement text="Frete" elementStep={3} currentStep={step} />
+              <PlanosProgressElement text="Pagamento" elementStep={4} currentStep={step} />
             </Flex>
           </Flex>
        </Flex>
