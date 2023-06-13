@@ -8,10 +8,13 @@ import {
   Button,
   Grid,
   Text,
+  Row,
 } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 
 import VimeoPlayer from '../vimeoPlayer/VimeoPlayer';
+import { Desktop } from 'phosphor-react';
+import Link from 'next/link';
 
 interface Lesson {
   id: number;
@@ -57,6 +60,10 @@ export default function CursoContent({
     useState(0);
 
   const [text, setText] = useState(<h5>Aulas do Curso {course.name}</h5>);
+  const [trilha, setTrilha] = useState('');
+  const [textDesktop, setTextDesktop] = useState(
+    `Aulas do Curso ${course.name}`
+  );
   const [menuDesktop, setMenuDesktop] = useState(false);
 
   function activeMenuDesktop() {
@@ -65,12 +72,30 @@ export default function CursoContent({
 
   function changeText(event) {
     const text = event.target.innerText;
-    if (window.innerWidth <= 1111) {
-      setText(<h5>{text}</h5>);
-    } else {
-      setText(<h5>Aulas do Curso {course.name}</h5>);
-    }
+    setTextDesktop(text);
+    setText(<h5>{text}</h5>);
   }
+
+  useEffect(() => {
+    const redull = function verificarValor() {
+      switch (course.name) {
+        case 'Introdução à Ética':
+        case 'Agorismo: Liberdade na Prática':
+          return 'libertarianismo';
+        case 'Introdução ao Método Austríaco':
+          return 'Economia';
+        case 'Ambientalismo e Libertarianismo':
+          return 'direto';
+        case 'Problemas Filosóficos':
+        case 'Lógica Formal':
+        case 'Falácias':
+          return 'filosofia';
+        default:
+          return 'Valor não encontrado';
+      }
+    };
+    setTrilha(redull);
+  });
 
   useEffect(() => {
     if (lessons.length > 0 && !activeLesson) {
@@ -121,32 +146,37 @@ export default function CursoContent({
     /* TODO: Arrumar aqui a parte da url igual a UL anterior */
     <Container className={styles.wrapper}>
       <Container css={{ p: '0px' }}>
-        <Text
-          css={{
-            display: 'none',
-            padding: '2px 10px',
-            '@sm': {
-              display: 'block',
-            },
-          }}
-        >
-          {text}
-        </Text>
-        <Text
-          css={{
-            display: 'inline-block',
-            fontWeight: '$bold',
-            color: '#191919',
-            background: '#FFF000',
-            padding: '2px 10px',
-            borderRadius: '4px',
-            '@sm': {
-              margin: '5px 0px',
-            },
-          }}
-        >
-          Trilha / {course.name}
-        </Text>
+        <Row css={{ display: 'flex', flexDirection: 'column-reverse' }}>
+          <Text
+            css={{
+              display: 'inline-block',
+              fontWeight: '$bold',
+              color: '#191919',
+              background: '#FFF000',
+              padding: '2px 10px',
+              borderRadius: '4px',
+              '@sm': {
+                margin: '0px 0px 14px 0px',
+              },
+            }}
+          >
+            <Link href="/">{trilha}</Link> / {course.name}
+          </Text>
+          <Text
+            className={styles.textMenu}
+            css={{
+              fontWeight: '$medium',
+              color: '#191919',
+              padding: '2px 10px',
+              '@sm': {
+                p: '0px',
+                mb: '10px',
+              },
+            }}
+          >
+            {textDesktop}
+          </Text>
+        </Row>
       </Container>
 
       <div className={styles.container}>
