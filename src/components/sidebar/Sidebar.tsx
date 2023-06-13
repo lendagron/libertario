@@ -13,7 +13,21 @@ import {
 
 export default function Sidebar() {
   return (
-    <Container css={{ p: '0px', w: '100%', m: '0px' }}>
+    <Container
+      css={{
+        display: 'none',
+        p: '0px',
+        w: '100%',
+        m: '0px',
+        height: '1465px',
+        maxH: '100%',
+        flexDirection: 'column',
+
+        '@md': {
+          display: 'flex',
+        },
+      }}
+    >
       <Collapse.Group css={{ width: '200px' }}>
         <Collapse title="Trilhas" subtitle="Lista de Trilhas">
           <Text css={{ display: 'flex', flexDirection: 'column' }}>
@@ -144,7 +158,7 @@ export default function Sidebar() {
           </Text>
         </Collapse>
       </Collapse.Group>
-      <Text>
+      <Text css={{ p: '0px', m: '0px' }}>
         <Link
           href="#"
           block
