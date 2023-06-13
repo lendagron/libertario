@@ -94,6 +94,7 @@
   }
   .menuDesktop {
     display: none;
+
     @media screen and (min-width: 1120px) {
       display: block;
       max-width: 20px;
@@ -164,7 +165,13 @@
     }
   }
 }
-
+.textMenu {
+  display: none;
+  @media screen and (min-width: 1120px) {
+    display: block;
+    font-size: 20px;
+  }
+}
 @media (max-width: 1120px) {
   .wrapper {
     max-width: 100%;
