@@ -32,6 +32,10 @@
       justify-content: center;
       gap: 1rem;
 
+      .disabled {
+        pointer-events: none;
+      }
+
       a {
         display: flex;
         align-items: center;
