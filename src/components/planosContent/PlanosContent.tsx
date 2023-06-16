@@ -107,7 +107,13 @@ export default function PlanosContent() {
                 /mês
               </Text>
 
-              <Button css={{ mt: '$7', mb: '$12', color: 'black'}} href="/cadastroMises" as="a">Acesse</Button>
+              <Button
+                css={{ mt: "$7", mb: "$12", color: "black" }}
+                href='/cadastroMises'
+                as='a'
+              >
+                Acesse
+              </Button>
 
               <Divider />
               <Box as={"ul"}>
@@ -205,15 +211,13 @@ export default function PlanosContent() {
                 /mês
               </Text>
               <Button
-
-                css={{ mt: '$7', mb: '$12', color: 'black'}}
+                css={{ mt: "$7", mb: "$12", color: "black" }}
                 href={"/planos/hoppe/" + planPeriod}
-                as="a"
-                disabled={planPeriod == 'anual' ? true : false}
+                as='a'
+                disabled={planPeriod == "anual" ? true : false}
               >
-                 {planPeriod == 'anual' ? "Acesse (em breve)" : "Acesse"}
+                {planPeriod == "anual" ? "Acesse (em breve)" : "Acesse"}
               </Button>
-
 
               <Divider />
               <Box as={"ul"}>
@@ -304,13 +308,12 @@ export default function PlanosContent() {
                 /mês
               </Text>
               <Button
-
-                css={{ mt: '$7', mb: '$12', color: 'black'}}
+                css={{ mt: "$7", mb: "$12", color: "black" }}
                 href={"/planos/konkin/" + planPeriod}
-                as="a"
-                disabled={planPeriod == 'anual' ? true : false}
+                as='a'
+                disabled={planPeriod == "anual" ? true : false}
               >
-                 {planPeriod == 'anual' ? "Acesse (em breve)" : "Acesse"}
+                {planPeriod == "anual" ? "Acesse (em breve)" : "Acesse"}
               </Button>
 
               <Divider />
