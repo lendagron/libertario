@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./cursoMenuContent.module.scss";
+import React from 'react';
+import styles from './cursoMenuContent.module.scss';
 
 interface CursoMenuContentProps {
   titulo: string;
@@ -14,7 +14,7 @@ export default function CursoMenuContent({
 }: CursoMenuContentProps) {
   return (
     <div className={styles.wrapper}>
-      <h1>{titulo}</h1>
+      <h2>{titulo}</h2>
       <h2>{subtitulo}</h2>
       <p>{conteudo}</p>
     </div>

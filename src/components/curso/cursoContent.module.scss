@@ -11,18 +11,24 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+
     /* align-items: center; */
     width: 100%;
 
     .vimeoVideo {
-      height: 750px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      background-color: black;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      padding-top: 56.25%;
+      background: black;
 
+      div,
       iframe {
-        border: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
         width: 100%;
         height: 100%;
       }
@@ -47,8 +53,56 @@
       }
     }
   }
+
+  nav {
+    ul {
+      margin: 0px;
+      display: flex;
+      flex-direction: column;
+
+      .activeLesson {
+        background: #fff000;
+      }
+      .active {
+        background: #fff000;
+        border-radius: 4px;
+      }
+      li {
+        border-bottom: solid 0.5px #474633;
+        margin: 0px;
+
+        &:hover {
+          background: #fff000;
+          border-radius: 4px;
+        }
+      }
+
+      a {
+        margin-left: 10px;
+        font-weight: bold;
+        font-size: 1rem;
+        display: block;
+      }
+    }
+  }
+
   .menuMobile {
+    @media screen and (min-width: 1120px) {
+      display: none;
+      max-width: 300px;
+    }
+  }
+  .menuDesktop {
     display: none;
+
+    @media screen and (min-width: 1120px) {
+      display: block;
+      max-width: 20px;
+    }
+  }
+
+  .menuDesktopActive {
+    max-width: 300px;
   }
 
   aside {
@@ -111,11 +165,18 @@
     }
   }
 }
-
+.textMenu {
+  display: none;
+  @media screen and (min-width: 1120px) {
+    display: block;
+    font-size: 20px;
+  }
+}
 @media (max-width: 1120px) {
   .wrapper {
     max-width: 100%;
   }
+
   .container {
     flex-direction: column-reverse;
     justify-content: center;
@@ -123,6 +184,23 @@
     gap: 0rem;
     padding: 0rem;
 
+    .vimeoVideo {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      padding-top: 56.25%;
+
+      div,
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
     aside {
       width: 100%;
       height: 100%;
@@ -173,7 +251,6 @@
       width: 100%;
 
       h2 {
-        width: 500px;
         height: 100%;
       }
 
