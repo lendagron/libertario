@@ -1,22 +1,24 @@
-import { Divider, Text, Spacer, Input, Button, Link } from '@nextui-org/react';
-import React from 'react';
-import { Box } from '../styles/box';
-import { Flex } from '../styles/flex';
+import { Divider, Text, Spacer, Input, Button, Link } from "@nextui-org/react";
+import React from "react";
+import { Box } from "../styles/box";
+import { Flex } from "../styles/flex";
 import styles from "../cadastroHoppe/cadastroHoppe.module.scss";
 import { FormEvent, useContext, useState, useRef } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { ClipLoader } from "react-spinners";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import { CheckCircle } from "phosphor-react";
-import cepPromise from 'cep-promise';
+import cepPromise from "cep-promise";
 
 interface Props {
-  isShippingFilled: boolean,
-  setIsShippingFilled: () => void,
+  isShippingFilled: boolean;
+  setIsShippingFilled: () => void;
 }
 
-//TODO: Botar um select para escolher país, estado e cidade.
-export default function PlanosShipping({isShippingFilled,setIsShippingFilled}: Props) {
+export default function PlanosShipping({
+  isShippingFilled,
+  setIsShippingFilled,
+}: Props) {
   const [name, setName] = useState("");
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
@@ -37,10 +39,10 @@ export default function PlanosShipping({isShippingFilled,setIsShippingFilled}: P
 
   async function onChangeCep(e) {
     setCep(e);
-    const cepNumbers = e.replace('.','').replace('-','');
-    if(cepNumbers.length === 8){
+    const cepNumbers = e.replace(".", "").replace("-", "");
+    if (cepNumbers.length === 8) {
       cepPromise(cepNumbers)
-        .then(address => {
+        .then((address) => {
           setStreet(address.street);
           setNeighborhood(address.neighborhood);
           setCity(address.city);
@@ -49,10 +51,10 @@ export default function PlanosShipping({isShippingFilled,setIsShippingFilled}: P
           setCepError("");
           inputRef.current.focus();
         })
-        .catch(err => {
+        .catch((err) => {
           setCepError("CEP não encontrado");
-        })
-    }else{
+        });
+    } else {
       setStreet("");
       setNeighborhood("");
       setCity("");
@@ -61,7 +63,7 @@ export default function PlanosShipping({isShippingFilled,setIsShippingFilled}: P
     }
   }
 
-  async function handleSubmit(){
+  async function handleSubmit() {
     setIsShippingFilled(true);
   }
 
@@ -83,7 +85,7 @@ export default function PlanosShipping({isShippingFilled,setIsShippingFilled}: P
           street_number: número,
           complement: complemento,
           zipcode: cep,
-        }
+        },
       },
     };
     try {
@@ -113,148 +115,149 @@ export default function PlanosShipping({isShippingFilled,setIsShippingFilled}: P
 
   return (
     <>
-       <Flex
-          css={{py: '$20', gap: '1rem', px: '$6'}}
-          justify={'center'}
-          wrap={'wrap'}
-          direction={'column'}
-          align={'center'}
-       >
+      <Flex
+        css={{ py: "$20", gap: "1rem", px: "$6" }}
+        justify={"center"}
+        wrap={"wrap"}
+        direction={"column"}
+        align={"center"}
+      >
+        <Flex
+          css={{
+            gap: "2rem",
+            "@xs": {
+              width: "75%",
+            },
+            "@md": {
+              width: "40%",
+            },
+          }}
+          wrap={"wrap"}
+          direction={"column"}
+          justify={"center"}
+        >
           <Flex
-            css={{gap: '2rem',
-              '@xs':{
-                width: '75%'
-              },
-              '@md':{
-                width: '40%'
-              }
-            }}
-            wrap={'wrap'}
-            direction={'column'}
-            justify={'center'}
+            css={{ gap: "1rem" }}
+            justify={"between"}
+            wrap={"nowrap"}
+            direction={"row"}
+            align={"center"}
           >
-            <Flex
-              css={{gap: '1rem'}}
-              justify={'between'}
-              wrap={'nowrap'}
-              direction={'row'}
-              align={'center'}
-            >
-              <Input
-                placeholder='CEP'
-                label="CEP"
-                size="xl"
-                css={{width: '100%'}}
-                required
-                onChange={(e) => onChangeCep(e.target.value)}
-                helperText={cepError}
-                autoFocus
-              />
-              <Link
-                size="md"
-                underline
-                target="_blank"
-                href="https://buscacepinter.correios.com.br/app/endereco/index.php"
-                css={{color:"black", mt: "30px", width: ""}}
-              >
-                Não sei meu CEP
-              </Link>
-            </Flex>
             <Input
-              placeholder='Rua, avenida, estrada, viela...'
-              label="Endereço"
-              size="xl"
-              css={{width: '100%'}}
+              placeholder='CEP'
+              label='CEP'
+              size='xl'
+              css={{ width: "100%" }}
               required
-              onChange={(e) => setStreet(e.target.value)}
-              value={street}
+              onChange={(e) => onChangeCep(e.target.value)}
+              helperText={cepError}
+              autoFocus
             />
-            <Flex
-              css={{gap: '1rem'}}
-              justify={'between'}
-              wrap={'nowrap'}
-              direction={'row'}
-              align={'center'}
+            <Link
+              size='md'
+              underline
+              target='_blank'
+              href='https://buscacepinter.correios.com.br/app/endereco/index.php'
+              css={{ color: "black", mt: "30px", width: "" }}
             >
-              <Input
-                placeholder='Nº'
-                label="Nº"
-                size="xl"
-                css={{width: '25%'}}
-                required
-                onChange={(e) => setNumber(e.target.value)}
-                value={number}
-                ref={inputRef}
-              />
-              <Input
-                placeholder='Complemento'
-                label="Complemento"
-                size="xl"
-                css={{width: '100%'}}
-                onChange={(e) => setComplement(e.target.value)}
-                value={complement}
-              />
-            </Flex>
-            <Input
-              placeholder='Bairro'
-              label="Bairro"
-              size="xl"
-              css={{width: '100%'}}
-              required
-              onChange={(e) => setNeighborhood(e.target.value)}
-              value={neighborhood}
-            />
-            <Flex
-              css={{gap: '1rem'}}
-              justify={'between'}
-              wrap={'nowrap'}
-              direction={'row'}
-              align={'center'}
-            >
-              <Input
-                placeholder='UF'
-                label="UF"
-                size="xl"
-                css={{width: '25%'}}
-                required
-                onChange={(e) => setState(e.target.value)}
-                value={state}
-              />
-              <Input
-                placeholder='Cidade'
-                label="Cidade"
-                size="xl"
-                css={{width: '100%'}}
-                required
-                onChange={(e) => setCity(e.target.value)}
-                value={city}
-              />
-            </Flex>
-            <Button
-              onPress={handleSubmit}
-              size="xl"
-              css={{ mt: '$7', mb: '$12', color: 'black' }}
-            >
-              Continuar
-            </Button>
-            {isLoading && (
-              <ClipLoader
-                color={"#f3bf22"}
-                loading={isLoading}
-                size={50}
-                css={{ mb: "1rem" }}
-              />
-            )}
-            {confirm ? (
-              <CheckCircle size={35} color='green' />
-            ) : signInError && !confirm ? (
-              <p>{signInError}</p>
-            ) : null}
+              Não sei meu CEP
+            </Link>
           </Flex>
-       </Flex>
-       <Divider
-          css={{position: 'absolute', inset: '0p', left: '0', mt: '$5'}}
-       />
+          <Input
+            placeholder='Rua, avenida, estrada, viela...'
+            label='Endereço'
+            size='xl'
+            css={{ width: "100%" }}
+            required
+            onChange={(e) => setStreet(e.target.value)}
+            value={street}
+          />
+          <Flex
+            css={{ gap: "1rem" }}
+            justify={"between"}
+            wrap={"nowrap"}
+            direction={"row"}
+            align={"center"}
+          >
+            <Input
+              placeholder='Nº'
+              label='Nº'
+              size='xl'
+              css={{ width: "25%" }}
+              required
+              onChange={(e) => setNumber(e.target.value)}
+              value={number}
+              ref={inputRef}
+            />
+            <Input
+              placeholder='Complemento'
+              label='Complemento'
+              size='xl'
+              css={{ width: "100%" }}
+              onChange={(e) => setComplement(e.target.value)}
+              value={complement}
+            />
+          </Flex>
+          <Input
+            placeholder='Bairro'
+            label='Bairro'
+            size='xl'
+            css={{ width: "100%" }}
+            required
+            onChange={(e) => setNeighborhood(e.target.value)}
+            value={neighborhood}
+          />
+          <Flex
+            css={{ gap: "1rem" }}
+            justify={"between"}
+            wrap={"nowrap"}
+            direction={"row"}
+            align={"center"}
+          >
+            <Input
+              placeholder='UF'
+              label='UF'
+              size='xl'
+              css={{ width: "25%" }}
+              required
+              onChange={(e) => setState(e.target.value)}
+              value={state}
+            />
+            <Input
+              placeholder='Cidade'
+              label='Cidade'
+              size='xl'
+              css={{ width: "100%" }}
+              required
+              onChange={(e) => setCity(e.target.value)}
+              value={city}
+            />
+          </Flex>
+          <Button
+            onPress={handleSubmit}
+            size='xl'
+            css={{ mt: "$7", mb: "$12", color: "black" }}
+          >
+            Continuar
+          </Button>
+          {isLoading && (
+            <ClipLoader
+              color={"#f3bf22"}
+              loading={isLoading}
+              size={50}
+              css={{ mb: "1rem" }}
+            />
+          )}
+          {confirm ? (
+            <CheckCircle size={35} color='green' />
+          ) : signInError && !confirm ? (
+            <p>{signInError}</p>
+          ) : null}
+        </Flex>
+      </Flex>
+      <Divider
+        css={{ position: "absolute", inset: "0p", left: "0", mt: "$5" }}
+      />
     </>
   );
 }

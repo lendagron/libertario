@@ -1,6 +1,6 @@
-import { useContext, useState, useEffect, useRef } from 'react';
-import CursoMenuContent from './cursoMenuContent/CursoMenuContent';
-import styles from './cursoContent.module.scss';
+import { useContext, useState, useEffect, useRef } from "react";
+import CursoMenuContent from "./cursoMenuContent/CursoMenuContent";
+import styles from "./cursoContent.module.scss";
 import {
   Container,
   Card,
@@ -9,12 +9,12 @@ import {
   Grid,
   Text,
   Row,
-} from '@nextui-org/react';
-import { useRouter } from 'next/router';
+} from "@nextui-org/react";
+import { useRouter } from "next/router";
 
-import VimeoPlayer from '../vimeoPlayer/VimeoPlayer';
-import { Desktop } from 'phosphor-react';
-import Link from 'next/link';
+import VimeoPlayer from "../vimeoPlayer/VimeoPlayer";
+import { Desktop } from "phosphor-react";
+import Link from "next/link";
 
 interface Lesson {
   id: number;
@@ -60,11 +60,11 @@ export default function CursoContent({
     useState(0);
 
   const [text, setText] = useState(<h5>Aulas do Curso {course.name}</h5>);
-  const [trilha, setTrilha] = useState('');
+  const [trilha, setTrilha] = useState("");
   const [textDesktop, setTextDesktop] = useState(
     `Aulas do Curso ${course.name}`
   );
-  const [menuDesktop, setMenuDesktop] = useState(false);
+  const [menuDesktop, setMenuDesktop] = useState(true);
 
   function activeMenuDesktop() {
     setMenuDesktop(!menuDesktop);
@@ -79,19 +79,19 @@ export default function CursoContent({
   useEffect(() => {
     const redull = function verificarValor() {
       switch (course.name) {
-        case 'Introdução à Ética':
-        case 'Agorismo: Liberdade na Prática':
-          return 'libertarianismo';
-        case 'Introdução ao Método Austríaco':
-          return 'Economia';
-        case 'Ambientalismo e Libertarianismo':
-          return 'direto';
-        case 'Problemas Filosóficos':
-        case 'Lógica Formal':
-        case 'Falácias':
-          return 'filosofia';
+        case "Introdução à Ética":
+        case "Agorismo: Liberdade na Prática":
+          return "libertarianismo";
+        case "Introdução ao Método Austríaco":
+          return "Economia";
+        case "Ambientalismo e Libertarianismo":
+          return "direto";
+        case "Problemas Filosóficos":
+        case "Lógica Formal":
+        case "Falácias":
+          return "filosofia";
         default:
-          return 'Valor não encontrado';
+          return "Valor não encontrado";
       }
     };
     setTrilha(redull);
@@ -143,34 +143,33 @@ export default function CursoContent({
   };
 
   return (
-    /* TODO: Arrumar aqui a parte da url igual a UL anterior */
     <Container className={styles.wrapper}>
-      <Container css={{ p: '0px' }}>
-        <Row css={{ display: 'flex', flexDirection: 'column-reverse' }}>
+      <Container css={{ p: "0px" }}>
+        <Row css={{ display: "flex", flexDirection: "column-reverse" }}>
           <Text
             css={{
-              display: 'inline-block',
-              fontWeight: '$bold',
-              color: '#191919',
-              background: '#FFF000',
-              padding: '2px 10px',
-              borderRadius: '4px',
-              '@sm': {
-                margin: '0px 0px 14px 0px',
+              display: "inline-block",
+              fontWeight: "$bold",
+              color: "#191919",
+              background: "#FFF000",
+              padding: "2px 10px",
+              borderRadius: "4px",
+              "@sm": {
+                margin: "0px 0px 14px 0px",
               },
             }}
           >
-            <Link href="/">{trilha}</Link> / {course.name}
+            <Link href='/'>{trilha}</Link> / {course.name}
           </Text>
           <Text
             className={styles.textMenu}
             css={{
-              fontWeight: '$medium',
-              color: '#191919',
-              padding: '2px 10px',
-              '@sm': {
-                p: '0px',
-                mb: '10px',
+              fontWeight: "$medium",
+              color: "#191919",
+              padding: "2px 10px",
+              "@sm": {
+                p: "0px",
+                mb: "10px",
               },
             }}
           >
@@ -200,7 +199,7 @@ export default function CursoContent({
           </div>
 
           <div>
-            Conclusão do vídeo:{' '}
+            Conclusão do vídeo:{" "}
             {lessonWatchedPercentages[activeLesson?.id] ?? 0}%
           </div>
           <div>
@@ -217,7 +216,7 @@ export default function CursoContent({
           <div>
             {visaoGeral && (
               <CursoMenuContent
-                titulo="Sobre este Curso"
+                titulo='Sobre este Curso'
                 subtitulo={course.name}
                 conteudo={course.description}
               />
@@ -229,21 +228,21 @@ export default function CursoContent({
           className={styles.menuMobile}
           fluid
           css={{
-            padding: '0px',
-            display: 'block',
+            padding: "0px",
+            display: "block",
           }}
         >
           <Collapse
             expanded
             divider={false}
             title={text}
-            css={{ padding: '0px', marginLeft: '10px' }}
+            css={{ padding: "0px", marginLeft: "10px" }}
           >
             <Card.Body
               css={{
-                padding: '0px',
-                '@sm': {
-                  height: '65vh',
+                padding: "0px",
+                "@sm": {
+                  height: "65vh",
                 },
               }}
             >
@@ -283,22 +282,23 @@ export default function CursoContent({
             menuDesktop ? `${styles.menuDesktopActive}` : styles.menuDesktop
           }
           css={{
-            padding: '0px',
-            display: 'block',
+            padding: "0px",
+            display: "block",
           }}
         >
           <Collapse
             expanded={menuDesktop}
             divider={false}
-            title=" "
-            css={{ padding: '0px', marginLeft: '10px' }}
+            //TODO: `Aulas do Curso ${course.name}`
+            title={""}
+            css={{ padding: "0px", marginLeft: "10px" }}
             onClick={activeMenuDesktop}
           >
             <Card.Body
               css={{
-                padding: '0px',
-                '@sm': {
-                  height: '65vh',
+                padding: "0px",
+                "@sm": {
+                  height: "65vh",
                 },
               }}
             >
