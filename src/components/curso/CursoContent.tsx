@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect, useRef } from 'react';
+import menu from '../../../public/images/menu.png';
 import CursoMenuContent from './cursoMenuContent/CursoMenuContent';
 import styles from './cursoContent.module.scss';
 import {
@@ -15,6 +16,7 @@ import { useRouter } from 'next/router';
 import VimeoPlayer from '../vimeoPlayer/VimeoPlayer';
 import { Desktop } from 'phosphor-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface Lesson {
   id: number;
@@ -197,6 +199,53 @@ export default function CursoContent({
                 </>
               ) : (
                 <p>Vídeo não encontrado...</p>
+              )}
+            </div>
+            <div
+              className={
+                menuDesktop
+                  ? styles.ContainerSidebar
+                  : styles.ContainerSidebarFalse
+              }
+            >
+              <div>
+                <span className={!menuDesktop ? styles.NameSidebar : 'none'}>
+                  {textDesktop}
+                </span>
+                <Image
+                  width={40}
+                  height={40}
+                  src={menu}
+                  alt="icone menu"
+                  className={styles.MenuSidebar}
+                  onClick={activeMenuDesktop}
+                />
+              </div>
+              {menuDesktop}
+              {menuDesktop && (
+                <div className={styles.SideBarDesktop}>
+                  <ul>
+                    {lessons.map((lesson) => (
+                      <li
+                        key={lesson.id}
+                        className={
+                          activeLesson.id === lesson.id
+                            ? `${styles.active} ${styles.activeLesson}`
+                            : styles.noBorder
+                        }
+                      >
+                        <a
+                          onClick={(event) => {
+                            handleSelectLesson(lesson);
+                            changeText(event);
+                          }}
+                        >
+                          {lesson.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               )}
             </div>
           </div>
