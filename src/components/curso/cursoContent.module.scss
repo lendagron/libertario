@@ -62,9 +62,11 @@
 
         .activeLesson {
           background: #fff000;
+          color: #202022;
         }
         .active {
           background: #fff000;
+          color: #202022;
           border-radius: 4px;
         }
         li {
@@ -91,9 +93,6 @@
     }
   }
 
-  .Description {
-  }
-
   .ContainerSidebarFalse {
     display: flex;
     padding: 5px;
@@ -113,6 +112,9 @@
     background: #202022;
     border: solid 1px #adadba;
     cursor: pointer;
+    &:hover {
+      background: #42423b;
+    }
   }
 
   .cursoContainer {
@@ -130,7 +132,7 @@
       width: 100%;
       padding-top: 56.25%;
       background: black;
-      border-radius: 4px;
+      border-radius: 1px;
 
       div,
       iframe {

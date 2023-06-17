@@ -239,6 +239,11 @@ export default function CursoContent({
                             handleSelectLesson(lesson);
                             changeText(event);
                           }}
+                          className={
+                            activeLesson.id === lesson.id
+                              ? `${styles.active} ${styles.activeLesson}`
+                              : styles.noBorder
+                          }
                         >
                           {lesson.name}
                         </a>
