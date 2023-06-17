@@ -108,12 +108,16 @@
   }
 
   .MenuSidebar {
+    display: none;
     border-radius: 6px;
     background: #202022;
     border: solid 1px #adadba;
     cursor: pointer;
     &:hover {
       background: #42423b;
+    }
+    @media screen and (min-width: 1120px) {
+      display: flex;
     }
   }
 

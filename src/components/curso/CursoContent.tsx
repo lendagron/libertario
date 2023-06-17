@@ -66,7 +66,7 @@ export default function CursoContent({
   const [textDesktop, setTextDesktop] = useState(
     `Aulas do Curso ${course.name}`
   );
-  const [menuDesktop, setMenuDesktop] = useState(false);
+  const [menuDesktop, setMenuDesktop] = useState(true);
 
   function activeMenuDesktop() {
     setMenuDesktop(!menuDesktop);
