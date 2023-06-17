@@ -7,8 +7,19 @@
 .container {
   display: flex;
 
+  .ConatinerVideo {
+    display: flex;
+    border: rgb(58, 32, 32) solid 2px;
+  }
+
+  .Description {
+    margin-top: 200px;
+    border: red solid 2px;
+  }
+
   .cursoContainer {
     display: flex;
+    border: red solid 2px;
     justify-content: center;
     flex-direction: column;
 

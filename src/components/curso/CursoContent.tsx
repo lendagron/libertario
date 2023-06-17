@@ -181,47 +181,51 @@ export default function CursoContent({
 
       <div className={styles.container}>
         <div className={styles.cursoContainer}>
-          <div className={styles.vimeoVideo}>
-            {activeLesson !== undefined && activeLesson !== null ? (
-              <>
-                <VimeoPlayer
-                  videoId={activeLesson.vimeo_id}
-                  onWatchedPercentageChange={(percentage) =>
-                    handleWatchedPercentageChange(activeLesson.id, percentage)
-                  }
-                  watchedPercentage={
-                    (lessonWatchedPercentages[activeLesson.id] || 0) / 100
-                  }
+          <div className={styles.ConatinerVideo}>
+            <div className={styles.vimeoVideo}>
+              {activeLesson !== undefined && activeLesson !== null ? (
+                <>
+                  <VimeoPlayer
+                    videoId={activeLesson.vimeo_id}
+                    onWatchedPercentageChange={(percentage) =>
+                      handleWatchedPercentageChange(activeLesson.id, percentage)
+                    }
+                    watchedPercentage={
+                      (lessonWatchedPercentages[activeLesson.id] || 0) / 100
+                    }
+                  />
+                </>
+              ) : (
+                <p>Vídeo não encontrado...</p>
+              )}
+            </div>
+          </div>
+
+          <div className={styles.Description}>
+            <div>
+              Conclusão do vídeo:{' '}
+              {lessonWatchedPercentages[activeLesson?.id] ?? 0}%
+            </div>
+            <div>
+              Conclusão do curso: {courseCompletionPercentage?.toFixed(2) ?? 0}%
+            </div>
+
+            <nav>
+              <ul>
+                <li>
+                  <a onClick={handleVisaoGeral}>Visão Geral</a>
+                </li>
+              </ul>
+            </nav>
+            <div>
+              {visaoGeral && (
+                <CursoMenuContent
+                  titulo="Sobre este Curso"
+                  subtitulo={course.name}
+                  conteudo={course.description}
                 />
-              </>
-            ) : (
-              <p>Vídeo não encontrado...</p>
-            )}
-          </div>
-
-          <div>
-            Conclusão do vídeo:{' '}
-            {lessonWatchedPercentages[activeLesson?.id] ?? 0}%
-          </div>
-          <div>
-            Conclusão do curso: {courseCompletionPercentage?.toFixed(2) ?? 0}%
-          </div>
-
-          <nav>
-            <ul>
-              <li>
-                <a onClick={handleVisaoGeral}>Visão Geral</a>
-              </li>
-            </ul>
-          </nav>
-          <div>
-            {visaoGeral && (
-              <CursoMenuContent
-                titulo="Sobre este Curso"
-                subtitulo={course.name}
-                conteudo={course.description}
-              />
-            )}
+              )}
+            </div>
           </div>
         </div>
 
@@ -238,61 +242,6 @@ export default function CursoContent({
             divider={false}
             title={text}
             css={{ padding: '0px', marginLeft: '10px' }}
-          >
-            <Card.Body
-              css={{
-                padding: '0px',
-                '@sm': {
-                  height: '65vh',
-                },
-              }}
-            >
-              <nav>
-                <ul>
-                  {lessons.map((lesson) => (
-                    <li
-                      key={lesson.id}
-                      className={
-                        activeLesson.id === lesson.id
-                          ? `${styles.active} ${styles.activeLesson}`
-                          : styles.noBorder
-                      }
-                    >
-                      <a
-                        onClick={(event) => {
-                          handleSelectLesson(lesson);
-                          changeText(event);
-                        }}
-                        className={
-                          activeLesson.id === lesson.id
-                            ? `${styles.active} ${styles.activeLesson}`
-                            : styles.noBorder
-                        }
-                      >
-                        {lesson.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </Card.Body>
-          </Collapse>
-        </Container>
-        <Container
-          className={
-            menuDesktop ? `${styles.menuDesktopActive}` : styles.menuDesktop
-          }
-          css={{
-            padding: '0px',
-            display: 'block',
-          }}
-        >
-          <Collapse
-            expanded={menuDesktop}
-            divider={false}
-            title=" "
-            css={{ padding: '0px', marginLeft: '10px' }}
-            onClick={activeMenuDesktop}
           >
             <Card.Body
               css={{
