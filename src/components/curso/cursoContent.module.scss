@@ -98,9 +98,12 @@
     padding: 5px;
     flex-direction: column;
     background: rgb(83, 36, 36);
-    height: 690px;
 
     background: #ffffff;
+    @media screen and (min-width: 1120px) {
+      display: flex;
+      height: 690px;
+    }
   }
 
   .NameSidebar {
