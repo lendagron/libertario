@@ -94,15 +94,13 @@
   }
 
   .ContainerSidebarFalse {
-    display: flex;
+    display: none;
     padding: 5px;
     flex-direction: column;
-    background: rgb(83, 36, 36);
-
-    background: #ffffff;
+    cursor: pointer;
+    background: transparent;
     @media screen and (min-width: 1120px) {
       display: flex;
-      height: 690px;
     }
   }
 
