@@ -20,7 +20,7 @@ export default function PlanosShipping({
   setIsShippingFilled,
 }: Props) {
   const [name, setName] = useState("");
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState("Brasil");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [neighborhood, setNeighborhood] = useState("");
@@ -70,7 +70,6 @@ export default function PlanosShipping({
   async function handleSubmit2() {
 
     const data = {
-<<<<<<< HEAD
       country: country,
       state: state,
       city: city,
@@ -79,24 +78,6 @@ export default function PlanosShipping({
       street_number: number,
       complement: complement,
       zipcode: cep,
-=======
-      name,
-      email,
-      password,
-      customer_data: {
-        cpf,
-        address: {
-          country: país,
-          state: estado,
-          city: cidade,
-          neighborhood: bairro,
-          street: rua,
-          street_number: número,
-          complement: complemento,
-          zipcode: cep,
-        },
-      },
->>>>>>> 92dad811b52aa50eb1e208a4de357723a8282a08
     };
     try {
       setIsLoading(true);
@@ -171,85 +152,8 @@ export default function PlanosShipping({
               href='https://buscacepinter.correios.com.br/app/endereco/index.php'
               css={{ color: "black", mt: "30px", width: "" }}
             >
-<<<<<<< HEAD
-              <Input
-                placeholder='Nº'
-                label="Nº"
-                size="xl"
-                css={{width: '25%'}}
-                required
-                onChange={(e) => setNumber(e.target.value)}
-                value={number}
-                ref={inputRef}
-              />
-              <Input
-                placeholder='Complemento'
-                label="Complemento"
-                size="xl"
-                css={{width: '100%'}}
-                onChange={(e) => setComplement(e.target.value)}
-                value={complement}
-              />
-            </Flex>
-            <Input
-              placeholder='Bairro'
-              label="Bairro"
-              size="xl"
-              css={{width: '100%'}}
-              required
-              onChange={(e) => setNeighborhood(e.target.value)}
-              value={neighborhood}
-            />
-            <Flex
-              css={{gap: '1rem'}}
-              justify={'between'}
-              wrap={'nowrap'}
-              direction={'row'}
-              align={'center'}
-            >
-              <Input
-                placeholder='UF'
-                label="UF"
-                size="xl"
-                css={{width: '25%'}}
-                required
-                onChange={(e) => setState(e.target.value)}
-                value={state}
-              />
-              <Input
-                placeholder='Cidade'
-                label="Cidade"
-                size="xl"
-                css={{width: '100%'}}
-                required
-                onChange={(e) => setCity(e.target.value)}
-                value={city}
-              />
-            </Flex>
-            <Button
-              onPress={handleSubmit}
-              size="xl"
-              css={{ mt: '$7', mb: '$12', color: 'black' }}
-            >
-              Continuar
-            </Button>
-            {isLoading && (
-              <ClipLoader
-                color={"#f3bf22"}
-                loading={isLoading}
-                size={50}
-                css={{ mb: "1rem" }}
-              />
-            )}
-            {confirm ? (
-              <CheckCircle size={35} color='green' />
-            ) : addError && !confirm ? (
-              <p>{addError}</p>
-            ) : null}
-=======
               Não sei meu CEP
             </Link>
->>>>>>> 92dad811b52aa50eb1e208a4de357723a8282a08
           </Flex>
           <Input
             placeholder='Rua, avenida, estrada, viela...'
@@ -328,19 +232,6 @@ export default function PlanosShipping({
           >
             Continuar
           </Button>
-          {isLoading && (
-            <ClipLoader
-              color={"#f3bf22"}
-              loading={isLoading}
-              size={50}
-              css={{ mb: "1rem" }}
-            />
-          )}
-          {confirm ? (
-            <CheckCircle size={35} color='green' />
-          ) : signInError && !confirm ? (
-            <p>{signInError}</p>
-          ) : null}
         </Flex>
       </Flex>
       <Divider
