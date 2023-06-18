@@ -89,11 +89,11 @@ export default function PlanosPayment() {
   const { erroredInputs, touchedInputs } = meta;
 
   const pix = createStaticPix({
-  merchantName: 'Universidade Libertaria',
-  merchantCity: 'Sao Paulo',
-  pixKey: '26404090000170',
-  infoAdicional: 'Clube da Liberdade',
-  transactionAmount: plansPrices[plan][periodicity],
+    merchantName: 'Universidade Libertaria',
+    merchantCity: 'Sao Paulo',
+    pixKey: '26404090000170',
+    infoAdicional: 'Clube da Liberdade',
+    transactionAmount: plansPrices[plan][periodicity],
   });
 
   useEffect(() => {
@@ -416,12 +416,19 @@ export default function PlanosPayment() {
                 Pagar com Cartão
               </Button>
             </Collapse>
+            { periodicity === 'mensal' ?
+              <Text css={{mt: "$20"}}>
+                Os meios de pagamento abaixo não estão disponíveis no plano mensal. Mude para o <Link href={"/planos/" + plan + "/trimestral"} css={{textDecoration:"underline", tw:"bold"}} underline>plano trimestral</Link> {plan === 'hoppe' ? <>ou para o <Link href={"/planos/" + plan + "/anual"} css={{textDecoration:"underline", tw:"bold"}} underline >plano anual</Link> </>:''}para utilizá-los.
+              </Text> :
+              ''
+            }
             <Collapse
-              contentLeft={<CurrencyBtc size={32} />}
+              contentLeft={<CurrencyBtc size={32} color={ periodicity === 'mensal' ? "gray" : 'black' } />}
               title='Cripto'
               subtitle='Pague em BTC, ETH, LTC, USDT, entre outras.'
-              arrowIcon={<CaretRight size={24} />}
+              arrowIcon={<CaretRight size={24} color={ periodicity === 'mensal' ? "gray" : 'black' } />}
               shadow
+              disabled={ periodicity === 'mensal' ? true : false }
             >
               <Button
                 href={"https://commerce.coinbase.com/checkout/" + cryptoCheckOuts[plan][periodicity] }
@@ -435,11 +442,12 @@ export default function PlanosPayment() {
               </script>
             </Collapse>
             <Collapse
-              contentLeft={<Bank size={32} />}
+              contentLeft={<Bank size={32} color={ periodicity === 'mensal' ? "gray" : 'black' } />}
               title='PIX'
               subtitle='Pague utiizando o PIX.'
-              arrowIcon={<CaretRight size={24} />}
+              arrowIcon={<CaretRight size={24} color={ periodicity === 'mensal' ? "gray" : 'black' } />}
               shadow
+              disabled={ periodicity === 'mensal' ? true : false }
             >
               <Flex
                 css={{ py: "$6", gap: "1rem", px: "$6" }}
@@ -481,11 +489,12 @@ export default function PlanosPayment() {
               </Flex>
             </Collapse>
             <Collapse
-              contentLeft={<Barcode size={32} />}
+              contentLeft={<Barcode size={32} color="gray" />}
               title='Boleto'
-              subtitle='Pague no boleto bancário.'
-              arrowIcon={<CaretRight size={24} />}
+              subtitle='Pague no boleto bancário. EM BREVE.'
+              arrowIcon={<CaretRight size={24} color="gray" />}
               shadow
+              disabled
             >
               <Input
                 size='xl'
