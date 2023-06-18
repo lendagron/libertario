@@ -8,7 +8,6 @@ import { ClipLoader } from "react-spinners";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import { CheckCircle } from "phosphor-react";
 
-//TODO: Botar um select para escolher país, estado e cidade.
 export default function CadastroPagamento() {
   const [name, setName] = useState("");
   const [país, setPaís] = useState("");

@@ -105,8 +105,8 @@ export default function PlanosContent() {
               <Text css={{ display: "contents", color: "$accents8" }}>
                 /mês
               </Text>
-              <Button css={{ mt: '$7', mb: '$12', color: 'black'}} href="/cadastroMises" as="a">Acesse</Button>
 
+              <Button css={{ mt: '$7', mb: '$12', color: 'black'}} href="/cadastroMises" as="a">Acesse</Button>
               <Divider />
               <Box as={"ul"}>
                 <PlanosContentBenefits text="Cursos introdutórios" active={true} />
@@ -152,6 +152,7 @@ export default function PlanosContent() {
                 /mês
               </Text>
               <Button
+
                 css={{ mt: '$7', mb: '$12', color: 'black'}}
                 href={"/planos/hoppe/" + planPeriod}
                 as="a"
@@ -206,10 +207,10 @@ export default function PlanosContent() {
               <Button
                 css={{ mt: '$7', mb: '$12', color: 'black'}}
                 href={"/planos/konkin/" + planPeriod}
-                as="a"
-                disabled={planPeriod == 'anual' ? true : false}
+                as='a'
+                disabled={planPeriod == "anual" ? true : false}
               >
-                 {planPeriod == 'anual' ? "Acesse (em breve)" : "Acesse"}
+                {planPeriod == "anual" ? "Acesse (em breve)" : "Acesse"}
               </Button>
               <Divider />
               <Box as={"ul"}>

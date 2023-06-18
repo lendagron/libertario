@@ -7,8 +7,127 @@
 .container {
   display: flex;
 
+  .ContainerVideo {
+    display: flex;
+  }
+
+  .ContainerSidebar {
+    display: none;
+    width: 450px;
+    flex-direction: column;
+    height: 695px;
+    background: #202022;
+
+    @media screen and (min-width: 1120px) {
+      display: flex;
+    }
+    @media screen and (min-width: 1400px) {
+      height: 765px;
+    }
+    @media screen and (min-width: 1920px) {
+      height: auto;
+    }
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: var(--gray-100);
+    }
+
+    .SideBarDesktop {
+      display: block;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #202022;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #fde047;
+        border-radius: 10px;
+        border: 1px solid #000000;
+      }
+
+      ul {
+        margin: 0px;
+        display: flex;
+        flex-direction: column;
+
+        .activeLesson {
+          background: #fff000;
+          color: #202022;
+        }
+        .active {
+          background: #fff000;
+          color: #202022;
+          border-radius: 4px;
+        }
+        li {
+          border-bottom: solid 0.5px #474633;
+          margin: 0px;
+
+          &:hover {
+            background: #fff000;
+            border-radius: 4px;
+          }
+        }
+
+        a {
+          margin-left: 10px;
+          font-weight: bold;
+          font-size: 1rem;
+          display: block;
+          color: var(--gray-100);
+          &:hover {
+            color: #202022;
+          }
+        }
+      }
+    }
+  }
+
+  .ContainerSidebarFalse {
+    display: flex;
+    padding: 5px;
+    flex-direction: column;
+    background: rgb(83, 36, 36);
+
+    background: #ffffff;
+    @media screen and (min-width: 1120px) {
+      display: flex;
+      height: 690px;
+    }
+  }
+
+  .NameSidebar {
+    display: none;
+  }
+
+  .MenuSidebar {
+    display: none;
+    border-radius: 6px;
+    background: #202022;
+    border: solid 1px #adadba;
+    cursor: pointer;
+    &:hover {
+      background: #42423b;
+    }
+    @media screen and (min-width: 1120px) {
+      display: flex;
+    }
+  }
+
   .cursoContainer {
     display: flex;
+
     justify-content: center;
     flex-direction: column;
 
@@ -21,6 +140,7 @@
       width: 100%;
       padding-top: 56.25%;
       background: black;
+      border-radius: 1px;
 
       div,
       iframe {
@@ -91,18 +211,6 @@
       display: none;
       max-width: 300px;
     }
-  }
-  .menuDesktop {
-    display: none;
-
-    @media screen and (min-width: 1120px) {
-      display: block;
-      max-width: 20px;
-    }
-  }
-
-  .menuDesktopActive {
-    max-width: 300px;
   }
 
   aside {
