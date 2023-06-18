@@ -70,6 +70,17 @@ export default function PlanosPayment() {
     },
   }
 
+  const cryptoCheckOuts = {
+    hoppe: {
+      trimestral: "b57b8180-1635-454b-b199-f83d8ede7295",
+      anual: "1bfb5299-c4f4-4eaa-a20b-67a12954bc3f",
+    },
+    konkin: {
+      trimestral: "4f768366-f4c6-466f-9650-bfb769de902f",
+      anual: "",
+    },
+  }
+
 
   const { updateAdress } = useContext(AuthContext);
 
@@ -406,6 +417,24 @@ export default function PlanosPayment() {
               </Button>
             </Collapse>
             <Collapse
+              contentLeft={<CurrencyBtc size={32} />}
+              title='Cripto'
+              subtitle='Pague em BTC, ETH, LTC, USDT, entre outras.'
+              arrowIcon={<CaretRight size={24} />}
+              shadow
+            >
+              <Button
+                href={"https://commerce.coinbase.com/checkout/" + cryptoCheckOuts[plan][periodicity] }
+                size='xl'
+                css={{ mt: "$7", mb: "$12", color: "black", width: "100%" }}
+                as="a"
+              >
+                Pagar com Cripto
+              </Button>
+              <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807">
+              </script>
+            </Collapse>
+            <Collapse
               contentLeft={<Bank size={32} />}
               title='PIX'
               subtitle='Pague utiizando o PIX.'
@@ -481,16 +510,6 @@ export default function PlanosPayment() {
               >
                 Gerar Boleto
               </Button>
-            </Collapse>
-            <Collapse
-              contentLeft={<CurrencyBtc size={32} color='gray' />}
-              title='Cripto'
-              subtitle='Pague em BTC, ETH, LTC, USDT, entre outras. EM BREVE.'
-              arrowIcon={<CaretRight size={24} color='gray' />}
-              shadow
-              disabled
-            >
-              <Text>Dados Cartão</Text>
             </Collapse>
           </Collapse.Group>
         </Flex>
