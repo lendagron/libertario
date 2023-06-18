@@ -13,7 +13,7 @@ import { Box } from "../styles/box";
 import { Flex } from "../styles/flex";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import styles from "./planosContent.module.scss";
+import PlanosContentBenefits from "./PlanosContentBenefits"
 
 export default function PlanosContent() {
   const { isAuthenticated } = useContext(AuthContext);
@@ -77,7 +77,6 @@ export default function PlanosContent() {
           </Button.Group>
           <Spacer />
         </Flex>
-
         <Flex
           css={{ gap: "2rem", width: "100%" }}
           wrap={"wrap"}
@@ -107,78 +106,20 @@ export default function PlanosContent() {
                 /mês
               </Text>
 
-              <Button
-                css={{ mt: "$7", mb: "$12", color: "black" }}
-                href='/cadastroMises'
-                as='a'
-              >
-                Acesse
-              </Button>
-
+              <Button css={{ mt: '$7', mb: '$12', color: 'black'}} href="/cadastroMises" as="a">Acesse</Button>
               <Divider />
               <Box as={"ul"}>
-                <Flex as={"li"} css={{ py: "$2", gap: "$2" }} align={"center"}>
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Cursos introdutórios
-                  </Text>
-                </Flex>
-                <Flex as={"li"} css={{ py: "$2", gap: "$2" }} align={"center"}>
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Trilhas para direcionar o aprendizado
-                  </Text>
-                </Flex>
-                <Flex
-                  as={"li"}
-                  css={{ py: "$2", gap: "$2", textDecoration: "line-through" }}
-                  align={"center"}
-                >
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Conteúdos referentes ao livro do mês
-                  </Text>
-                </Flex>
-                <Flex
-                  as={"li"}
-                  css={{ py: "$2", gap: "$2", textDecoration: "line-through" }}
-                  align={"center"}
-                >
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Acesso a todos os cursos
-                  </Text>
-                </Flex>
-                <Flex
-                  as={"li"}
-                  css={{ py: "$2", gap: "$2", textDecoration: "line-through" }}
-                  align={"center"}
-                >
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Make of da capa do livro do mês
-                  </Text>
-                </Flex>
-                <Flex
-                  as={"li"}
-                  css={{ py: "$2", gap: "$2", textDecoration: "line-through" }}
-                  align={"center"}
-                >
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    10% de cashback em LUT
-                  </Text>
-                </Flex>
-                <Flex
-                  as={"li"}
-                  css={{ py: "$2", gap: "$2", textDecoration: "line-through" }}
-                  align={"center"}
-                >
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Brindes exclusivos
-                  </Text>
-                </Flex>
+                <PlanosContentBenefits text="Cursos introdutórios" active={true} />
+                <PlanosContentBenefits text="Trilhas para direcionar o aprendizado" active={true} />
+                <PlanosContentBenefits text="Conteúdos referentes ao livro do mês" active={false} />
+                <PlanosContentBenefits text="Acesso a todos os cursos" active={false} />
+                <PlanosContentBenefits text="25% de desconto em qualquer livro da loja da UL" active={false} />
+                <PlanosContentBenefits text="Um livro capa dura e exclusivo por mês" active={false} />
+                <PlanosContentBenefits text="Conteúdos exclusivos sobre o livro lançado" active={false} />
+                <PlanosContentBenefits text="Brindes" active={false} />
+                <PlanosContentBenefits text="Marca Página no tema do Livro" active={false} />
+                <PlanosContentBenefits text="Caixa personalizada do Plano Konkin" active={false} />
+                <PlanosContentBenefits text="10% de cashback em LUT para os 100 primeiros membros" active={false} />
               </Box>
             </Card.Body>
           </Card>
@@ -202,79 +143,35 @@ export default function PlanosContent() {
               <Text css={{ display: "contents" }} h2>
                 R${" "}
                 {planPeriod == "anual"
-                  ? "39 "
+                  ? "39,90 "
                   : planPeriod == "trimestral"
-                  ? "44 "
-                  : "49 "}
+                  ? "44,90 "
+                  : "49,90 "}
               </Text>
               <Text css={{ display: "contents", color: "$accents8" }}>
                 /mês
               </Text>
               <Button
-                css={{ mt: "$7", mb: "$12", color: "black" }}
-                href={"/planos/hoppe/" + planPeriod}
-                as='a'
-                disabled={planPeriod == "anual" ? true : false}
-              >
-                {planPeriod == "anual" ? "Acesse (em breve)" : "Acesse"}
-              </Button>
 
+                css={{ mt: '$7', mb: '$12', color: 'black'}}
+                href={"/planos/hoppe/" + planPeriod}
+                as="a"
+              >
+                 Acesse
+              </Button>
               <Divider />
               <Box as={"ul"}>
-                <Flex as={"li"} css={{ py: "$2", gap: "$2" }} align={"center"}>
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Cursos introdutórios
-                  </Text>
-                </Flex>
-                <Flex as={"li"} css={{ py: "$2", gap: "$2" }} align={"center"}>
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Trilhas para direcionar o aprendizado
-                  </Text>
-                </Flex>
-                <Flex as={"li"} css={{ py: "$2", gap: "$2" }} align={"center"}>
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Conteúdos referentes ao livro do mês
-                  </Text>
-                </Flex>
-                <Flex as={"li"} css={{ py: "$2", gap: "$2" }} align={"center"}>
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Acesso a todos os cursos
-                  </Text>
-                </Flex>
-                <Flex
-                  as={"li"}
-                  css={{ py: "$2", gap: "$2", textDecoration: "line-through" }}
-                  align={"center"}
-                >
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Make of da capa do livro do mês
-                  </Text>
-                </Flex>
-                <Flex
-                  as={"li"}
-                  css={{ py: "$2", gap: "$2", textDecoration: "line-through" }}
-                  align={"center"}
-                >
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    10% de cashback em LUT
-                  </Text>
-                </Flex>
-                <Flex
-                  as={"li"}
-                  css={{ py: "$2", gap: "$2", textDecoration: "line-through" }}
-                  align={"center"}
-                >
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Brindes exclusivos
-                  </Text>
-                </Flex>
+                <PlanosContentBenefits text="Cursos introdutórios" active={true} />
+                <PlanosContentBenefits text="Trilhas para direcionar o aprendizado" active={true} />
+                <PlanosContentBenefits text="Conteúdos referentes ao livro do mês" active={true} />
+                <PlanosContentBenefits text="Acesso a todos os cursos" active={true} />
+                <PlanosContentBenefits text="25% de desconto em qualquer livro da loja da UL" active={false} />
+                <PlanosContentBenefits text="Um livro capa dura e exclusivo por mês" active={false} />
+                <PlanosContentBenefits text="Conteúdos exclusivos sobre o livro lançado" active={false} />
+                <PlanosContentBenefits text="Brindes" active={false} />
+                <PlanosContentBenefits text="Marca Página no tema do Livro" active={false} />
+                <PlanosContentBenefits text="Caixa personalizada do Plano Konkin" active={false} />
+                <PlanosContentBenefits text="10% de cashback em LUT para os 100 primeiros membros" active={false} />
               </Box>
             </Card.Body>
           </Card>
@@ -288,7 +185,7 @@ export default function PlanosContent() {
                 </Grid>
                 <Grid xs={12}>
                   <Text css={{ color: "$accents8", minHeight: "100px" }}>
-                    Todos os meses um novo livro capa dura exclusivo, assim como
+                    Todos os meses um novo <Text css={{ color: "black" }} b>livro capa dura exclusivo</Text>, assim como
                     inúmeros conteúdos complementares para te ajudar a
                     aproveitar ao máximo as obras.
                   </Text>
@@ -299,67 +196,35 @@ export default function PlanosContent() {
               <Text css={{ display: "contents" }} h2>
                 R${" "}
                 {planPeriod == "anual"
-                  ? "71 "
+                  ? "74,90 "
                   : planPeriod == "trimestral"
-                  ? "80 "
-                  : "89 "}
+                  ? "79,90 "
+                  : "89,90 "}
               </Text>
               <Text css={{ display: "contents", color: "$accents8" }}>
                 /mês
               </Text>
               <Button
-                css={{ mt: "$7", mb: "$12", color: "black" }}
+                css={{ mt: '$7', mb: '$12', color: 'black'}}
                 href={"/planos/konkin/" + planPeriod}
                 as='a'
                 disabled={planPeriod == "anual" ? true : false}
               >
                 {planPeriod == "anual" ? "Acesse (em breve)" : "Acesse"}
               </Button>
-
               <Divider />
               <Box as={"ul"}>
-                <Flex as={"li"} css={{ py: "$2", gap: "$2" }} align={"center"}>
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Cursos introdutórios
-                  </Text>
-                </Flex>
-                <Flex as={"li"} css={{ py: "$2", gap: "$2" }} align={"center"}>
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Trilhas para direcionar o aprendizado
-                  </Text>
-                </Flex>
-                <Flex as={"li"} css={{ py: "$2", gap: "$2" }} align={"center"}>
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Conteúdos referentes ao livro do mês
-                  </Text>
-                </Flex>
-                <Flex as={"li"} css={{ py: "$2", gap: "$2" }} align={"center"}>
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Acesso a todos os cursos
-                  </Text>
-                </Flex>
-                <Flex as={"li"} css={{ py: "$2", gap: "$2" }} align={"center"}>
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Make of da capa do livro do mês
-                  </Text>
-                </Flex>
-                <Flex as={"li"} css={{ py: "$2", gap: "$2" }} align={"center"}>
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    10% de cashback em LUT
-                  </Text>
-                </Flex>
-                <Flex as={"li"} css={{ py: "$2", gap: "$2" }} align={"center"}>
-                  <Check />
-                  <Text span css={{ color: "$accents8" }}>
-                    Brindes exclusivos
-                  </Text>
-                </Flex>
+                <PlanosContentBenefits text="Cursos introdutórios" active={true} />
+                <PlanosContentBenefits text="Trilhas para direcionar o aprendizado" active={true} />
+                <PlanosContentBenefits text="Conteúdos referentes ao livro do mês" active={true} />
+                <PlanosContentBenefits text="Acesso a todos os cursos" active={true} />
+                <PlanosContentBenefits text="25% de desconto em qualquer livro da loja da UL" active={true} />
+                <PlanosContentBenefits text="Um livro capa dura e exclusivo por mês" active={true} />
+                <PlanosContentBenefits text="Conteúdos exclusivos sobre o livro lançado" active={true} />
+                <PlanosContentBenefits text="Brindes" active={true} />
+                <PlanosContentBenefits text="Marca Página no tema do Livro" active={true} />
+                <PlanosContentBenefits text="Caixa personalizada do Plano Konkin" active={true} />
+                <PlanosContentBenefits text="10% de cashback em LUT para os 100 primeiros membros" active={true} />
               </Box>
             </Card.Body>
           </Card>
