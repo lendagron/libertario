@@ -20,7 +20,7 @@ export default function PlanosShipping({
   setIsShippingFilled,
 }: Props) {
   const [name, setName] = useState("");
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState("Brasil");
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [neighborhood, setNeighborhood] = useState("");
@@ -29,13 +29,13 @@ export default function PlanosShipping({
   const [complement, setComplement] = useState("");
   const [cep, setCep] = useState("");
   const [cepError, setCepError] = useState("");
-  const [signInError, setSignInError] = useState<string>("");
+  const [addError, setAddError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [confirm, setConfirm] = useState<boolean>(false);
 
   const inputRef = useRef(null);
 
-  const { updateAdress } = useContext(AuthContext);
+  const { addAddress } = useContext(AuthContext);
 
   async function onChangeCep(e) {
     setCep(e);
@@ -67,31 +67,23 @@ export default function PlanosShipping({
     setIsShippingFilled(true);
   }
 
-  async function handleSubmit2(event: FormEvent) {
-    event.preventDefault();
+  async function handleSubmit2() {
 
     const data = {
-      name,
-      email,
-      password,
-      customer_data: {
-        cpf,
-        address: {
-          country: país,
-          state: estado,
-          city: cidade,
-          neighborhood: bairro,
-          street: rua,
-          street_number: número,
-          complement: complemento,
-          zipcode: cep,
-        },
-      },
+      country: country,
+      state: state,
+      city: city,
+      neighborhood: neighborhood,
+      street: street,
+      street_number: number,
+      complement: complement,
+      zipcode: cep,
     };
     try {
       setIsLoading(true);
-      await payment(data);
+      await addAddress(data);
       setConfirm(true);
+      setIsShippingFilled(true);
     } catch (error) {
       if (error.response && error.response.data) {
         const { message, details } = error.response.data;
@@ -99,14 +91,14 @@ export default function PlanosShipping({
           const errorMessages = Object.entries(details)
             .map(([key, value]) => `${key}: ${value}`)
             .join("; ");
-          setSignInError(`Erro no envio de dados: ${errorMessages}`);
+          setAddError(`Erro no envio de dados: ${errorMessages}`);
         } else if (message) {
-          setSignInError(message);
+          setAddError(message);
         } else {
-          setSignInError("Ocorreu um erro ao processar a solicitação.");
+          setAddError("Ocorreu um erro ao processar a solicitação.");
         }
       } else {
-        setSignInError("Ocorreu um erro ao processar a solicitação.");
+        setAddError("Ocorreu um erro ao processar a solicitação.");
       }
     } finally {
       setIsLoading(false);
@@ -240,19 +232,6 @@ export default function PlanosShipping({
           >
             Continuar
           </Button>
-          {isLoading && (
-            <ClipLoader
-              color={"#f3bf22"}
-              loading={isLoading}
-              size={50}
-              css={{ mb: "1rem" }}
-            />
-          )}
-          {confirm ? (
-            <CheckCircle size={35} color='green' />
-          ) : signInError && !confirm ? (
-            <p>{signInError}</p>
-          ) : null}
         </Flex>
       </Flex>
       <Divider

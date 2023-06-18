@@ -54,6 +54,23 @@ export default function PlanosPayment() {
   const inputRef = useRef(null);
   const router = useRouter();
 
+  const plan = router.query.plan;
+  const periodicity = router.query.periodicity;
+
+  const plansPrices = {
+    hoppe: {
+      mensal: 49.90,
+      trimestral: 134.70,
+      anual: 478.80,
+    },
+    konkin: {
+      mensal: 89.90,
+      trimestral: 239.70,
+      anual: 898.80,
+    },
+  }
+
+
   const { updateAdress } = useContext(AuthContext);
 
   const { meta, getCardNumberProps, getExpiryDateProps, getCVCProps } =
@@ -61,11 +78,11 @@ export default function PlanosPayment() {
   const { erroredInputs, touchedInputs } = meta;
 
   const pix = createStaticPix({
-    merchantName: "Universidade Libertaria",
-    merchantCity: "Sao Paulo",
-    pixKey: "26404090000170",
-    infoAdicional: "Clube da Liberdade",
-    transactionAmount: 1,
+  merchantName: 'Universidade Libertaria',
+  merchantCity: 'Sao Paulo',
+  pixKey: '26404090000170',
+  infoAdicional: 'Clube da Liberdade',
+  transactionAmount: plansPrices[plan][periodicity],
   });
 
   useEffect(() => {

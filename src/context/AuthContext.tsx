@@ -87,7 +87,7 @@ type AuthContextData = {
   signUp(credentials: SignUpCredentials): Promise<void>;
   signOut(): void;
   payment(credentials: paymentCredentials): Promise<void>;
-  updateAdress(credentials: address): Promise<void>;
+  addAdress(credentials: address): Promise<void>;
   user: User;
   isAuthenticated: boolean;
   recover(credentials: recoverCredentials): Promise<void>;
@@ -183,7 +183,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     sigIn({ email, password });
   }
 
-  async function updateAdress({
+  async function addAdress({
     country,
     state,
     city,
@@ -193,7 +193,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     complement,
     zipcode,
   }: address) {
-    await api.put("/me/customer", {
+    await api.put("/me/addresses", {
       country,
       state,
       city,
@@ -244,7 +244,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         signUp,
         signOut,
         payment,
-        updateAdress,
+        addAdress,
         recover,
         changePassword,
         redefinePassword,
