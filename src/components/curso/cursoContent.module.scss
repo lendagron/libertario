@@ -7,7 +7,7 @@
 .container {
   display: flex;
 
-  .ConatinerVideo {
+  .ContainerVideo {
     display: flex;
   }
 
@@ -17,6 +17,7 @@
     flex-direction: column;
     height: 695px;
     background: #202022;
+
     @media screen and (min-width: 1120px) {
       display: flex;
     }
@@ -34,7 +35,7 @@
       font-weight: bold;
       font-size: 1rem;
       margin-bottom: 10px;
-      color: #adadba;
+      color: var(--gray-100);
     }
 
     .SideBarDesktop {
@@ -84,7 +85,7 @@
           font-weight: bold;
           font-size: 1rem;
           display: block;
-          color: #adadba;
+          color: var(--gray-100);
           &:hover {
             color: #202022;
           }
