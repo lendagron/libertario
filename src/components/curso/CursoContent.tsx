@@ -1,8 +1,7 @@
-
-import { useContext, useState, useEffect, useRef } from 'react';
-import menu from '../../../public/images/menu.png';
-import CursoMenuContent from './cursoMenuContent/CursoMenuContent';
-import styles from './cursoContent.module.scss';
+import { useContext, useState, useEffect, useRef } from "react";
+import menu from "../../../public/images/menu.png";
+import CursoMenuContent from "./cursoMenuContent/CursoMenuContent";
+import styles from "./cursoContent.module.scss";
 
 import {
   Container,
@@ -15,12 +14,10 @@ import {
 } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
-
-import VimeoPlayer from '../vimeoPlayer/VimeoPlayer';
-import { Desktop } from 'phosphor-react';
-import Link from 'next/link';
-import Image from 'next/image';
-
+import VimeoPlayer from "../vimeoPlayer/VimeoPlayer";
+import { Desktop } from "phosphor-react";
+import Link from "next/link";
+import Image from "next/image";
 
 interface Lesson {
   id: number;
@@ -186,7 +183,7 @@ export default function CursoContent({
 
       <div className={styles.container}>
         <div className={styles.cursoContainer}>
-          <div className={styles.ConatinerVideo}>
+          <div className={styles.ContainerVideo}>
             <div className={styles.vimeoVideo}>
               {activeLesson !== undefined && activeLesson !== null ? (
                 <>
@@ -212,14 +209,14 @@ export default function CursoContent({
               }
             >
               <div>
-                <span className={!menuDesktop ? styles.NameSidebar : 'none'}>
+                <span className={!menuDesktop ? styles.NameSidebar : "none"}>
                   {textDesktop}
                 </span>
                 <Image
                   width={40}
                   height={40}
                   src={menu}
-                  alt="icone menu"
+                  alt='icone menu'
                   className={styles.MenuSidebar}
                   onClick={activeMenuDesktop}
                 />
@@ -258,10 +255,9 @@ export default function CursoContent({
             </div>
           </div>
 
-
           <div className={styles.Description}>
             <div>
-              Conclusão do vídeo:{' '}
+              Conclusão do vídeo:{" "}
               {lessonWatchedPercentages[activeLesson?.id] ?? 0}%
             </div>
             <div>
@@ -278,13 +274,12 @@ export default function CursoContent({
             <div>
               {visaoGeral && (
                 <CursoMenuContent
-                  titulo="Sobre este Curso"
+                  titulo='Sobre este Curso'
                   subtitulo={course.name}
                   conteudo={course.description}
                 />
               )}
             </div>
-
           </div>
         </div>
 
