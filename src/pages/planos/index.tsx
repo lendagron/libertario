@@ -1,6 +1,6 @@
 import Head from "next/head";
-import { Header } from "../components/header/Header";
-import PlanosContent from "../components/planosContent/PlanosContent";
+import { Header } from "../../components/header/Header";
+import PlanosContent from "../../components/planosContent/PlanosContent";
 
 export default function Planos() {
   return (

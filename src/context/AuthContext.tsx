@@ -2,6 +2,7 @@ import { createContext, ReactNode, useEffect, useState } from "react";
 import { api } from "../services/apiClient";
 import Router from "next/router";
 import { setCookie, parseCookies, destroyCookie } from "nookies";
+import { useRouter } from 'next/router';
 
 type User = {
   permissions: string[];
@@ -11,6 +12,7 @@ type User = {
 type SignInCredentials = {
   email: string;
   password: string;
+  destination?: string;
 };
 
 type SignUpCredentials = {
@@ -85,6 +87,7 @@ type AuthContextData = {
   signUp(credentials: SignUpCredentials): Promise<void>;
   signOut(): void;
   payment(credentials: paymentCredentials): Promise<void>;
+  updateAdress(credentials: address): Promise<void>;
   user: User;
   isAuthenticated: boolean;
   recover(credentials: recoverCredentials): Promise<void>;
@@ -125,7 +128,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }, []);
 
-  async function sigIn({ email, password }: SignInCredentials) {
+  async function sigIn({ email, password, destination }: SignInCredentials) {
     const response = await api.post("/login", {
       email,
       password,
@@ -149,7 +152,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
-    Router.push("/painel");
+    Router.push(destination ? destination : "/painel");
   }
 
   async function signUp({ name, email, password }: SignUpCredentials) {
@@ -178,6 +181,28 @@ export function AuthProvider({ children }: AuthProviderProps) {
       plan_data,
     });
     sigIn({ email, password });
+  }
+
+  async function updateAdress({
+    country,
+    state,
+    city,
+    neighborhood,
+    street,
+    street_number,
+    complement,
+    zipcode,
+  }: address) {
+    await api.put("/me/customer", {
+      country,
+      state,
+      city,
+      neighborhood,
+      street,
+      street_number,
+      complement,
+      zipcode,
+    });
   }
 
   async function recover({ email }: recoverCredentials) {
@@ -219,6 +244,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         signUp,
         signOut,
         payment,
+        updateAdress,
         recover,
         changePassword,
         redefinePassword,
