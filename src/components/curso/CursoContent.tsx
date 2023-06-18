@@ -1,6 +1,9 @@
-import { useContext, useState, useEffect, useRef } from "react";
-import CursoMenuContent from "./cursoMenuContent/CursoMenuContent";
-import styles from "./cursoContent.module.scss";
+
+import { useContext, useState, useEffect, useRef } from 'react';
+import menu from '../../../public/images/menu.png';
+import CursoMenuContent from './cursoMenuContent/CursoMenuContent';
+import styles from './cursoContent.module.scss';
+
 import {
   Container,
   Card,
@@ -12,9 +15,12 @@ import {
 } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
-import VimeoPlayer from "../vimeoPlayer/VimeoPlayer";
-import { Desktop } from "phosphor-react";
-import Link from "next/link";
+
+import VimeoPlayer from '../vimeoPlayer/VimeoPlayer';
+import { Desktop } from 'phosphor-react';
+import Link from 'next/link';
+import Image from 'next/image';
+
 
 interface Lesson {
   id: number;
@@ -180,47 +186,105 @@ export default function CursoContent({
 
       <div className={styles.container}>
         <div className={styles.cursoContainer}>
-          <div className={styles.vimeoVideo}>
-            {activeLesson !== undefined && activeLesson !== null ? (
-              <>
-                <VimeoPlayer
-                  videoId={activeLesson.vimeo_id}
-                  onWatchedPercentageChange={(percentage) =>
-                    handleWatchedPercentageChange(activeLesson.id, percentage)
-                  }
-                  watchedPercentage={
-                    (lessonWatchedPercentages[activeLesson.id] || 0) / 100
-                  }
+          <div className={styles.ConatinerVideo}>
+            <div className={styles.vimeoVideo}>
+              {activeLesson !== undefined && activeLesson !== null ? (
+                <>
+                  <VimeoPlayer
+                    videoId={activeLesson.vimeo_id}
+                    onWatchedPercentageChange={(percentage) =>
+                      handleWatchedPercentageChange(activeLesson.id, percentage)
+                    }
+                    watchedPercentage={
+                      (lessonWatchedPercentages[activeLesson.id] || 0) / 100
+                    }
+                  />
+                </>
+              ) : (
+                <p>Vídeo não encontrado...</p>
+              )}
+            </div>
+            <div
+              className={
+                menuDesktop
+                  ? styles.ContainerSidebar
+                  : styles.ContainerSidebarFalse
+              }
+            >
+              <div>
+                <span className={!menuDesktop ? styles.NameSidebar : 'none'}>
+                  {textDesktop}
+                </span>
+                <Image
+                  width={40}
+                  height={40}
+                  src={menu}
+                  alt="icone menu"
+                  className={styles.MenuSidebar}
+                  onClick={activeMenuDesktop}
                 />
-              </>
-            ) : (
-              <p>Vídeo não encontrado...</p>
-            )}
+              </div>
+              {menuDesktop}
+              {menuDesktop && (
+                <div className={styles.SideBarDesktop}>
+                  <ul>
+                    {lessons.map((lesson) => (
+                      <li
+                        key={lesson.id}
+                        className={
+                          activeLesson.id === lesson.id
+                            ? `${styles.active} ${styles.activeLesson}`
+                            : styles.noBorder
+                        }
+                      >
+                        <a
+                          onClick={(event) => {
+                            handleSelectLesson(lesson);
+                            changeText(event);
+                          }}
+                          className={
+                            activeLesson.id === lesson.id
+                              ? `${styles.active} ${styles.activeLesson}`
+                              : styles.noBorder
+                          }
+                        >
+                          {lesson.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
 
-          <div>
-            Conclusão do vídeo:{" "}
-            {lessonWatchedPercentages[activeLesson?.id] ?? 0}%
-          </div>
-          <div>
-            Conclusão do curso: {courseCompletionPercentage?.toFixed(2) ?? 0}%
-          </div>
 
-          <nav>
-            <ul>
-              <li>
-                <a onClick={handleVisaoGeral}>Visão Geral</a>
-              </li>
-            </ul>
-          </nav>
-          <div>
-            {visaoGeral && (
-              <CursoMenuContent
-                titulo='Sobre este Curso'
-                subtitulo={course.name}
-                conteudo={course.description}
-              />
-            )}
+          <div className={styles.Description}>
+            <div>
+              Conclusão do vídeo:{' '}
+              {lessonWatchedPercentages[activeLesson?.id] ?? 0}%
+            </div>
+            <div>
+              Conclusão do curso: {courseCompletionPercentage?.toFixed(2) ?? 0}%
+            </div>
+
+            <nav>
+              <ul>
+                <li>
+                  <a onClick={handleVisaoGeral}>Visão Geral</a>
+                </li>
+              </ul>
+            </nav>
+            <div>
+              {visaoGeral && (
+                <CursoMenuContent
+                  titulo="Sobre este Curso"
+                  subtitulo={course.name}
+                  conteudo={course.description}
+                />
+              )}
+            </div>
+
           </div>
         </div>
 
@@ -237,62 +301,6 @@ export default function CursoContent({
             divider={false}
             title={text}
             css={{ padding: "0px", marginLeft: "10px" }}
-          >
-            <Card.Body
-              css={{
-                padding: "0px",
-                "@sm": {
-                  height: "65vh",
-                },
-              }}
-            >
-              <nav>
-                <ul>
-                  {lessons.map((lesson) => (
-                    <li
-                      key={lesson.id}
-                      className={
-                        activeLesson.id === lesson.id
-                          ? `${styles.active} ${styles.activeLesson}`
-                          : styles.noBorder
-                      }
-                    >
-                      <a
-                        onClick={(event) => {
-                          handleSelectLesson(lesson);
-                          changeText(event);
-                        }}
-                        className={
-                          activeLesson.id === lesson.id
-                            ? `${styles.active} ${styles.activeLesson}`
-                            : styles.noBorder
-                        }
-                      >
-                        {lesson.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </Card.Body>
-          </Collapse>
-        </Container>
-        <Container
-          className={
-            menuDesktop ? `${styles.menuDesktopActive}` : styles.menuDesktop
-          }
-          css={{
-            padding: "0px",
-            display: "block",
-          }}
-        >
-          <Collapse
-            expanded={menuDesktop}
-            divider={false}
-            //TODO: `Aulas do Curso ${course.name}`
-            title={""}
-            css={{ padding: "0px", marginLeft: "10px" }}
-            onClick={activeMenuDesktop}
           >
             <Card.Body
               css={{
