@@ -32,6 +32,7 @@
     "react-country-region-selector": "^3.6.1",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
+    "react-input-mask": "^2.0.4",
     "react-payment-inputs": "^1.1.9",
     "react-spinners": "^0.13.8",
     "sass": "^1.56.1",

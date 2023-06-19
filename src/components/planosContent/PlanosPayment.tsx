@@ -32,6 +32,7 @@ import cepPromise from "cep-promise";
 import { createStaticPix, hasError } from "pix-utils";
 import { usePaymentInputs } from "react-payment-inputs";
 import images from "react-payment-inputs/images";
+import InputMask from 'react-input-mask';
 
 export default function PlanosPayment() {
   const [name, setName] = useState("");
@@ -342,6 +343,8 @@ export default function PlanosPayment() {
                 size='xl'
                 label='CPF'
                 placeholder='CPF'
+                as={InputMask}
+                mask="999.999.999-99"
                 css={{ width: "100%" }}
               />
               <Spacer y={2} />
@@ -370,7 +373,7 @@ export default function PlanosPayment() {
               >
                 <Input
                   {...getExpiryDateProps()}
-                  label='Expiry date'
+                  label='Validade'
                   inputRef={getExpiryDateProps().ref}
                   state={
                     erroredInputs.expiryDate && touchedInputs.expiryDate
@@ -386,7 +389,7 @@ export default function PlanosPayment() {
                 <Input
                   {...getCVCProps()}
                   placeholder='123'
-                  label='CVC'
+                  label='CVV'
                   inputRef={getCVCProps().ref}
                   state={
                     erroredInputs.cvc && touchedInputs.cvc
@@ -501,6 +504,7 @@ export default function PlanosPayment() {
                 label='CPF'
                 placeholder='CPF'
                 css={{ width: "100%" }}
+                mask="999.999.999-99"
               />
               <Spacer y={2} />
               <Checkbox
